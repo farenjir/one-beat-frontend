@@ -28,7 +28,7 @@ const callApi = ({
 		headers: {
 			"Accept-Language": "en",
 			"Api-Version": "1.0",
-			Accept: "application/json",
+			"Accept": "application/json",
 		},
 	});
 	// set request configs
