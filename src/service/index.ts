@@ -5,9 +5,9 @@ import { IError, errorCodeMessage } from "./messageErrorCode";
 
 interface IApi {
 	url: string;
-	method: string;
-	data: object;
-	params: object;
+	method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+	bodyData: object;
+	queryParams: object;
 	contentType: string;
 	responseType: string;
 }
@@ -15,8 +15,8 @@ interface IApi {
 const callApi = ({
 	url = "",
 	method = "GET",
-	data = {},
-	params = {},
+	bodyData = {},
+	queryParams = {},
 	contentType = "application/json",
 	responseType = "json",
 }: IApi): Promise<unknown> => {
@@ -68,7 +68,7 @@ const callApi = ({
 	);
 	// return
 	return new Promise((resolve, reject) => {
-		axiosInstance({ url, method, params, data })
+		axiosInstance({ url, method, params: queryParams, data: bodyData })
 			.then((res) => {
 				resolve(res?.data);
 			})
