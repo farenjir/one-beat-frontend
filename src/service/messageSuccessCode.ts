@@ -3,7 +3,7 @@ export interface ISuccess {
 	message: string;
 	description: string;
 	timestamp: string;
-	result: object[];
+	result: object | object[];
 }
 
 export const successCodeMessage = (code: string | number) => {};

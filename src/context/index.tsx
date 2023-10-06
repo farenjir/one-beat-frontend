@@ -5,17 +5,31 @@ import { Provider } from "react-redux";
 
 import { store } from "@/store";
 
+import callApi from "@/service";
+
 const AppContext = createContext({});
 
-const GlobalStateManagements = ({ children }: { children: ReactNode }) => {
+const ApplicationContext = ({ children }: { children: ReactNode }) => {
 	// initialize context
 	return (
-		<Provider store={store}>
-			<AppContext.Provider value={{}}>{children}</AppContext.Provider>
-		</Provider>
+		<AppContext.Provider
+			value={{
+				callApi,
+			}}
+		>
+			{children}
+		</AppContext.Provider>
 	);
 };
 
+// usage context
 export const useAppContext = () => useContext(AppContext);
 
-export default GlobalStateManagements;
+// state management of the application
+export default function ({ children }: { children: ReactNode }) {
+	return (
+		<Provider store={store}>
+			<ApplicationContext>{children}</ApplicationContext>
+		</Provider>
+	);
+}

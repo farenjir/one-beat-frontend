@@ -2,8 +2,8 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 // languages
-import english from "./english.json";
-import persian from "./persian.json";
+import english from "./lang_english.json";
+import persian from "./lang_persian.json";
 
 const options = {
 	resources: {
