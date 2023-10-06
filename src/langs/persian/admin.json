@@ -1,0 +1,28 @@
+{
+	"schemas": {
+		"required": "این فیلد الزامی است"
+	},
+	"commons": {},
+	"layouts": {
+		"drawerTitle": "تنظیمات",
+		"theme": "پوسته سایت :",
+		"language": "زبان سایت :",
+		"light": "روشن",
+		"dark": "تیره"
+	},
+	"register": {
+		"register": "ثبت نام",
+		"registerForm": "فرم ثبت نام"
+	},
+	"login": {
+		"login": "ورود",
+		"loginForm": "فرم ورود",
+		"title": "ورود به سامانه",
+		"description": "برای دسترسی به تمام امکانات سایت وارد شوید",
+		"needSignUp": "حساب کاربری نیاز دارم ,  ",
+		"remember": "یادآوری ورود",
+		"signUp": "ثبت نام",
+		"email": "ایمیل",
+		"password": "کلمه عبور"
+	}
+}
