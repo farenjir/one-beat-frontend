@@ -1,11 +1,14 @@
 "use client";
 
+import { useEffect } from "react";
+
 interface IError {
 	error: Error & { digest?: string };
 	reset: () => void;
 }
 
 export default function Error({ error, reset }: IError) {
+	useEffect(() => {}, [error]);
 	return (
 		<div className="mt-52 text-center">
 			<h2>Something went wrong!</h2>

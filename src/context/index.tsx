@@ -1,12 +1,21 @@
 "use client";
 
-import { ReactNode, createContext } from "react";
+import { ReactNode, createContext, useContext } from "react";
+import { Provider } from "react-redux";
+
+import { store } from "@/store";
 
 const AppContext = createContext({});
 
-const ApplicationContext = ({ children }: { children: ReactNode }) => {
+const GlobalStateManagements = ({ children }: { children: ReactNode }) => {
 	// initialize context
-	return <AppContext.Provider value={{}}>{children}</AppContext.Provider>;
+	return (
+		<Provider store={store}>
+			<AppContext.Provider value={{}}>{children}</AppContext.Provider>
+		</Provider>
+	);
 };
 
-export default ApplicationContext;
+export const useAppContext = () => useContext(AppContext);
+
+export default GlobalStateManagements;

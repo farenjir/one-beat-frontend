@@ -1,15 +1,15 @@
-import axios, { AxiosError, AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosHeaderValue, AxiosResponse, Method, ResponseType } from "axios";
 
-import { IResponse, successCodeMessage } from "./messageSuccessCode";
+import { ISuccess, successCodeMessage } from "./messageSuccessCode";
 import { IError, errorCodeMessage } from "./messageErrorCode";
 
 interface IApi {
 	url: string;
-	method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
 	bodyData: object;
 	queryParams: object;
-	contentType: string;
-	responseType: string;
+	method: Method;
+	contentType: AxiosHeaderValue;
+	responseType: ResponseType;
 }
 
 const callApi = ({
@@ -28,7 +28,7 @@ const callApi = ({
 		headers: {
 			"Accept-Language": "en",
 			"Api-Version": "1.0",
-			"Accept": "application/json",
+			Accept: "application/json",
 		},
 	});
 	// set request configs
@@ -52,7 +52,7 @@ const callApi = ({
 	);
 	//  set response configs
 	axiosInstance.interceptors.response.use(
-		(res: AxiosResponse<IResponse>) => {
+		(res: AxiosResponse<ISuccess>) => {
 			if (res?.data?.code) {
 				successCodeMessage(res?.data?.code);
 			}

@@ -1,4 +1,4 @@
-export interface IResponse {
+export interface ISuccess {
 	code: number | string;
 	message: string;
 	description: string;
