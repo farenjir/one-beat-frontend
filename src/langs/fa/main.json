@@ -1,20 +1,20 @@
 {
-	"schemas": {
+	"Message": {
 		"required": "این فیلد الزامی است"
 	},
-	"commons": {},
-	"layouts": {
+	"Commons": {},
+	"Layouts": {
 		"drawerTitle": "تنظیمات",
 		"theme": "پوسته سایت :",
 		"language": "زبان سایت :",
 		"light": "روشن",
 		"dark": "تیره"
 	},
-	"register": {
+	"Register": {
 		"register": "ثبت نام",
 		"registerForm": "فرم ثبت نام"
 	},
-	"login": {
+	"Login": {
 		"login": "ورود",
 		"loginForm": "فرم ورود",
 		"title": "ورود به سامانه",
