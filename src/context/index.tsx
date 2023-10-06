@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 
 import { store } from "@/store";
 
-import callApi from "@/service";
+import callApi from "@/utils/service";
 
 const AppContext = createContext({});
 
