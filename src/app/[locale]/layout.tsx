@@ -1,7 +1,7 @@
 import "@/assets/styles/global.css";
 import { Inter } from "next/font/google";
 
-import { IParams } from "@/utils/langs";
+import { locales, IParams } from "@/utils/langs";
 import GlobalStates from "@/context";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -12,18 +12,18 @@ export const metadata = {
 };
 
 export async function generateStaticParams() {
-	return [{ locale: "fa" }, { locale: "en" }];
+	return locales.map((locale) => ({ locale }));
 }
 
 type IRootProps = {
 	children: React.ReactNode;
 };
 
-export default function RootLayout({ children, params: { locale } }: IParams & IRootProps) {
+export default function RootLayout({ children, params: { locale } }: IRootProps & IParams) {
 	return (
 		<html lang={locale}>
 			<body>
-				<GlobalStates>{children}</GlobalStates>
+				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>
 		</html>
 	);

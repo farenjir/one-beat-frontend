@@ -1,10 +1,9 @@
 import "server-only";
 
-export type IParams = {
-	params: {
-		locale: "fa" | "en";
-	};
-};
+export type ILocale = "fa" | "en";
+export interface IParams {
+	params: { locale: ILocale };
+}
 
 export const locales = ["fa", "en"];
 
