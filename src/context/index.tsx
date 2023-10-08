@@ -20,6 +20,7 @@ const ApplicationContext = async ({ children, locale }: IProps) => {
 	return (
 		<AppContext.Provider
 			value={{
+				locale,
 				callApi,
 			}}
 		>
