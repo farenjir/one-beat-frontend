@@ -6,5 +6,10 @@
         "tailwindcss",
         "tanstack",
         "zustand"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#13286C",
+        "titleBar.activeBackground": "#1A3797",
+        "titleBar.activeForeground": "#FCFDFE"
+    }
 }
