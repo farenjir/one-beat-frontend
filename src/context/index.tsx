@@ -5,8 +5,8 @@ import { Provider } from "react-redux";
 
 import { store } from "@/store";
 
-import callApi from "@/utils/service";
-import { ILocale } from "@/utils/langs";
+import callApi from "@/service";
+import { ILocale } from "@/langs";
 
 const AppContext = createContext({});
 
@@ -20,8 +20,8 @@ const ApplicationContext = async ({ children, locale }: IProps) => {
 	return (
 		<AppContext.Provider
 			value={{
-				callApi,
 				locale,
+				callApi,
 			}}
 		>
 			{children}

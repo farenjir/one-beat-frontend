@@ -2,8 +2,8 @@ import "@/assets/styles/global.css";
 import { Inter } from "next/font/google";
 
 import GlobalStates from "@/context";
-import { locales } from "@/utils/langs";
-import { PropsWithParams } from "@/utils/types/configs";
+import { locales } from "@/langs";
+import { PropsWithParams } from "@/types/configs";
 
 const inter = Inter({ subsets: ["latin"] });
 
