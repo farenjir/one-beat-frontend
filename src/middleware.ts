@@ -1,11 +1,9 @@
-import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-import { locales } from "./utils/langs";
+import { lDefault, locales, ILocale } from "./utils/langs";
 
-// Get the preferred locale, similar to the above or using a library
-function getLocale(request: NextRequest) {
-	return "fa";
+function getLocale(request: NextRequest): ILocale {
+	return lDefault;
 }
 
 export function middleware(request: NextRequest) {
@@ -14,10 +12,9 @@ export function middleware(request: NextRequest) {
 	const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
 	if (pathnameHasLocale) return;
 	// Redirect if there is no locale
-	const locale = getLocale(request);
+	const locale: ILocale = getLocale(request);
 	request.nextUrl.pathname = `/${locale}${pathname}`;
-	// e.g. incoming request is /products
-	// The new URL is now /en-US/products
+	// The new URL is now /fa/targetPathname
 	return Response.redirect(request.nextUrl);
 }
 
