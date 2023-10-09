@@ -1,4 +1,4 @@
-import { ILocale } from "../langs";
+import { ILocale } from "../../langs";
 
 export interface IError {
 	error: Error & { digest?: string };
