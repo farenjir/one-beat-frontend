@@ -1,4 +1,4 @@
-import { IParams } from "@/utils/types/configs";
+import { IParams } from "@/types/configs";
 import { getDictionary } from "@/langs";
 
 export default async function MainPage({ params: { locale } }: IParams) {

@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 
 import { store } from "@/store";
 
-import callApi from "@/utils/service";
+import callApi from "@/service";
 import { ILocale } from "@/langs";
 
 const AppContext = createContext({});

@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { RootState } from "@/store";
-import { IUser } from "@/utils/types";
+import { IUser } from "@/types";
 
 const initialState: { user?: IUser } = {
 	user: undefined,

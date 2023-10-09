@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 
 import GlobalStates from "@/context";
 import { locales } from "@/langs";
-import { PropsWithParams } from "@/utils/types/configs";
+import { PropsWithParams } from "@/types/configs";
 
 const inter = Inter({ subsets: ["latin"] });
 
