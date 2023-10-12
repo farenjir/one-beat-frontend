@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { PropsWithDice } from "@/types/configs";
+
 import logo from "@/assets/images/HeaderLogo.svg";
 
 export default function LogoSection({ dict }: PropsWithDice) {

@@ -16,7 +16,7 @@ import {
 
 import { PropsWithDice } from "@/types/configs";
 
-const NavbarMobileMenu = ({ dict }: PropsWithDice) => {
+export default function NavbarMobileMenu({ dict }: PropsWithDice) {
 	const items: MenuProps["items"] = [
 		{
 			key: "1",
@@ -79,6 +79,4 @@ const NavbarMobileMenu = ({ dict }: PropsWithDice) => {
 			<MenuOutlined className="text-xl text-white mx-2 mb-2" />
 		</Dropdown>
 	);
-};
-
-export default NavbarMobileMenu;
+}

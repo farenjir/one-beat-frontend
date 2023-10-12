@@ -4,6 +4,11 @@ export type ILocale = "fa" | "en";
 
 export const locales = ["fa", "en"];
 
+export const initHTML = {
+	fa: { lang: "fa", dir: "rtl" },
+	en: { lang: "en", dir: "ltr" },
+};
+
 export const lDefault = "fa";
 
 const dictionaries = {
