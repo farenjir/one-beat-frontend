@@ -1,11 +1,24 @@
 import "@/assets/styles/global.css";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 
 import GlobalStates from "@/context";
 import { locales } from "@/langs";
 import { PropsWithParams } from "@/types/configs";
 
-const inter = Inter({ subsets: ["latin"] });
+const IRANSans = localFont({
+	src: [
+		{
+			path: "../../assets/fonts/IRANSans-Light.woff2",
+			weight: "400",
+			style: "normal",
+		},
+		{
+			path: "../../assets/fonts/IRANSans-Light.woff",
+			weight: "400",
+			style: "normal",
+		},
+	],
+});
 
 export const metadata = {
 	title: "Create Next App",
@@ -18,8 +31,8 @@ export async function generateStaticParams() {
 
 export default function RootLayout({ children, params: { locale } }: PropsWithParams) {
 	return (
-		<html lang={locale}>
-			<body>
+		<html lang={locale} dir="rtl">
+			<body className={`${IRANSans.className}`}>
 				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>
 		</html>
