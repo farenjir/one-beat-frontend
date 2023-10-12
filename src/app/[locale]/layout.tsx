@@ -32,7 +32,7 @@ export async function generateStaticParams() {
 export default function RootLayout({ children, params: { locale } }: PropsWithParams) {
 	return (
 		<html lang={locale} dir="rtl">
-			<body className={`${IRANSans.className} bg-gray-200`}>
+			<body className={`${IRANSans.className}`}>
 				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>
 		</html>

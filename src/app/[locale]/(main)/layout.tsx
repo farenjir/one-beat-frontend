@@ -8,7 +8,7 @@ export default async function MainLayout({ children, params: { locale } }: Props
 	return (
 		<>
 			<MainNavbar dict={dict} />
-			<main className="container">{children}</main>
+			<main>{children}</main>
 		</>
 	);
 }

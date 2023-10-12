@@ -8,7 +8,7 @@ import LogoSection from "./components/Logo";
 
 export default function MainNavbar({ dict }: PropsWithDice) {
 	return (
-		<nav className="bg-navGray">
+		<nav className="bg-navGray w-full absolute top-0 left-0">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<div className="relative flex h-16 items-center justify-between">
 					{/* NavbarMobileMenu */}
@@ -39,12 +39,14 @@ export default function MainNavbar({ dict }: PropsWithDice) {
 									{dict.Layout.blog}
 								</Link>
 								<Link
+									prefetch={false}
 									href={"/about"}
 									className="px-3 py-2 text-sm font-medium text-white hover:text-orange-400 no-underline"
 								>
 									{dict.Layout.about}
 								</Link>
 								<Link
+									prefetch={false}
 									href={"/contact"}
 									className="px-3 py-2 text-sm font-medium text-white hover:text-orange-400 no-underline"
 								>

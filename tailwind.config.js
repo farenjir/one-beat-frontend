@@ -5,11 +5,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        navGray: "rgba(0, 0, 0, 0.01)",
+        navGray: "rgba(0, 0, 0, 0.05)",
       },
     },
-  },
-  corePlugins: {
-    preflight: false,
   },
 };
