@@ -1,5 +1,15 @@
 {
-	"schemas": {
-		"required": "this field is required"
+	"Schemas": {
+		"required": "این فیلد الزامی است"
+	},
+	"Layout": {
+		"home": "صفحه نخست",
+		"samplePack": "سمپل پک",
+		"blog": "مجله",
+		"contactUs": "تماس با یک بیت",
+		"about": "درباره یک بیت"
+	},
+	"Auth": {
+		"auth": "ورود / ثبت نام"
 	}
 }

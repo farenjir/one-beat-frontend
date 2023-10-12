@@ -1,5 +1,14 @@
 import { PropsWithParams } from "@/types/configs";
+import { getDictionary } from "@/langs";
 
-export default function MainLayout({ children, params: { locale } }: PropsWithParams) {
-	return <main className="container">{children}</main>;
+import MainNavbar from "./_library/components/Navbar";
+
+export default async function MainLayout({ children, params: { locale } }: PropsWithParams) {
+	const dict = await getDictionary(locale);
+	return (
+		<>
+			<MainNavbar dict={dict} />
+			<main className="container">{children}</main>
+		</>
+	);
 }

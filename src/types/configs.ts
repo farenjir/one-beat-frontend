@@ -11,3 +11,7 @@ export interface IParams {
 export type PropsWithParams = IParams & {
 	children: React.ReactNode;
 };
+
+export type PropsWithDice = {
+	dict: any;
+};
