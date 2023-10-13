@@ -4,12 +4,12 @@ export type ILocale = "fa" | "en";
 
 export const locales = ["fa", "en"];
 
+export const lDefault = "fa";
+
 export const initHTML = {
 	fa: { lang: "fa", dir: "rtl" },
 	en: { lang: "en", dir: "ltr" },
 };
-
-export const lDefault = "fa";
 
 const dictionaries = {
 	fa: () => import("./fa.json").then((module) => module.default),
