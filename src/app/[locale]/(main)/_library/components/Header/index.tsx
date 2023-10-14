@@ -4,11 +4,13 @@ import { CustomerServiceOutlined, HeartOutlined, ShoppingOutlined, StarOutlined 
 import { PropsWithDice } from "@/types/configs";
 
 export default function MainHeader({ dict }: PropsWithDice) {
-	const { Main: { Header }} = dict;
+	const {
+		Main: { Header },
+	} = dict;
 	// return
 	return (
 		<div className={gStyle["main__home-container"]}>
-			<section className="h-full flex flex-col justify-center align-around px-10 md:px-36">
+			<section className="h-full flex flex-col justify-center align-around  mx-auto max-w-7xl px-8">
 				<sub className="text-subOrange uppercase font-extrabold text-[10px]">{Header.sub}</sub>
 				<div className="py-8 text-white text-justify">
 					<h1 className="font-thin pb-4 text-[2.5rem] md:text-6xl lg:text-6xl"> {Header.title}</h1>
