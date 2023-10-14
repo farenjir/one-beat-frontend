@@ -19,10 +19,10 @@ export const mainLayoutMetaData: Metadata = {
 		title: APP_DEFAULT_TITLE,
 		// startUpImage: [],
 	},
-	// manifest: "/assets/manifest.json",
-	// formatDetection: {
-	// 	telephone: false,
-	// },
+	manifest: "/assets/manifest.json",
+	formatDetection: {
+		telephone: false,
+	},
 	// openGraph: {
 	// 	type: "website",
 	// 	siteName: APP_NAME,

@@ -4,10 +4,11 @@
 	"description": "Next.js App",
 	"theme_color": "#ffffff",
 	"background_color": "#004740",
-	"display": "fullscreen",
-	"orientation": "portrait",
-	"scope": "/",
+	"scope": "/fa",
 	"start_url": "/",
+	"display": "standalone",
+	"//display": "fullscreen",
+	"orientation": "portrait",
 	"icons": [
 		{
 			"src": "/assets/images/logo-dark.svg",
