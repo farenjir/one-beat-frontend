@@ -1,3 +1,5 @@
+import gStyle from "@/assets/styles/global.module.css";
+
 import { PropsWithParams } from "@/types/configs";
 import { getDictionary } from "@/langs";
 
@@ -8,7 +10,7 @@ export default async function MainLayout({ children, params: { locale } }: Props
 	return (
 		<>
 			<MainNavbar dict={dict} />
-			<main className="bg-black">{children}</main>
+			<main className={gStyle["bg-metro"]}>{children}</main>
 		</>
 	);
 }

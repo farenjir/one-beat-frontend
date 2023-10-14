@@ -5,3 +5,10 @@
 	background-repeat: no-repeat;
 	background-image: linear-gradient(to bottom, rgb(150 75 0 / 50%), rgb(0 0 0 / 100%)), url("../images/bg-home.jpg");
 }
+
+.bg-metro {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(rgba(0, 0, 0, 1), rgb(0 0 0 / 30%)), url("../images/bg-Meteor.svg");
+}
