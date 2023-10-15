@@ -2,13 +2,10 @@ import type { Metadata, ResolvingMetadata } from "next";
 
 import { GenerateMetaProps } from "@/types/configs";
 
-const APP_NAME = "1Beat";
-const APP_DEFAULT_TITLE = "1Beat for You";
-const APP_TITLE_TEMPLATE = "%s | 1Beat";
-const APP_DESCRIPTION = "1Beat world of Awesome beats !";
+import { APP_DEFAULT_TITLE, APP_DESCRIPTION, APP_NAME, APP_TITLE_TEMPLATE } from "./common";
 
 export async function mainLayoutMetadata(parameters: GenerateMetaProps, parent: ResolvingMetadata): Promise<Metadata> {
-	const {	params: { locale },	searchParams} = parameters;
+	const { params, searchParams } = parameters;
 	return await {
 		applicationName: APP_NAME,
 		title: {
@@ -23,7 +20,7 @@ export async function mainLayoutMetadata(parameters: GenerateMetaProps, parent: 
 			title: APP_DEFAULT_TITLE,
 			// startUpImage: [],
 		},
-		manifest: `${locale}/assets/manifest.json`,
+		manifest: `/${params.locale}/assets/manifest.json`,
 		formatDetection: {
 			telephone: false,
 		},
