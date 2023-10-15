@@ -19,7 +19,6 @@ export const mainLayoutMetaData: Metadata = {
 		title: APP_DEFAULT_TITLE,
 		// startUpImage: [],
 	},
-	manifest: "/manifest.json",
 	formatDetection: {
 		telephone: false,
 	},
