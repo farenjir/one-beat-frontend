@@ -36,7 +36,7 @@ export default function RootLayout({ children, params: { locale } }: PropsWithPa
 	const attributes = initHTML[locale];
 	return (
 		<html {...attributes}>
-			<body className={`${IRANSans.className}`}>
+			<body className={`${IRANSans.className} bg-black`}>
 				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>
 		</html>
