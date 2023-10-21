@@ -20,7 +20,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
 	matcher: [
-		"/((?!_next).*)", // Skip all internal paths (_next)
-		// "/", // Optional: only run on root (/) URL
+		"/((?!_next|assets|pwa).*)", // Skip all internal paths ( _next and assets )
 	],
 };

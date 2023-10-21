@@ -1,4 +1,10 @@
 {
+	"App": {
+		"DEFAULT_TITLE": "1Beat",
+		"NAME": "1Beat",
+		"TITLE_TEMPLATE": "%s | 1Beat",
+		"DESCRIPTION": "1Beat world of Awesome beats !"
+	},
 	"Schemas": {
 		"required": "این فیلد الزامی است"
 	},

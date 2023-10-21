@@ -7,6 +7,14 @@ import Notifications from "./components/Notification";
 import LogoSection from "./components/Logo";
 
 export default function MainNavbar({ dict }: PropsWithDice) {
+	const links = [
+		{ href: "/", title: dict.Layout.home, prefetch: true },
+		{ href: "/sample", title: dict.Layout.samplePack, prefetch: true },
+		{ href: "/blog", title: dict.Layout.blog, prefetch: true },
+		{ href: "/about", title: dict.Layout.about, prefetch: false },
+		{ href: "/contact", title: dict.Layout.contactUs, prefetch: false },
+	];
+	// return
 	return (
 		<nav className="bg-navGray w-full absolute top-0 left-0">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -20,38 +28,15 @@ export default function MainNavbar({ dict }: PropsWithDice) {
 						<Notifications dict={dict} />
 						<div className="hidden sm:mx-5 sm:block">
 							<div className="flex space-x-4">
-								<Link
-									href={"/"}
-									className="px-3 py-2 text-sm font-medium text-white hover:text-orange-400 no-underline"
-								>
-									{dict.Layout.home}
-								</Link>
-								<Link
-									href={"/sample"}
-									className="px-3 py-2 text-sm font-medium text-white hover:text-orange-400 no-underline"
-								>
-									{dict.Layout.samplePack}
-								</Link>
-								<Link
-									href={"/blog"}
-									className="px-3 py-2 text-sm font-medium text-white hover:text-orange-400 no-underline"
-								>
-									{dict.Layout.blog}
-								</Link>
-								<Link
-									prefetch={false}
-									href={"/about"}
-									className="px-3 py-2 text-sm font-medium text-white hover:text-orange-400 no-underline"
-								>
-									{dict.Layout.about}
-								</Link>
-								<Link
-									prefetch={false}
-									href={"/contact"}
-									className="px-3 py-2 text-sm font-medium text-white hover:text-orange-400 no-underline"
-								>
-									{dict.Layout.contactUs}
-								</Link>
+								{links.map(({ title, ...linkOptions }) => (
+									<Link
+										className="px-3 py-2 text-sm font-medium text-white hover:text-orange-400 no-underline"
+										key={title}
+										{...linkOptions}
+									>
+										{title}
+									</Link>
+								))}
 							</div>
 						</div>
 					</div>

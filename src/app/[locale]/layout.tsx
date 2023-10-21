@@ -1,5 +1,6 @@
 import localFont from "next/font/local";
 import type { Metadata, ResolvingMetadata } from "next";
+
 import { mainLayoutMetadata } from "@/meta/mainLayout";
 
 import "@/assets/styles/global.css";
@@ -9,15 +10,15 @@ import { initHTML, locales } from "@/langs";
 
 import GlobalStates from "@/context";
 
-const IRANSans = localFont({
+const YekanBakh = localFont({
 	src: [
 		{
-			path: "../../assets/fonts/IRANSans-Light.woff2",
+			path: "../../assets/fonts/YekanBakh-Regular.woff2",
 			weight: "400",
 			style: "normal",
 		},
 		{
-			path: "../../assets/fonts/IRANSans-Light.woff",
+			path: "../../assets/fonts/YekanBakh-Regular.woff",
 			weight: "400",
 			style: "normal",
 		},
@@ -36,7 +37,7 @@ export default function RootLayout({ children, params: { locale } }: PropsWithPa
 	const attributes = initHTML[locale];
 	return (
 		<html {...attributes}>
-			<body className={`${IRANSans.className} bg-black`}>
+			<body className={`${YekanBakh.className} bg-black`}>
 				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>
 		</html>

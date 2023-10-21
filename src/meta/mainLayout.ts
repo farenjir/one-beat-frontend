@@ -1,26 +1,30 @@
 import type { Metadata, ResolvingMetadata } from "next";
 
 import { GenerateMetaProps } from "@/types/configs";
-
-import { APP_DEFAULT_TITLE, APP_DESCRIPTION, APP_NAME, APP_TITLE_TEMPLATE } from "./common";
+import { getDictionary } from "@/langs";
 
 export async function mainLayoutMetadata(parameters: GenerateMetaProps, parent: ResolvingMetadata): Promise<Metadata> {
 	const { params, searchParams } = parameters;
-	return await {
-		applicationName: APP_NAME,
+	// getDictionary
+	const {
+		App: { DEFAULT_TITLE, DESCRIPTION, NAME, TITLE_TEMPLATE },
+	} = await getDictionary(params.locale);
+	// return
+	return {
+		applicationName: NAME,
 		title: {
-			default: APP_DEFAULT_TITLE,
-			template: APP_TITLE_TEMPLATE,
+			default: DEFAULT_TITLE,
+			template: TITLE_TEMPLATE,
 		},
-		description: APP_DESCRIPTION,
+		description: DESCRIPTION,
 		themeColor: "#FFFFFF",
 		appleWebApp: {
 			capable: true,
 			statusBarStyle: "default",
-			title: APP_DEFAULT_TITLE,
+			title: DEFAULT_TITLE,
 			// startUpImage: [],
 		},
-		manifest: `/${params.locale}/assets/manifest.json`,
+		manifest: `/assets/${params.locale}_manifest.json`,
 		formatDetection: {
 			telephone: false,
 		},
