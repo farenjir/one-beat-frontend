@@ -8,7 +8,8 @@
         "reduxjs",
         "tailwindcss",
         "tanstack",
-        "zustand"
+        "zustand",
+        "YekanBakh"
     ],
     "workbench.colorCustomizations": {
         "activityBar.background": "#13286C",
