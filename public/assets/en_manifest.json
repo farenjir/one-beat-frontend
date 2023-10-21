@@ -5,10 +5,11 @@
 	"theme_color": "#ffffff",
 	"background_color": "#004740",
 	"start_url": "/",
-	"//scope": "/",
-	"display": "standalone",
-	"//display": "fullscreen",
+	"display": "fullscreen",
 	"orientation": "portrait",
+	"//scope": "/",
+	"//display": "standalone",
+	"//format_factor": "wide",
 	"icons": [
 		{
 			"src": "/assets/images/logo-dark.svg",
