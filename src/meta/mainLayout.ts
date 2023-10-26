@@ -20,14 +20,13 @@ export async function mainLayoutMetadata(parameters: GenerateMetaProps, parent: 
 			template: TITLE_TEMPLATE,
 		},
 		description: DESCRIPTION,
-		themeColor: "#FFFFFF",
+		manifest: `/assets/${locale}_manifest.json`,
 		appleWebApp: {
 			capable: true,
 			statusBarStyle: "default",
 			title: DEFAULT_TITLE,
 			// startUpImage: [],
 		},
-		manifest: `/assets/${locale}_manifest.json`,
 		formatDetection: {
 			telephone: false,
 		},
