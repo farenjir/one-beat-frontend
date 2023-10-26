@@ -31,22 +31,22 @@ export async function mainLayoutMetadata(parameters: GenerateMetaProps, parent: 
 		formatDetection: {
 			telephone: false,
 		},
-		openGraph: {
-			type: "website",
-			siteName: NAME,
-			title: {
-				default: DEFAULT_TITLE,
-				template: TITLE_TEMPLATE,
-			},
-			description: DESCRIPTION,
-		},
-		twitter: {
-			card: "summary",
-			title: {
-				default: DEFAULT_TITLE,
-				template: TITLE_TEMPLATE,
-			},
-			description: DESCRIPTION,
-		},
+		// openGraph: {
+		// 	type: "website",
+		// 	siteName: NAME,
+		// 	title: {
+		// 		default: DEFAULT_TITLE,
+		// 		template: TITLE_TEMPLATE,
+		// 	},
+		// 	description: DESCRIPTION,
+		// },
+		// twitter: {
+		// 	card: "summary",
+		// 	title: {
+		// 		default: DEFAULT_TITLE,
+		// 		template: TITLE_TEMPLATE,
+		// 	},
+		// 	description: DESCRIPTION,
+		// },
 	};
 }

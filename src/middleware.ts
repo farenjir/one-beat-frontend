@@ -20,6 +20,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
 	matcher: [
-		"/((?!_next|assets|pwa).*)", // Skip all internal paths ( _next and assets )
+		"/((?!_next|assets|pwa).*)", // Skip all internal paths ( _next and assets and pwa )
 	],
 };
