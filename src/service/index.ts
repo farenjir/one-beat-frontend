@@ -24,7 +24,7 @@ const callApi = <T>({
 	const baseURL = process.env.REACT_APP_BACKEND_SERVER;
 	// axiosInstance
 	const axiosInstance = axios.create({
-		baseURL,
+		// baseURL,
 		headers: {
 			"Accept-Language": "en",
 			"Api-Version": "1.0",

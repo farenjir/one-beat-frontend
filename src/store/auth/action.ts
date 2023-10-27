@@ -1,10 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import type callApi from "@/service";
+import callApi from "@/service";
 import { IUser } from "@/types";
 
-export const getCurrentUser = createAsyncThunk("user/getCurrentUser", async (callback: typeof callApi) => {
-	return await callback<IUser>({ url: "user/whoAmI" })
+export const getCurrentUser = createAsyncThunk("auth/currentUser", async () => {
+	return await callApi<IUser>({ url: "user/whoAmI" })
 		.then((response) => {
 			return {
 				user: response,
@@ -16,3 +16,22 @@ export const getCurrentUser = createAsyncThunk("user/getCurrentUser", async (cal
 			};
 		});
 });
+
+// import { createAsyncThunk } from "@reduxjs/toolkit";
+
+// import type callApiType from "@/service";
+// import { IUser } from "@/types";
+
+// export const getCurrentUser = createAsyncThunk("auth/currentUser", async ({ callApi }: { callApi: typeof callApiType }) => {
+// 	return await callApi<IUser>({ url: "user/whoAmI" })
+// 		.then((response) => {
+// 			return {
+// 				user: response,
+// 			};
+// 		})
+// 		.catch((_error) => {
+// 			return {
+// 				user: null,
+// 			};
+// 		});
+// });

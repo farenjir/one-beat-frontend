@@ -17,14 +17,15 @@ interface IProps {
 }
 
 const ApplicationContext = async ({ children, locale }: IProps) => {
-	// get current user
+	// hooks
 	const dispatch = useAppDispatch();
-	const currentUser = () => {
-		dispatch(getCurrentUser(callApi));
-	};
 	// initialize context
 	useEffect(() => {
-		currentUser();
+		// const promise = dispatch(getCurrentUser({callApi}));
+		const promise = dispatch(getCurrentUser());
+		return () => {
+			promise.abort();
+		};
 	}, []);
 	// return context
 	return (

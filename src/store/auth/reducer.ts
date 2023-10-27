@@ -4,7 +4,7 @@ import { IUser } from "@/types";
 
 import { getCurrentUser } from "./action";
 
-interface UserState {
+export interface UserState {
 	user: IUser | null;
 	loading: "idle" | "pending" | "succeeded" | "failed";
 }
@@ -15,7 +15,7 @@ const initialState: UserState = {
 };
 
 const authSlice = createSlice({
-	name: "user",
+	name: "auth",
 	initialState,
 	reducers: {},
 	extraReducers: (builder) => {
