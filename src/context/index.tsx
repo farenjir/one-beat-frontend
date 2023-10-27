@@ -3,7 +3,7 @@
 import { ReactNode, createContext, useContext } from "react";
 import { Provider } from "react-redux";
 
-import { store } from "@/store";
+import { store } from "@/store/store";
 
 import callApi from "@/service";
 import { ILocale } from "@/langs";
