@@ -1,22 +1,38 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 
 import { IUser } from "@/types";
 
-const initialState: { user: IUser | null } = {
+import { getCurrentUser } from "./action";
+
+interface UserState {
+	user: IUser | null;
+	loading: "idle" | "pending" | "succeeded" | "failed";
+}
+
+const initialState: UserState = {
 	user: null,
+	loading: "idle",
 };
 
 const authSlice = createSlice({
-	name: "auth",
+	name: "user",
 	initialState,
-	reducers: {
-		updateUser: (state, action: PayloadAction<IUser>) => {
-			state.user = action.payload;
-		},
+	reducers: {},
+	extraReducers: (builder) => {
+		builder
+			.addCase(getCurrentUser.pending, (state) => {
+				state.user = state.user;
+				state.loading = "pending";
+			})
+			.addCase(getCurrentUser.rejected, (state) => {
+				state.user = null;
+				state.loading = "failed";
+			})
+			.addCase(getCurrentUser.fulfilled, (state, action) => {
+				state.user = action.payload.user;
+				state.loading = "succeeded";
+			});
 	},
 });
-
-export const { updateUser } = authSlice.actions;
 
 export default authSlice.reducer;

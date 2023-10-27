@@ -1,9 +1,10 @@
 "use client";
 
-import { ReactNode, createContext, useContext } from "react";
+import { ReactNode, createContext, useContext, useEffect } from "react";
 import { Provider } from "react-redux";
 
-import { store } from "@/store/store";
+import { store, useAppDispatch } from "@/store/store";
+import { getCurrentUser } from "@/store/auth/action";
 
 import callApi from "@/service";
 import { ILocale } from "@/langs";
@@ -16,7 +17,16 @@ interface IProps {
 }
 
 const ApplicationContext = async ({ children, locale }: IProps) => {
+	// get current user
+	const dispatch = useAppDispatch();
+	const currentUser = () => {
+		dispatch(getCurrentUser(callApi));
+	};
 	// initialize context
+	useEffect(() => {
+		currentUser();
+	}, []);
+	// return context
 	return (
 		<AppContext.Provider
 			value={{

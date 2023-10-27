@@ -3,23 +3,23 @@ import axios, { AxiosError, AxiosHeaderValue, AxiosResponse, Method, ResponseTyp
 import { ISuccess, successCodeMessage } from "./messageSuccessCode";
 import { IError, errorCodeMessage } from "./messageErrorCode";
 
-interface IApi {
+export interface IApi {
 	url: string;
-	bodyData: object;
-	queryParams: object;
-	method: Method;
-	contentType: AxiosHeaderValue;
-	responseType: ResponseType;
+	bodyData?: object;
+	queryParams?: object;
+	method?: Method;
+	contentType?: AxiosHeaderValue;
+	responseType?: ResponseType;
 }
 
-const callApi = ({
+const callApi = <T>({
 	url = "",
 	method = "GET",
 	bodyData = {},
 	queryParams = {},
 	contentType = "application/json",
 	responseType = "json",
-}: IApi): Promise<unknown> => {
+}: IApi): Promise<T> => {
 	// baseURL
 	const baseURL = process.env.REACT_APP_BACKEND_SERVER;
 	// axiosInstance
@@ -52,9 +52,9 @@ const callApi = ({
 	);
 	//  set response configs
 	axiosInstance.interceptors.response.use(
-		(res: AxiosResponse<ISuccess>) => {
+		(res: AxiosResponse<ISuccess<T>>) => {
 			if (res?.data?.code) {
-				successCodeMessage(res?.data?.code);
+				successCodeMessage(res.data.code);
 			}
 			return res;
 		},
@@ -70,7 +70,7 @@ const callApi = ({
 	return new Promise((resolve, reject) => {
 		axiosInstance({ url, method, params: queryParams, data: bodyData })
 			.then((res) => {
-				resolve(res?.data);
+				resolve(res?.data?.result);
 			})
 			.catch((e) => {
 				reject(e);
