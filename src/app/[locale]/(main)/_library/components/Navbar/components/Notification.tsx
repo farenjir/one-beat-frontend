@@ -4,7 +4,7 @@ import { Badge, Avatar } from "antd";
 import { UserOutlined, ShoppingCartOutlined, BellOutlined } from "@ant-design/icons";
 
 import { PropsWithDice } from "@/types/configs";
-import { useAppSelector, userSelector } from "@/store/selectors";
+import { useAppSelector, userSelector } from "@/store/selector";
 
 export default function Notifications({ dict }: PropsWithDice) {
 	const user = useAppSelector(userSelector);
