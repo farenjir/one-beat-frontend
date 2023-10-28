@@ -4,17 +4,17 @@ import { IUser } from "@/types";
 
 import { getCurrentUser } from "./action";
 
-export interface UserState {
+export interface IAuthState {
 	user: IUser | null;
 	loading: "idle" | "pending" | "succeeded" | "failed";
 }
 
-const initialState: UserState = {
+const initialState: IAuthState = {
 	user: null,
 	loading: "idle",
 };
 
-const authSlice = createSlice<UserState, {}, "auth">({
+const authSlice = createSlice<IAuthState, {}, "auth">({
 	name: "auth",
 	initialState,
 	reducers: {},

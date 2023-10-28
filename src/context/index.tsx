@@ -4,7 +4,7 @@ import { ReactNode, createContext, useContext, useEffect } from "react";
 import { Provider } from "react-redux";
 
 import { store } from "@/store/store";
-import { useAppDispatch } from "@/store/selector";
+import { useAppDispatch } from "@/store/selectors";
 import { getCurrentUser } from "@/store/auth/action";
 
 import callApi from "@/service";
@@ -17,7 +17,7 @@ interface IProps {
 	locale: ILocale;
 }
 
-const ApplicationContext = async ({ children, locale }: IProps) => {
+const ApplicationContext = ({ children, locale }: IProps) => {
 	// hooks
 	const dispatch = useAppDispatch();
 	// initialize context

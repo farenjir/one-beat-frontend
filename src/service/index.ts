@@ -23,7 +23,7 @@ const callApi = <T>({
 	responseType = "json",
 }: IApi): Promise<T> => {
 	// baseURL
-	const baseURL = process.env.NEXT_PUBLIC_BACKEND_SERVER;
+	const baseURL = process.env.NEXT_APP_BACKEND_SERVER;
 	// axiosInstance
 	const axiosInstance = axios.create({
 		baseURL,

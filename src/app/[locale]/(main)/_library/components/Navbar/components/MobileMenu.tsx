@@ -15,8 +15,11 @@ import {
 } from "@ant-design/icons";
 
 import { PropsWithDice } from "@/types/configs";
+import { useAppSelector, userSelector } from "@/store/selectors";
 
 export default function NavbarMobileMenu({ dict }: PropsWithDice) {
+	const user = useAppSelector(userSelector);
+	// MenuProps
 	const items: MenuProps["items"] = [
 		{
 			key: "1",
@@ -75,7 +78,7 @@ export default function NavbarMobileMenu({ dict }: PropsWithDice) {
 	];
 	// return
 	return (
-		<Dropdown menu={{ items }}>
+		<Dropdown menu={{ items: items.splice(0, user ? 5 : 6) }}>
 			<MenuOutlined className="text-xl text-white mx-2 mb-2" />
 		</Dropdown>
 	);
