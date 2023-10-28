@@ -3,7 +3,7 @@
 import { ReactNode, createContext, useContext, useEffect } from "react";
 import { Provider } from "react-redux";
 
-import { store } from "@/store/store";
+import store from "@/store/store";
 import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 

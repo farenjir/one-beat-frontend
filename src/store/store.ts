@@ -17,7 +17,7 @@ const reducer = {
 };
 
 // *** initialize redux store
-export const store = configureStore({
+const store = configureStore({
 	reducer,
 	devTools: process.env.NODE_ENV !== "production",
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(additionalMiddleware),
