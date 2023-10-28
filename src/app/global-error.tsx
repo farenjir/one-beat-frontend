@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { IError } from "@/types/configs";
+
+export interface IError {
+	error: Error & { digest?: string };
+	reset: () => void;
+}
 
 export default function GlobalError({ error, reset }: IError) {
 	useEffect(() => {}, [error]);
