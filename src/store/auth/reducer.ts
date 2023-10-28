@@ -14,7 +14,7 @@ const initialState: UserState = {
 	loading: "idle",
 };
 
-const authSlice = createSlice({
+const authSlice = createSlice<UserState, {}, "auth">({
 	name: "auth",
 	initialState,
 	reducers: {},
