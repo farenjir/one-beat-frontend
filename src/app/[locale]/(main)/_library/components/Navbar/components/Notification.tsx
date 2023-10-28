@@ -22,11 +22,11 @@ export default function Notifications({ dict }: PropsWithDice) {
 				</Badge>
 			) : (
 				<Badge count={2} size="small">
-					<BellOutlined className="text-xl mx-4 text-white cursor-pointer" />
+					<BellOutlined className="text-xl mx-3 text-white cursor-pointer" />
 				</Badge>
 			)}
 			<Badge count={2} size="small">
-				<ShoppingCartOutlined className="text-xl mx-4 text-white cursor-pointer" />
+				<ShoppingCartOutlined className="text-xl mx-3 text-white cursor-pointer" />
 			</Badge>
 		</>
 	);

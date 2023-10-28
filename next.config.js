@@ -2,8 +2,8 @@
 
 /** @type {import("next").NextConfig} */
 
-const { NEXT_APP_BASE_URL, NEXT_APP_BACKEND_SERVER } = process.env;
-const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD } = require("next/constants");
+const { NEXT_APP_BASE_URL, NEXT_APP_BACKEND_SERVER, NODE_ENV } = process.env;
+const { PHASE_DEVELOPMENT_SERVER: development, PHASE_PRODUCTION_BUILD: production } = require("next/constants");
 
 const nextConfig = {
 	reactStrictMode: true,
@@ -11,11 +11,10 @@ const nextConfig = {
 };
 
 module.exports = (/** @type {string} */ phase, { defaultConfig }) => {
-	if (phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD) {
+	if (phase === development || phase === production) {
 		const withPWA = require("@ducanh2912/next-pwa").default({
 			dest: "public/pwa",
 			disable: false,
-			// disable: process.env.NODE_ENV === "development",
 			register: true,
 			scope: "/",
 			// sw: "service-worker.js",
