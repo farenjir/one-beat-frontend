@@ -11,7 +11,6 @@ const nextConfig = {
 };
 
 module.exports = (/** @type {string} */ phase, { defaultConfig }) => {
-	console.log(phase);
 	if (phase === PHASE_DEVELOPMENT_SERVER || phase === PHASE_PRODUCTION_BUILD) {
 		const withPWA = require("@ducanh2912/next-pwa").default({
 			dest: "public/pwa",
