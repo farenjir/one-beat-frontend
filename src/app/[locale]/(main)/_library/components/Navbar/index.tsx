@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { PropsWithDice } from "@/types/configs";
+import { PropsWithDice } from "@/types";
 
 import NavbarMobileMenu from "./components/MobileMenu";
 import Notifications from "./components/Notification";

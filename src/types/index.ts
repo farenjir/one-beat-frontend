@@ -1,5 +1,9 @@
-export interface IUser {
-	id: number;
-	name: string;
-	isAdmin: boolean;
-}
+import { GenerateMetaProps, PropsWithParams, PropsWithDice, IParams } from "./configs";
+
+import { IUser } from "./public/user";
+
+// configs
+export type { GenerateMetaProps, PropsWithParams, PropsWithDice, IParams };
+
+// data types
+export type { IUser };

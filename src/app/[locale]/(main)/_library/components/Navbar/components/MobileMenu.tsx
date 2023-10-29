@@ -14,7 +14,7 @@ import {
 	CommentOutlined,
 } from "@ant-design/icons";
 
-import { PropsWithDice } from "@/types/configs";
+import { PropsWithDice } from "@/types";
 import { useAppSelector, userSelector } from "@/store/selector";
 
 export default function NavbarMobileMenu({ dict }: PropsWithDice) {

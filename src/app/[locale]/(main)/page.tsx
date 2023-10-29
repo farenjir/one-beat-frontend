@@ -1,4 +1,4 @@
-import { IParams } from "@/types/configs";
+import { IParams } from "@/types";
 import { getDictionary } from "@/langs";
 
 import MainHeader from "./_library/components/Header";

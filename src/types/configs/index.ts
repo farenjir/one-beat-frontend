@@ -1,9 +1,9 @@
-import { ILocale } from "../langs";
+import { ILocale } from "@/langs";
 
-export type GenerateMetaProps = {
+export interface GenerateMetaProps {
 	params: { locale: ILocale };
 	searchParams: { [key: string]: string | string[] | undefined };
-};
+}
 export interface IParams {
 	params: { locale: ILocale };
 }

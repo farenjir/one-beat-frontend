@@ -1,4 +1,4 @@
-import { PropsWithParams } from "@/types/configs";
+import { PropsWithParams } from "@/types";
 import { getDictionary } from "@/langs";
 
 import MainNavbar from "./_library/components/Navbar";
