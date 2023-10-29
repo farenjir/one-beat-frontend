@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-import { PropsWithDice } from "@/types/configs";
+import { PropsWithDice } from "@/types";
 import { useAppSelector, userSelector } from "@/store/selector";
 
 export default function AuthLink({ dict }: PropsWithDice) {

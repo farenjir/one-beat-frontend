@@ -5,7 +5,7 @@ import { mainLayoutMetadata } from "@/meta/mainLayout";
 
 import "@/assets/styles/global.css";
 
-import { GenerateMetaProps, PropsWithParams } from "@/types/configs";
+import { GenerateMetaProps, PropsWithParams } from "@/types";
 import { initHTML, locales } from "@/langs";
 
 import GlobalStates from "@/context";

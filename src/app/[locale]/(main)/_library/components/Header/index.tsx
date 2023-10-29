@@ -1,7 +1,7 @@
 import gStyle from "@/assets/styles/global.module.css";
 import { CustomerServiceOutlined, HeartOutlined, ShoppingOutlined, StarOutlined } from "@ant-design/icons";
 
-import { PropsWithDice } from "@/types/configs";
+import { PropsWithDice } from "@/types";
 
 export default function MainHeader({ dict }: PropsWithDice) {
 	const {

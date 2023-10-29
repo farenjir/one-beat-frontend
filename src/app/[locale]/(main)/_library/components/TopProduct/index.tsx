@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Carousel } from "antd";
 
-import { PropsWithDice } from "@/types/configs";
+import { PropsWithDice } from "@/types";
 
 import img from "./card-top.jpg";
 

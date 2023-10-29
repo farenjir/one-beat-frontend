@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { PropsWithDice } from "@/types/configs";
+import { PropsWithDice } from "@/types";
 
 import logo from "@/assets/images/HeaderLogo-dark.svg";
 import AuthLink from "./AuthLink";
