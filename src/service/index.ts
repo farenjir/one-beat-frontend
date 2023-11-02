@@ -54,16 +54,17 @@ const callApi = <T>({
 	);
 	//  set response configs
 	axiosInstance.interceptors.response.use(
-		(res: AxiosResponse<ISuccess<T>, IError>) => {
-			if (res?.data?.code) {
-				successCodeMessage(res.data.code);
+		(response: AxiosResponse<ISuccess<T>, IError>) => {
+			const { code, message, description, timestamp }: any = response?.data || {};
+			if (code) {
+				successCodeMessage(code, message, description);
 			}
-			return res;
+			return response;
 		},
 		({ response, ...error }: AxiosError<IError>) => {
-			const { appCode, status, code, message, method, path, timestamp }: any = response?.data || {};
+			const { appCode, status, code, message, method, path }: any = response?.data || {};
 			if (appCode) {
-				errorCodeMessage(appCode, message);
+				errorCodeMessage(appCode, message, status, code);
 			}
 			return { data: { result: null }, ...error };
 		},
@@ -71,8 +72,8 @@ const callApi = <T>({
 	// return
 	return new Promise((resolve, reject) => {
 		axiosInstance({ baseURL, url, method, params: queryParams, data: bodyData })
-			.then((res) => {
-				resolve(res?.data?.result);
+			.then((response) => {
+				resolve(response.data?.result);
 			})
 			.catch((e) => {
 				reject(e);

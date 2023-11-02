@@ -6,4 +6,4 @@ export interface ISuccess<T> {
 	result: T | T[];
 }
 
-export const successCodeMessage = (code: string | number) => {};
+export const successCodeMessage = (code: string | number, message: string, description: string) => {};

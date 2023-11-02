@@ -8,4 +8,4 @@ export interface IError {
 	path: string;
 }
 
-export const errorCodeMessage = (code: string | number, message: string) => {};
+export const errorCodeMessage = (appCode: string, message: string, status: number, code: string) => {};
