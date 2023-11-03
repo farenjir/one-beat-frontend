@@ -2,6 +2,8 @@ import "server-only";
 
 export type ILocale = "fa" | "en";
 
+export type IDir = "rtl" | "ltr";
+
 export const locales = ["fa", "en"];
 
 export const lDefault = "fa";
