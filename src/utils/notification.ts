@@ -15,14 +15,14 @@ interface INotifications {
 
 export const createNotification = ({
 	message,
-	type="info",
+	type = "info",
 	description = "",
 	duration = 5,
 	position = undefined,
 	closeIcon = true,
 	top = 50,
 	maxCount = 2,
-}: INotifications) => {
+}: INotifications): void => {
 	const { rtl } = getLocaleConfigs();
 	const placement = position || (rtl ? "topLeft" : "topRight");
 	// configs
