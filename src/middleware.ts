@@ -4,14 +4,23 @@ import { defaultLocale, locales } from "./langs";
 import { ILocale } from "./types";
 
 function getLocale(request: NextRequest): ILocale {
-	return defaultLocale;
+	const { value: customerLocale }: any = request.cookies.get("locale") || {};
+	if (locales.includes(customerLocale)) {
+		return customerLocale;
+	} else {
+		return defaultLocale;
+	}
 }
 
 export function middleware(request: NextRequest) {
 	// Check if there is any supported locale in the pathname
 	const pathname = request.nextUrl.pathname;
 	const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
-	if (pathnameHasLocale) return;
+	if (pathnameHasLocale) {
+		const [space, locale] = pathname.split("/");
+		request.cookies.set("locale", locale);
+		return;
+	}
 	// Redirect if there is no locale
 	const locale: ILocale = getLocale(request);
 	request.nextUrl.pathname = `/${locale}${pathname}`;
