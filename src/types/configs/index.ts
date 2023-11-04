@@ -1,5 +1,10 @@
-import { ILocale } from "@/langs";
+export type ILocale = "fa" | "en";
 
+export type IDir = "rtl" | "ltr";
+
+export interface ILocaleOptions {
+	[key: string]: { lang: ILocale; dir: IDir; rtl: boolean; ltr: boolean };
+}
 export interface GenerateMetaProps {
 	params: { locale: ILocale };
 	searchParams: { [key: string]: string | string[] | undefined };

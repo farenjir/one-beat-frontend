@@ -5,6 +5,10 @@
 		"TITLE_TEMPLATE": "%s | 1Beat",
 		"DESCRIPTION": "1Beat world of Awesome beats !"
 	},
+	"Services": {
+		"Errors": {},
+		"Success": {}
+	},
 	"Schemas": {
 		"required": "این فیلد الزامی است"
 	},

@@ -1,8 +1,5 @@
-import "server-only";
-
-export type ILocale = "fa" | "en";
-
-export type IDir = "rtl" | "ltr";
+import { ILocale } from "@/types";
+import { getLocaleConfigs } from "@/utils/global";
 
 export const locales: ILocale[] = ["fa", "en"];
 
@@ -13,4 +10,7 @@ const dictionaries = {
 	en: () => import("./en.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: ILocale) => await dictionaries[locale || defaultLocale]();
+export const getDictionary = async (locale?: ILocale) => {
+	const { lang } = getLocaleConfigs(locale);
+	return await dictionaries[locale || lang]();
+};

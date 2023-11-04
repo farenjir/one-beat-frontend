@@ -1,4 +1,5 @@
-import { createNotification } from "@/utils/Notification";
+import { getDictionary } from "@/langs";
+import { createNotification } from "@/utils/notification";
 
 export interface IError {
 	status: number;
@@ -10,6 +11,7 @@ export interface IError {
 	path: string;
 }
 
-export const errorCodeMessage = (appCode: string, message: string, status: number, code: string): void => {
-	return createNotification({ message: "خطا", type: "error" });
+export const errorCodeMessage = async (appCode: string, message: string, status: number, code: string): Promise<void> => {
+	const { Services: {Errors} } = await getDictionary();
+	createNotification({ message: "خطا", type: "error" });
 };

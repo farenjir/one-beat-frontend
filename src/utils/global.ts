@@ -1,6 +1,6 @@
-import { ILocale } from "@/langs";
+import { ILocale, ILocaleOptions } from "@/types";
 
-export const localeOptions = {
+export const localeOptions: ILocaleOptions = {
 	fa: { lang: "fa", dir: "rtl", rtl: true, ltr: false },
 	en: { lang: "en", dir: "ltr", rtl: false, ltr: true },
 };

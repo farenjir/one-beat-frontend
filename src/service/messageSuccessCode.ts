@@ -1,3 +1,6 @@
+import { getDictionary } from "@/langs";
+import { createNotification } from "@/utils/notification";
+
 export interface ISuccess<T> {
 	code: number | string;
 	message: string;
@@ -6,4 +9,7 @@ export interface ISuccess<T> {
 	result: T | T[];
 }
 
-export const successCodeMessage = (code: string | number, message: string, description: string) => {};
+export const successCodeMessage = async (code: string | number, message: string, description: string): Promise<void> => {
+	const { Services: {Success} } = await getDictionary();
+	createNotification({ message: "موفق", type: "success" });
+};
