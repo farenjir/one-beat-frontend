@@ -9,6 +9,7 @@ interface INotifications {
 	description?: string;
 	duration?: number;
 	top?: number;
+	bottom?: number;
 	maxCount?: number;
 	closeIcon?: boolean;
 }
@@ -17,25 +18,24 @@ export const createNotification = ({
 	message,
 	type = "info",
 	description = "",
-	duration = 5,
 	position = undefined,
+	// maxCount = 2,
+	// top = 60,
+	// bottom = 60,
+	duration = 5,
 	closeIcon = true,
-	top = 50,
-	maxCount = 2,
 }: INotifications): void => {
 	const { rtl } = getLocaleConfigs();
-	const placement = position || (rtl ? "topLeft" : "topRight");
 	// configs
 	notification.config({
 		duration,
-		placement,
-		closeIcon,
+		placement: position || (rtl ? "bottomLeft" : "bottomRight"),
 		rtl,
-		top,
-		maxCount,
+		closeIcon,
 	});
 	// return
 	return notification[type]({
+		key: message,
 		message,
 		description,
 	});

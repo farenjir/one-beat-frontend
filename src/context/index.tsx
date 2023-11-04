@@ -10,6 +10,8 @@ import { getCurrentUser } from "@/store/auth/action";
 import callApi from "@/service";
 import { ILocale } from "@/langs";
 
+import StyledComponentsRegistry from "./AntdRegistry";
+
 const AppContext = createContext({});
 
 interface IProps {
@@ -47,7 +49,9 @@ export const useAppContext = () => useContext(AppContext);
 export default function ({ children, locale }: IProps) {
 	return (
 		<Provider store={store}>
-			<ApplicationContext locale={locale}>{children}</ApplicationContext>
+			<StyledComponentsRegistry>
+				<ApplicationContext locale={locale}>{children}</ApplicationContext>
+			</StyledComponentsRegistry>
 		</Provider>
 	);
 }

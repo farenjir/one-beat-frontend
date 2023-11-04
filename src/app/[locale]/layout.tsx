@@ -6,7 +6,8 @@ import { mainLayoutMetadata } from "@/meta/mainLayout";
 import "@/assets/styles/global.css";
 
 import { GenerateMetaProps, PropsWithParams } from "@/types";
-import { initHTML, locales } from "@/langs";
+import { getLocaleConfigs } from "@/utils/global";
+import { locales } from "@/langs";
 
 import GlobalStates from "@/context";
 
@@ -34,9 +35,9 @@ export async function generateMetadata(params: GenerateMetaProps, parent: Resolv
 }
 
 export default function RootLayout({ children, params: { locale } }: PropsWithParams) {
-	const attributes = initHTML[locale];
+	const { lang, dir } = getLocaleConfigs(locale);
 	return (
-		<html {...attributes}>
+		<html {...{ lang, dir }}>
 			<body className={`${YekanBakh.className} bg-black`}>
 				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>

@@ -62,7 +62,7 @@ const callApi = <T>({
 			return response;
 		},
 		({ response, ...error }: AxiosError<IError>) => {
-			const { appCode, status, code, message, method, path }: any = response?.data || {};
+			const { appCode, status = 500, code, message, method, path }: any = response?.data || {};
 			if (appCode || status) {
 				errorCodeMessage(appCode, message, status, code);
 			}
