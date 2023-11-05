@@ -26,12 +26,12 @@ const ApplicationContext = ({ children, locale }: IProps) => {
 	const dispatch = useAppDispatch();
 	// initialize context
 	useEffect(() => {
-		const promise = dispatch(getCurrentUser({ callApi }));
-		const initApp = dispatch(initializeAppDep({ callApi, locale }));
+		const appPromise = dispatch(initializeAppDep({ callApi, locale }));
+		const userPromise = dispatch(getCurrentUser({ callApi }));
 		// cleanUp
 		return () => {
-			initApp.abort();
-			promise.abort();
+			appPromise.abort();
+			userPromise.abort();
 		};
 	}, [locale]);
 	// return context

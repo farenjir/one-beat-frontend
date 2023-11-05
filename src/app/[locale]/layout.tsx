@@ -37,7 +37,7 @@ export async function generateMetadata(params: GenerateMetaProps, parent: Resolv
 export default function RootLayout({ children, params: { locale } }: PropsWithParams) {
 	const { lang, dir } = getLocaleConfigs(locale);
 	return (
-		<html {...{ lang, dir }}>
+		<html lang={lang} dir={dir}>
 			<body className={`${YekanBakh.className} bg-black`}>
 				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>

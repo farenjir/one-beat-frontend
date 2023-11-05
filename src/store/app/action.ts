@@ -15,7 +15,7 @@ export const initializeAppDep = createAsyncThunk("app/initialize", async ({ call
 	// return
 	return await callApi<IVersion>({ url: "version/getLatest" })
 		.then(async (response) => {
-			const { appVersion, baseVersion, description } = response;
+			const { appVersion, baseVersion, description } = response || {};
 			const bases = await initializeHandles.updateAppDep(
 				{ callApi },
 				appVersion,
