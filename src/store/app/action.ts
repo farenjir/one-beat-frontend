@@ -1,18 +1,29 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { TypeApi } from "@/service";
-import { IVersion } from "@/types";
+import { AppBases, ILocale, IVersion } from "@/types";
 
-import { HandlesAppDepends } from "./utils";
+import { getFromStorage, setToStorage } from "@/utils/storage";
+import { storeInCookie } from "@/utils/cookie";
 
-const { getCurrentAppDep, updateAppBases } = new HandlesAppDepends();
+type IProps = {
+	locale: ILocale;
+};
 
-export const initializeAppDep = createAsyncThunk("app/initialize", async ({ callApi }: TypeApi, _thunkAPI) => {
-	const { currentAppVersion, currentBaseVersion, currentBases } = await getCurrentAppDep();
+export const initializeAppDep = createAsyncThunk("app/initialize", async ({ callApi, locale }: TypeApi & IProps, _thunkAPI) => {
+	const { currentAppVersion, currentBaseVersion, currentBases } = initializeHandles.currentAppDep(locale);
+	// return
 	return await callApi<IVersion>({ url: "version/getLatest" })
 		.then(async (response) => {
 			const { appVersion, baseVersion, description } = response;
-			const bases = await updateAppBases({ callApi }, appVersion, baseVersion, currentBaseVersion, currentBases);
+			const bases = await initializeHandles.updateAppDep(
+				{ callApi },
+				appVersion,
+				currentAppVersion,
+				baseVersion,
+				currentBaseVersion,
+				currentBases,
+			);
 			return {
 				bases,
 				appVersion,
@@ -29,3 +40,38 @@ export const initializeAppDep = createAsyncThunk("app/initialize", async ({ call
 			};
 		});
 });
+
+export const initializeHandles = {
+	currentAppDep: (locale: ILocale) => {
+		storeInCookie("locale", locale);
+		return {
+			currentAppVersion: +(getFromStorage("appVersion") || 0),
+			currentBaseVersion: +(getFromStorage("baseVersion") || 0),
+			currentBases: getFromStorage("appBases") || [],
+		};
+	},
+	updateAppDep: async (
+		{ callApi }: TypeApi,
+		appVersion: number,
+		currentAppVersion: number,
+		baseVersion: number,
+		currentBaseVersion: number,
+		currentBases: AppBases[],
+	): Promise<AppBases[]> => {
+		// get bases
+		let bases = currentBases;
+		if (baseVersion !== currentBaseVersion) {
+			setToStorage("baseVersion", baseVersion);
+			bases = await callApi<AppBases[]>({ url: "base/getAll" })
+				.then((response) => response)
+				.catch((_error) => currentBases);
+			// setToStorage
+			setToStorage("appBases", bases);
+		}
+		if (appVersion !== currentAppVersion) {
+			setToStorage("appVersion", appVersion);
+		}
+		// return
+		return bases;
+	},
+};

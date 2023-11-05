@@ -19,12 +19,20 @@ type ErrorsType = {
 	};
 };
 
+const exceptionPathMessages = ["/user/whoAmI"];
+
 export const errorCodeMessage = async (
 	appCode: string,
 	status: number,
 	message: string,
 	code: string,
+	method: string,
+	path: string,
 ): Promise<void> => {
+	// exceptions
+	if (exceptionPathMessages.includes(path)) {
+		return;
+	}
 	// getDictionary
 	const {
 		Services: { Errors },

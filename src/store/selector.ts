@@ -11,4 +11,6 @@ export const useAppDispatch: () => AppDispatch = useDispatch;
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 // *** app selector handles
-export const userSelector = (state: RootState) => state.auth.user
+export const VersionSelector = ({ app: { description, appVersion } }: RootState) => ({ appVersion, description });
+export const basesSelector = (state: RootState) => state.app.bases;
+export const userSelector = (state: RootState) => state.auth.user;

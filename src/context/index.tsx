@@ -12,7 +12,7 @@ import { initializeAppDep } from "@/store/app/action";
 import callApi from "@/service";
 import { ILocale } from "@/types";
 
-import StyledComponentsRegistry from "./AntdRegistry";
+import StyledComponentsRegistry from "@/components/AntdRegistry";
 
 const AppContext = createContext({});
 
@@ -27,13 +27,13 @@ const ApplicationContext = ({ children, locale }: IProps) => {
 	// initialize context
 	useEffect(() => {
 		const promise = dispatch(getCurrentUser({ callApi }));
-		const initApp = dispatch(initializeAppDep({ callApi }));
+		const initApp = dispatch(initializeAppDep({ callApi, locale }));
 		// cleanUp
 		return () => {
 			initApp.abort();
 			promise.abort();
 		};
-	}, []);
+	}, [locale]);
 	// return context
 	return (
 		<AppContext.Provider

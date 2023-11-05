@@ -11,9 +11,10 @@ export interface IAppState {
 	bases: AppBases[];
 	loading: "idle" | "pending" | "succeeded" | "failed";
 }
+
 const initialState: IAppState = {
-	baseVersion: 0,
 	appVersion: 0,
+	baseVersion: 0,
 	description: [],
 	bases: [],
 	loading: "idle",
@@ -33,8 +34,7 @@ const appSlice = createSlice<IAppState, {}, "app">({
 			})
 			.addCase(initializeAppDep.fulfilled, (state, action) => {
 				const { appVersion, baseVersion, bases, description } = action.payload;
-				Object.assign(state, { appVersion, baseVersion, bases, description });
-				state.loading = "succeeded";
+				Object.assign(state, { appVersion, baseVersion, bases, description, loading: "succeeded" });
 			});
 	},
 });

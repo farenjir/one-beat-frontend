@@ -10,9 +10,10 @@ const removeFromCookie = (key: string): void => {
 	cookie.remove(key);
 };
 
-const storeInCookie = (key: string, value: unknown): void => {
+const storeInCookie = (key: string, value: unknown, maxAge?: number): void => {
 	cookie.set(key, value, {
 		path: "/",
+		maxAge
 		// maxAge: 24 * 24 * 3600,
 	});
 };
