@@ -12,14 +12,15 @@ export class HandlesAppDepends {
 	};
 	updateAppBases = async (
 		{ callApi }: TypeApi,
+		appVersion: number,
 		baseVersion: number,
 		currentBaseVersion: number,
-		appVersion: number,
+		currentBases: AppBases[],
 	): Promise<AppBases[]> => {
 		setToStorage("appVersion", appVersion);
 		setToStorage("baseVersion", baseVersion);
 		// get bases
-		let bases = await getFromStorage("appBases");
+		let bases = currentBases;
 		if (baseVersion !== currentBaseVersion) {
 			bases = await callApi<AppBases[]>({ url: "base/getAll" })
 				.then((response) => response)
