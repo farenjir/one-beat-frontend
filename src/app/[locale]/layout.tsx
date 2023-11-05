@@ -11,7 +11,8 @@ import { locales } from "@/langs";
 
 import GlobalStates from "@/context";
 
-const YekanBakh = localFont({
+const yekan = localFont({
+	variable: "--font-yekan",
 	src: [
 		{
 			path: "../../assets/fonts/YekanBakh-Regular.woff2",
@@ -38,7 +39,7 @@ export default function RootLayout({ children, params: { locale } }: PropsWithPa
 	const { lang, dir } = getLocaleConfigs(locale);
 	return (
 		<html lang={lang} dir={dir}>
-			<body className={`${YekanBakh.className} bg-black`}>
+			<body className={yekan.className}>
 				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>
 		</html>
