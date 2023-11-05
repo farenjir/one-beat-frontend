@@ -8,7 +8,7 @@ export default async function MainLayout({ children, params: { locale } }: Props
 	return (
 		<>
 			<MainNavbar dict={dict} />
-			<main>{children}</main>
+			<main className="bg-black">{children}</main>
 		</>
 	);
 }
