@@ -9,7 +9,7 @@ export interface IAppState {
 	appVersion: number;
 	description: string[];
 	bases: AppBases[];
-	loading: "idle" | "pending" | "succeeded" | "failed";
+	loading: boolean;
 }
 
 const initialState: IAppState = {
@@ -17,7 +17,7 @@ const initialState: IAppState = {
 	baseVersion: 0,
 	description: [],
 	bases: [],
-	loading: "idle",
+	loading: true,
 };
 
 const appSlice = createSlice<IAppState, {}, "app">({
@@ -27,14 +27,14 @@ const appSlice = createSlice<IAppState, {}, "app">({
 	extraReducers: (builder) => {
 		builder
 			.addCase(initializeAppDep.pending, (state) => {
-				state.loading = "pending";
+				state.loading = true;
 			})
 			.addCase(initializeAppDep.rejected, (state) => {
-				state.loading = "failed";
+				state.loading = false;
 			})
 			.addCase(initializeAppDep.fulfilled, (state, action) => {
 				const { appVersion, baseVersion, bases, description } = action.payload;
-				Object.assign(state, { appVersion, baseVersion, bases, description, loading: "succeeded" });
+				Object.assign(state, { appVersion, baseVersion, bases, description, loading: false });
 			});
 	},
 });

@@ -6,12 +6,12 @@ import { getCurrentUser } from "./action";
 
 export interface IAuthState {
 	user: IUser | null;
-	loading: "idle" | "pending" | "succeeded" | "failed";
+	loading: boolean;
 }
 
 const initialState: IAuthState = {
 	user: null,
-	loading: "idle",
+	loading: true,
 };
 
 const authSlice = createSlice<IAuthState, {}, "auth">({
@@ -22,15 +22,15 @@ const authSlice = createSlice<IAuthState, {}, "auth">({
 		builder
 			.addCase(getCurrentUser.pending, (state) => {
 				state.user = state.user;
-				state.loading = "pending";
+				state.loading = true;
 			})
 			.addCase(getCurrentUser.rejected, (state) => {
 				state.user = null;
-				state.loading = "failed";
+				state.loading = false;
 			})
 			.addCase(getCurrentUser.fulfilled, (state, action) => {
 				state.user = action.payload.user;
-				state.loading = "succeeded";
+				state.loading = false;
 			});
 	},
 });
