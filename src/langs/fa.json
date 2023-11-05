@@ -6,7 +6,7 @@
 		"DESCRIPTION": "1Beat world of Awesome beats !"
 	},
 	"Services": {
-		"Errors": {},
+		"Errors": { "error": "خطا", "default": "خطایی رخ داده است !" },
 		"Success": {}
 	},
 	"Schemas": {

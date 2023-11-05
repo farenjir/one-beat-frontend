@@ -11,7 +11,28 @@ export interface IError {
 	path: string;
 }
 
-export const errorCodeMessage = async (appCode: string, message: string, status: number, code: string): Promise<void> => {
-	const { Services: {Errors} } = await getDictionary();
-	createNotification({ message: "خطا", type: "error" });
+type ErrorsType = {
+	Services: {
+		Errors: {
+			[key: string | number]: string;
+		};
+	};
+};
+
+export const errorCodeMessage = async (
+	appCode: string,
+	status: number,
+	message: string,
+	code: string,
+): Promise<void> => {
+	// getDictionary
+	const {
+		Services: { Errors },
+	}: ErrorsType = await getDictionary();
+	// return notification
+	createNotification({
+		message: Errors["error"],
+		description: Errors[appCode ?? status] || Errors["default"],
+		type: "error",
+	});
 };

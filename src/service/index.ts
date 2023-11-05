@@ -7,8 +7,8 @@ export type TypeApi = { callApi: typeof callApi };
 
 export interface IApi {
 	url: string;
-	bodyData?: object;
-	queryParams?: object;
+	body?: object;
+	queries?: object;
 	method?: Method;
 	contentType?: AxiosHeaderValue;
 	responseType?: ResponseType;
@@ -17,8 +17,8 @@ export interface IApi {
 const callApi = <T>({
 	url = "",
 	method = "GET",
-	bodyData = {},
-	queryParams = {},
+	body = {},
+	queries = {},
 	contentType = "application/json",
 	responseType = "json",
 }: IApi): Promise<T> => {
@@ -64,14 +64,14 @@ const callApi = <T>({
 		({ response, ...error }: AxiosError<IError>) => {
 			const { appCode, status = 500, code, message, method, path }: any = response?.data || {};
 			if (appCode || status) {
-				errorCodeMessage(appCode, message, status, code);
+				errorCodeMessage(appCode, status, message, code);
 			}
 			return { data: { result: null }, ...error };
 		},
 	);
 	// return
 	return new Promise((resolve, reject) => {
-		axiosInstance({ baseURL, url, method, params: queryParams, data: bodyData })
+		axiosInstance({ baseURL, url, method, params: queries, data: body })
 			.then((response) => {
 				resolve(response.data?.result);
 			})

@@ -13,7 +13,7 @@ const removeFromCookie = (key: string): void => {
 const storeInCookie = (key: string, value: unknown): void => {
 	cookie.set(key, value, {
 		path: "/",
-		maxAge: 24 * 24 * 3600,
+		// maxAge: 24 * 24 * 3600,
 	});
 };
 

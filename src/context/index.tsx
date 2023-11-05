@@ -5,10 +5,12 @@ import { Provider } from "react-redux";
 
 import store from "@/store/store";
 import { useAppDispatch } from "@/store/selector";
+
 import { getCurrentUser } from "@/store/auth/action";
+import { initializeAppDep } from "@/store/app/action";
 
 import callApi from "@/service";
-import { ILocale } from "@/langs";
+import { ILocale } from "@/types";
 
 import StyledComponentsRegistry from "./AntdRegistry";
 
@@ -25,7 +27,10 @@ const ApplicationContext = ({ children, locale }: IProps) => {
 	// initialize context
 	useEffect(() => {
 		const promise = dispatch(getCurrentUser({ callApi }));
+		const initApp = dispatch(initializeAppDep({ callApi }));
+		// cleanUp
 		return () => {
+			initApp.abort();
 			promise.abort();
 		};
 	}, []);

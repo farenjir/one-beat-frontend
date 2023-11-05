@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import appReducer from "./app/reducer";
 import authReducer from "./auth/reducer";
 
 const additionalMiddleware: any[] = [];
@@ -9,7 +10,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const reducer = {
-	// commons
+	app: appReducer,
 	auth: authReducer,
 	// user reducers
 	// admin reducers

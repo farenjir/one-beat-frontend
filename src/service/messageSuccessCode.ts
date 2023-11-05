@@ -9,7 +9,27 @@ export interface ISuccess<T> {
 	result: T | T[];
 }
 
-export const successCodeMessage = async (code: string | number, message: string, description: string): Promise<void> => {
-	const { Services: {Success} } = await getDictionary();
-	createNotification({ message: "موفق", type: "success" });
+type SuccessType = {
+	Services: {
+		Success: {
+			[key: string | number]: string;
+		};
+	};
+};
+
+export const successCodeMessage = async (
+	code: string | number,
+	message: string,
+	description: string,
+): Promise<void> => {
+	// getDictionary
+	const {
+		Services: { Success },
+	}: SuccessType = await getDictionary();
+	// return notification
+	createNotification({
+		message: Success["error"],
+		description: Success[code] || Success["default"],
+		type: "success",
+	});
 };
