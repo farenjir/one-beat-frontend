@@ -39,7 +39,7 @@ export default function RootLayout({ children, params: { locale } }: PropsWithPa
 	const { lang, dir } = getLocaleConfigs(locale);
 	return (
 		<html lang={lang} dir={dir}>
-			<body className={yekan.className}>
+			<body className={`${yekan.variable} font-yekan`}>
 				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>
 		</html>

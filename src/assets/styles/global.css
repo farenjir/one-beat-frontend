@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-	font-family: "YekanBakh-Regular";
-	src: url("../fonts/YekanBakh-Regular.woff2");
-}
-
 /* document style */
 html {
 	overflow-x: hidden;
@@ -19,10 +14,9 @@ body {
 	box-sizing: border-box;
 }
 * {
-	font-family: YekanBakh-Regular;
+	font-family: var(--font-yekan);
 	font-weight: 400;
 }
-/* end document style */
 
 /* scroll style */
 * {
@@ -49,4 +43,3 @@ body {
 	-ms-border-radius: 10px;
 	-o-border-radius: 10px;
 }
-/* end scroll style */
