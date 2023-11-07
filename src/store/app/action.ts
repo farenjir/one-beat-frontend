@@ -61,9 +61,11 @@ export const initializeHandles = {
 		// get bases
 		let bases = currentBases;
 		if (baseVersion !== currentBaseVersion) {
-			setToStorage("baseVersion", baseVersion);
 			bases = await callApi<AppBases[]>({ url: "base/getAll" })
-				.then((response) => response)
+				.then((response) => {
+					setToStorage("baseVersion", baseVersion);
+					return response;
+				})
 				.catch((_error) => currentBases);
 			// setToStorage
 			setToStorage("appBases", bases);
