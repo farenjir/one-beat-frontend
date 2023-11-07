@@ -63,7 +63,7 @@ export const initializeHandles = {
 		if (baseVersion !== currentBaseVersion) {
 			bases = await callApi<AppBases[]>({ url: "base/getAll" })
 				.then((response) => {
-					setToStorage("baseVersion", baseVersion);
+					response && setToStorage("baseVersion", baseVersion);
 					return response;
 				})
 				.catch((_error) => currentBases);
