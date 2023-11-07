@@ -6,12 +6,11 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				yekan: ["var(--font-yekan)"],
-				yekan: ["var(--font-roboto)"],
 			},
 			colors: {
-				navGray: "rgba(0, 0, 0, 0.05)",
-				subOrange: "rgba(250, 150, 0, 0.8)",
-				"subOrange-light": "rgba(250, 150, 0, 0.4)",
+				navGray: "#0000000d",
+				subOrange: "#fa9600cc",
+				"subOrange-light": "#ffa50050",
 			},
 		},
 	},
