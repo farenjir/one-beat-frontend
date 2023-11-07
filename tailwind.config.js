@@ -8,9 +8,9 @@ module.exports = {
 				yekan: ["var(--font-yekan)"],
 			},
 			colors: {
-				navGray: "#0000000d",
-				subOrange: "#fa9600cc",
-				"subOrange-light": "#ffa50050",
+				appGrey: "#0000000d",
+				appSubOrange: "#fa9600cc",
+				appSubOrangeLight: "#ffa50050",
 			},
 		},
 	},

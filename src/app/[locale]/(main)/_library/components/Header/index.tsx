@@ -11,13 +11,13 @@ export default function MainHeader({ dict }: PropsWithDice) {
 	return (
 		<div className={gStyle["main__home-container"]}>
 			<section className="h-full flex flex-col justify-center align-around  mx-auto max-w-7xl px-8">
-				<sub className="text-subOrange uppercase font-extrabold text-[10px]">{Header.sub}</sub>
+				<sub className="text-appSubOrange uppercase font-extrabold text-[10px]">{Header.sub}</sub>
 				<div className="py-8 text-white text-justify">
 					<h1 className="font-thin pb-4 text-[2.5rem] md:text-6xl lg:text-6xl"> {Header.title}</h1>
 					<h2 className="font-black text-5xl md:text-7xl lg:text-7xl">{Header.subTitle}</h2>
 					<p className="font-[100] pt-5 w-72 text-xs md:text-base md:w-1/2 lg:w-[25rem]">{Header.description}</p>
 				</div>
-				<ul className="text-subOrange flex gap-2 align-middle list-none">
+				<ul className="text-appSubOrange flex gap-2 align-middle list-none">
 					<li>
 						<HeartOutlined className="text-xl font-black cursor-pointer" />
 					</li>
@@ -27,7 +27,7 @@ export default function MainHeader({ dict }: PropsWithDice) {
 					<li>
 						<StarOutlined className="text-xl font-black cursor-pointer" />
 					</li>
-					<li className="py-1 px-3 text-xs font-medium  border border-subOrange rounded-lg cursor-pointer hover:bg-subOrange-light hover:border-white hover:text-white">
+					<li className="py-1 px-3 text-xs font-medium  border border-appSubOrange rounded-lg cursor-pointer hover:bg-appSubOrangeLight hover:border-white hover:text-white">
 						<span className="mx-1">{Header.iHave}</span>
 						<ShoppingOutlined />
 					</li>
