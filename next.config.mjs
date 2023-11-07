@@ -10,7 +10,7 @@ const nextConfig = {
 	env: { NEXT_APP_BASE_URL, NEXT_APP_BACKEND_SERVER },
 };
 
-module.exports = async (/** @type {string} */ phase, { defaultConfig }) => {
+module.exports = (/** @type {string} */ phase, { defaultConfig }) => {
 	if (phase === development || phase === production) {
 		const withPWA = require("@ducanh2912/next-pwa").default({
 			dest: "public/pwa",
