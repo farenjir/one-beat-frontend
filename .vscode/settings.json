@@ -6,6 +6,7 @@
         "headlessui",
         "persistor",
         "reduxjs",
+        "roboto",
         "tailwindcss",
         "tanstack",
         "yekan",

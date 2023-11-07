@@ -3,7 +3,13 @@ export type ILocale = "fa" | "en";
 export type IDir = "rtl" | "ltr";
 
 export interface ILocaleOptions {
-	[key: string]: { lang: ILocale; dir: IDir; rtl: boolean; ltr: boolean };
+	[key: string]: {
+		lang: ILocale;
+		dir: IDir;
+		fontType: "yekan" | "roboto";
+		rtl: boolean;
+		ltr: boolean;
+	};
 }
 export interface GenerateMetaProps {
 	params: { locale: ILocale };

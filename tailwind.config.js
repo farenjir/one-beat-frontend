@@ -6,6 +6,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				yekan: ["var(--font-yekan)"],
+				yekan: ["var(--font-roboto)"],
 			},
 			colors: {
 				navGray: "rgba(0, 0, 0, 0.05)",
