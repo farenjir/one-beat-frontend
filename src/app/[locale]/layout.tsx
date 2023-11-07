@@ -13,6 +13,7 @@ import GlobalStates from "@/context";
 
 const yekan = localFont({
 	variable: "--font-yekan",
+	display: "swap",
 	src: [
 		{
 			path: "../../assets/fonts/YekanBakh-Regular.woff2",
@@ -38,8 +39,8 @@ export async function generateMetadata(params: GenerateMetaProps, parent: Resolv
 export default function RootLayout({ children, params: { locale } }: PropsWithParams) {
 	const { lang, dir } = getLocaleConfigs(locale);
 	return (
-		<html lang={lang} dir={dir}>
-			<body className={yekan.className}>
+		<html lang={lang} dir={dir} className={`${yekan.variable}`}>
+			<body className={`${yekan.className}`}>
 				<GlobalStates locale={locale}>{children}</GlobalStates>
 			</body>
 		</html>
