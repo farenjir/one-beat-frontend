@@ -3,6 +3,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 
 import { mainLayoutMetadata } from "@/meta/mainLayout";
 
+import "@/assets/styles/antd.overwrite.css";
 import "@/assets/styles/global.css";
 
 import { GenerateMetaProps, PropsWithParams } from "@/types";

@@ -15,7 +15,7 @@ export const initializeAppDep = createAsyncThunk("app/initialize", async ({ call
 	// return
 	return await callApi<IVersion>({ url: "version/getLatest" })
 		.then(async (response) => {
-			const { appVersion, baseVersion, description } = response || {};
+			const { appVersion = currentAppVersion, baseVersion = currentBaseVersion, description = [] } = response || {};
 			const bases = await initializeHandles.updateAppDep(
 				{ callApi },
 				appVersion,
@@ -63,15 +63,17 @@ export const initializeHandles = {
 		if (baseVersion !== currentBaseVersion) {
 			bases = await callApi<AppBases[]>({ url: "base/getAll" })
 				.then((response) => {
-					response && setToStorage("baseVersion", baseVersion);
-					return response;
+					if (response) {
+						setToStorage("baseVersion", baseVersion);
+						setToStorage("appBases", response);
+					}
+					return response || currentBases;
 				})
 				.catch((_error) => currentBases);
 			// setToStorage
-			setToStorage("appBases", bases);
 		}
 		if (appVersion !== currentAppVersion) {
-			setToStorage("appVersion", appVersion);
+			appVersion && setToStorage("appVersion", appVersion);
 		}
 		// return
 		return bases;
