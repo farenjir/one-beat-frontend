@@ -18,18 +18,18 @@ const nextConfig = {
 };
 
 module.exports = (/** @type {string} */ phase, { defaultConfig }) => {
-	if (phase === development || phase === production) {
-		const withPWA = require("@ducanh2912/next-pwa").default({
-			dest: "public/pwa",
-			disable: false, // NODE_ENV !== "production"
-			register: true,
-			scope: "/",
-			// sw: "service-worker.js",
-			// customWorkerSrc: "service-worker",
-			// customWorkerDest: "somewhere-else", // defaults to `dest`
-			// customWorkerPrefix: "not/a-worker",
-		});
-		return withPWA(nextConfig);
-	}
+	// if (phase === development || phase === production) {
+	// 	const withPWA = require("@ducanh2912/next-pwa").default({
+	// 		dest: "public/pwa",
+	// 		disable: false, // NODE_ENV !== "production"
+	// 		register: true,
+	// 		scope: "/",
+	// 		// sw: "service-worker.js",
+	// 		// customWorkerSrc: "service-worker",
+	// 		// customWorkerDest: "somewhere-else", // defaults to `dest`
+	// 		// customWorkerPrefix: "not/a-worker",
+	// 	});
+	// 	return withPWA(nextConfig);
+	// }
 	return nextConfig;
 };
