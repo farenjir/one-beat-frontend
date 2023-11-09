@@ -7,7 +7,7 @@ export const [defaultLocale] = locales;
 
 const dictionaries = {
 	fa: () => import("./fa.json").then((module) => module.default),
-	en: () => import("./en.json").then((module) => module.default),
+	en: () => import("./fa.json").then((module) => module.default),
 };
 
 export const getDictionary = async (locale?: ILocale) => {
