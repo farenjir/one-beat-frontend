@@ -1,3 +1,5 @@
+import callApi from "@/service";
+
 export type ILocale = "fa" | "en";
 
 export type IDir = "rtl" | "ltr";
@@ -26,3 +28,6 @@ export type PropsWithParams = IParams & {
 export type PropsWithDice = {
 	dict: any;
 };
+
+export type TypeApi = typeof callApi;
+

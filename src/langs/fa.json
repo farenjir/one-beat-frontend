@@ -6,8 +6,8 @@
 		"DESCRIPTION": "1Beat world of Awesome beats !"
 	},
 	"Services": {
-		"Errors": { "error": "خطا", "default": "خطایی رخ داده است !" },
-		"Success": {}
+		"Errors": { "error": "خطا", "default": "خطایی رخ داده است !", "4001": "کاربری با این مشخصات در سامانه وجود ندارد !" },
+		"Success": { "success": "موفق", "2002": "ورود به حساب کاربری" }
 	},
 	"Schemas": {
 		"required": "این فیلد الزامی است"
@@ -20,7 +20,12 @@
 		"about": "درباره یک بیت"
 	},
 	"Auth": {
-		"auth": "ورود / ثبت نام"
+		"auth": "ورود / ثبت نام",
+		"username": "نام کاربری",
+		"password": "کلمه عبور",
+		"repeatPassword": "تکرار کلمه عبور",
+		"remember": "یادآوری حساب",
+		"login": "ورود به حساب"
 	},
 	"Main": {
 		"Header": {

@@ -1,20 +1,19 @@
 import { Roles } from "./enums";
-import type {
-	GenerateMetaProps,
-	PropsWithParams,
-	PropsWithDice,
-	IParams,
-	IDir,
-	ILocale,
-	ILocaleOptions,
-} from "./configs";
+import type * as Configs from "./configs";
 
 import type { IUser } from "./public/user";
 import type { AppBases } from "./public/base";
 import type { IVersion } from "./public/version";
 
 // configs
-export type { GenerateMetaProps, PropsWithParams, PropsWithDice, IParams, IDir, ILocale, ILocaleOptions };
+export type TypeApi = Configs.TypeApi;
+export type GenerateMetaProps = Configs.GenerateMetaProps;
+export type PropsWithParams = Configs.PropsWithParams;
+export type PropsWithDice = Configs.PropsWithDice;
+export type IParams = Configs.IParams;
+export type IDir = Configs.IDir;
+export type ILocale = Configs.ILocale;
+export type ILocaleOptions = Configs.ILocaleOptions;
 
 // data types
 export type { IUser, AppBases, IVersion };

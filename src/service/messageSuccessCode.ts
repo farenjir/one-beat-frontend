@@ -17,19 +17,16 @@ type SuccessType = {
 	};
 };
 
-export const successCodeMessage = async (
-	code: string | number,
-	message: string,
-	description: string,
-): Promise<void> => {
+export const successCodeMessage = async (code: string | number, message: string, description: string): Promise<void> => {
 	// getDictionary
 	const {
 		Services: { Success },
 	}: SuccessType = await getDictionary();
 	// return notification
-	createNotification({
-		message: Success["error"],
-		description: Success[code] || Success["default"],
-		type: "success",
-	});
+	Success[code] &&
+		createNotification({
+			message: Success["success"],
+			description: Success[code],
+			type: "success",
+		});
 };

@@ -13,14 +13,20 @@ function getLocale(request: NextRequest): ILocale {
 }
 
 export function middleware(request: NextRequest) {
+	const checkAuth = request.cookies.get("app-token");
 	// Check if there is any supported locale in the pathname
 	const pathname = request.nextUrl.pathname;
 	const pathnameHasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
+	// if (checkAuth && pathname.includes("/auth")) {
+	// 	const [locale] = request.nextUrl.pathname.split("/auth");
+	// 	request.nextUrl.pathname = `${locale}${pathname}`;
+	// 	return Response.redirect(request.nextUrl);
+	// }
 	if (pathnameHasLocale) return;
 	// Redirect if there is no locale
 	const locale: ILocale = getLocale(request);
 	request.nextUrl.pathname = `/${locale}${pathname}`;
-	// The new URL is now /fa/targetPathname
+	// The new URL
 	return Response.redirect(request.nextUrl);
 }
 
