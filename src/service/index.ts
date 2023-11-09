@@ -3,25 +3,23 @@ import axios, { AxiosError, AxiosHeaderValue, AxiosResponse, Method, ResponseTyp
 import { ISuccess, successCodeMessage } from "./messageSuccessCode";
 import { IError, errorCodeMessage } from "./messageErrorCode";
 
-export type TypeApi = { callApi: typeof callApi };
-
-export interface IApi {
+export interface IApi<TBody> {
 	url: string;
-	body?: object;
-	queries?: object;
+	queries?: { [key: string]: any };
+	body?: TBody | {};
 	method?: Method;
 	contentType?: AxiosHeaderValue;
 	responseType?: ResponseType;
 }
 
-const callApi = <T>({
+const callApi = <TRes, TBody>({
 	url = "",
 	method = "GET",
 	body = {},
 	queries = {},
 	contentType = "application/json",
 	responseType = "json",
-}: IApi): Promise<T> => {
+}: IApi<TBody>): Promise<TRes> => {
 	// baseURL
 	const baseURL = process.env.NEXT_APP_BACKEND_SERVER;
 	// axiosInstance
@@ -54,7 +52,7 @@ const callApi = <T>({
 	);
 	//  set response configs
 	axiosInstance.interceptors.response.use(
-		(response: AxiosResponse<ISuccess<T>, IError>) => {
+		(response: AxiosResponse<ISuccess<TRes>, IError>) => {
 			const { code, message, description, timestamp }: any = response?.data || {};
 			if (code) {
 				successCodeMessage(code, message, description);

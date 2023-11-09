@@ -40,7 +40,7 @@ export const errorCodeMessage = async (
 	// return notification
 	createNotification({
 		message: Errors["error"],
-		description: Errors[appCode ?? status] || Errors["default"],
+		description: Errors[appCode] || message || Errors[status],
 		type: "error",
 	});
 };

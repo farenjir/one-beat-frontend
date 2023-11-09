@@ -1,16 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { TypeApi } from "@/service";
-import { AppBases, ILocale, IVersion } from "@/types";
+import { AppBases, ILocale, IVersion, TypeApi } from "@/types";
 
-import { getFromStorage, setToStorage } from "@/utils/storage";
 import { storeInCookie } from "@/utils/cookie";
+import { getFromStorage, setToStorage } from "@/utils/storage";
 
 type IProps = {
 	locale: ILocale;
+	callApi: TypeApi;
 };
 
-export const initializeAppDep = createAsyncThunk("app/initialize", async ({ callApi, locale }: TypeApi & IProps, _thunkAPI) => {
+export const initializeAppDep = createAsyncThunk("app/initialize", async ({ callApi, locale }: IProps, _thunkAPI) => {
 	const { currentAppVersion, currentBaseVersion, currentBases } = initializeHandles.currentAppDep(locale);
 	// return
 	return await callApi<IVersion>({ url: "version/getLatest" })
@@ -51,7 +51,7 @@ export const initializeHandles = {
 		};
 	},
 	updateAppDep: async (
-		{ callApi }: TypeApi,
+		{ callApi }: Omit<IProps, "locale">,
 		appVersion: number,
 		currentAppVersion: number,
 		baseVersion: number,
@@ -64,16 +64,20 @@ export const initializeHandles = {
 			bases = await callApi<AppBases[]>({ url: "base/getAll" })
 				.then((response) => {
 					if (response) {
+						// setToStorage
 						setToStorage("baseVersion", baseVersion);
 						setToStorage("appBases", response);
+						return response;
+					} else {
+						return currentBases;
 					}
-					return response || currentBases;
 				})
 				.catch((_error) => currentBases);
-			// setToStorage
 		}
 		if (appVersion !== currentAppVersion) {
-			appVersion && setToStorage("appVersion", appVersion);
+			if (appVersion) {
+				setToStorage("appVersion", appVersion);
+			}
 		}
 		// return
 		return bases;

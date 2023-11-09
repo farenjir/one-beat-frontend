@@ -1,0 +1,59 @@
+.btn-public {
+	@apply text-white;
+	@apply bg-white;
+	height: 35px;
+	line-height: 20px;
+	text-align: center;
+	padding: 0 25px;
+	cursor: pointer;
+	border: solid 1px transparent;
+	box-shadow: -3px 3px 6px 0 rgba(0, 0, 0, 0.16);
+	transition: all 0.3s linear;
+	-webkit-transition: all 0.3s linear;
+	-moz-transition: all 0.3s linear;
+	-ms-transition: all 0.3s linear;
+	-o-transition: all 0.3s linear;
+}
+.btn-public__success {
+	@apply bg-appGreen;
+	@apply border-appGreen;
+}
+.btn-public__success:hover {
+	@apply text-appGreen !important;
+	@apply border-appGreen !important;
+	@apply bg-transparent;
+}
+.btn-public__active {
+	@apply bg-appBlue;
+	@apply border-appBlue;
+}
+.btn-public__active:hover {
+	@apply text-appBlue !important;
+	@apply border-appBlue !important;
+	@apply bg-transparent;
+}
+.btn-public__secondary {
+	@apply bg-appOrange;
+	@apply border-appOrange;
+}
+.btn-public__secondary:hover {
+	@apply text-appOrange !important;
+	@apply border-appOrange !important;
+	@apply bg-transparent;
+}
+.btn-public__danger {
+	@apply bg-appRed;
+	@apply border-appRed;
+}
+.btn-public__danger:hover {
+	@apply text-appRed !important;
+	@apply border-appRed !important;
+	@apply bg-transparent;
+}
+.btn-public__cancel {
+	background-color: #cccccc;
+}
+.btn-public__disable {
+	border-color: #888888;
+	cursor: default;
+}

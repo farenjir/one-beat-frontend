@@ -11,6 +11,6 @@ const dictionaries = {
 };
 
 export const getDictionary = async (locale?: ILocale) => {
-	const { lang } = getLocaleConfigs(locale);
+	const { lang } = getLocaleConfigs(locale) || {};
 	return await dictionaries[locale || lang]();
 };

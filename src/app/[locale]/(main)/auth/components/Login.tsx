@@ -1,36 +1,47 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Form } from "antd";
 
-const LoginForm = () => {
+import { PropsWithDice } from "@/types";
+import { useAppContext } from "@/context";
+import { useAppDispatch } from "@/store/selector";
+import { getCurrentUser } from "@/store/auth/action";
+
+import { userAuthentication } from "../../_library/services";
+
+import { Inputs, Buttons, Checkboxes } from "@/components";
+
+interface ILoginForm {
+	username: string;
+	password: string;
+}
+
+const LoginForm = ({ dict: { Auth } }: PropsWithDice) => {
+	// hooks
+	const router = useRouter()
+	const dispatch = useAppDispatch();
+	const { callApi } = useAppContext();
 	// handles
-	const onFinish = (values: any) => {
-		console.log("Received values of form: ", values);
+	const onFinish = async (values: any) => {
+		const formBody = {
+			username: values.username,
+			password: values.password,
+		};
+		const loginUser = await userAuthentication<ILoginForm>(callApi, formBody);
+		if (loginUser) {
+			dispatch(getCurrentUser({ callApi }));
+			router.replace("/");
+		}
 	};
 	// return
 	return (
-		<Form name="normal_login" className="login-form" initialValues={{ remember: true }} onFinish={onFinish}>
-			<Form.Item name="username" rules={[{ required: true, message: "Please input your Username!" }]}>
-				<Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
-			</Form.Item>
-			<Form.Item name="password" rules={[{ required: true, message: "Please input your Password!" }]}>
-				<Input prefix={<LockOutlined className="site-form-item-icon" />} type="password" placeholder="Password" />
-			</Form.Item>
-			<Form.Item>
-				<Form.Item name="remember" valuePropName="checked" noStyle>
-					<Checkbox>Remember me</Checkbox>
-				</Form.Item>
-				<a className="login-form-forgot" href="">
-					Forgot password
-				</a>
-			</Form.Item>
-			<Form.Item>
-				<Button type="primary" htmlType="submit" className="login-form-button">
-					Log in
-				</Button>
-				Or <a href="">register now!</a>
-			</Form.Item>
+		<Form name="login-form" className="login-form" layout="vertical" onFinish={onFinish} initialValues={{ remember: true }}>
+			<Inputs name="username" type="text" label={Auth.username} prefix={<UserOutlined />} />
+			<Inputs name="password" type="password" label={Auth.password} prefix={<LockOutlined />} />
+			<Checkboxes label={Auth.remember} name="remember" />
+			<Buttons name={Auth.login} htmlType="submit" classes="login-form-button mt-5" />
 		</Form>
 	);
 };

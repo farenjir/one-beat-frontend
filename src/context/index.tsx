@@ -10,19 +10,24 @@ import { getCurrentUser } from "@/store/auth/action";
 import { initializeAppDep } from "@/store/app/action";
 
 import callApi from "@/service";
-import { ILocale } from "@/types";
+import { ILocale, ILocaleOptions } from "@/types";
 
 import StyledComponentsRegistry from "@/components/AntdRegistry";
+import { useLocaleConfigs } from "@/hooks";
 
-const AppContext = createContext({});
-
-interface IProps {
-	children: ReactNode;
-	locale: ILocale;
+interface IContext {
+	callApi: typeof callApi;
+	localeConfigs: ILocaleOptions;
 }
 
-const ApplicationContext = ({ children, locale }: IProps) => {
+const AppContext = createContext<IContext>({
+	callApi,
+	localeConfigs: {},
+});
+
+const ApplicationContext = ({ children, locale }: { children: ReactNode; locale: ILocale }) => {
 	// hooks
+	const localeConfigs = useLocaleConfigs(locale);
 	const dispatch = useAppDispatch();
 	// initialize context
 	useEffect(() => {
@@ -38,8 +43,8 @@ const ApplicationContext = ({ children, locale }: IProps) => {
 	return (
 		<AppContext.Provider
 			value={{
-				locale,
 				callApi,
+				localeConfigs,
 			}}
 		>
 			{children}
@@ -51,7 +56,7 @@ const ApplicationContext = ({ children, locale }: IProps) => {
 export const useAppContext = () => useContext(AppContext);
 
 // state management of the application
-export default function ({ children, locale }: IProps) {
+export default function ({ children, locale }: { children: ReactNode; locale: ILocale }) {
 	return (
 		<Provider store={store}>
 			<StyledComponentsRegistry>
