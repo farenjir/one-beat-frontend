@@ -1,54 +1,64 @@
-"use client";
-
+import { useRouter } from "next/navigation";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
-import { Checkbox, Form } from "antd";
+import { Form } from "antd";
 
 import { PropsWithDice } from "@/types";
 
+import { useAppContext } from "@/context";
+
 import { Inputs, Buttons } from "@/components";
+import { userRegistered } from "../../_library/services";
+import { createNotification } from "@/utils/notification";
+
+interface IRegisterForm {
+	username: string;
+	email: string;
+	password: string;
+	repeatPassword?: string;
+}
 
 const RegisterForm = ({ dict: { Auth } }: PropsWithDice) => {
+	// hooks
+	const router = useRouter();
+	const { callApi } = useAppContext();
 	// handles
-	const onFinish = (values: any) => {
-		console.log("Received values of form: ", values);
+	const onFinish = async ({ username, email, password, repeatPassword }: IRegisterForm) => {
+		if (password !== repeatPassword) {
+			return createNotification({ message: Auth.password, type: "warning", description: Auth.passwordDuplicated });
+		}
+		const registerUser = await userRegistered<IRegisterForm>(callApi, { username, email, password });
+		if (registerUser) {
+			router.push("/");
+		}
 	};
 	// return
 	return (
-		<Form name="normal_login" layout="vertical" initialValues={{ remember: true }} onFinish={onFinish}>
+		<Form name="register-form" className="register-form" layout="vertical" onFinish={onFinish}>
 			<Inputs
-				// label="Username"
 				name="username"
 				type="text"
-				placeholder="Username"
+				placeholder={Auth.username}
 				prefix={<UserOutlined className="site-form-item-icon" />}
 			/>
 			<Inputs
-				// label="Email"
 				name="email"
 				type="email"
-				placeholder="Email"
+				placeholder={Auth.email}
 				prefix={<MailOutlined className="site-form-item-icon" />}
 			/>
 			<Inputs
-				// label="Password"
 				name="password"
 				type="password"
-				placeholder="Password"
+				placeholder={Auth.password}
 				prefix={<LockOutlined className="site-form-item-icon" />}
 			/>
 			<Inputs
-				// label="Password"
 				name="repeatPassword"
 				type="password"
-				placeholder="repeatPassword"
+				placeholder={Auth.repeatPassword}
 				prefix={<LockOutlined className="site-form-item-icon" />}
 			/>
-			<Form.Item>
-				<Form.Item name="remember" valuePropName="checked" noStyle>
-					<Checkbox>Remember me</Checkbox>
-				</Form.Item>
-			</Form.Item>
-			<Buttons name="Register" htmlType="submit" classes="register-form-button" />
+			<Buttons name={Auth.register} color="success" htmlType="submit" classes="register-form-button mt-5" />
 		</Form>
 	);
 };

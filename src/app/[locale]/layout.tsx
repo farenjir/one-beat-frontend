@@ -18,12 +18,12 @@ const yekan = localFont({
 	src: [
 		{
 			path: "../../assets/fonts/YekanBakh-Regular.woff2",
-			weight: "400",
+			weight: "500",
 			style: "normal",
 		},
 		{
 			path: "../../assets/fonts/YekanBakh-Regular.woff",
-			weight: "400",
+			weight: "500",
 			style: "normal",
 		},
 	],

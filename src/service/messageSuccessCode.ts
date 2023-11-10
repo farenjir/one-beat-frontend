@@ -22,11 +22,13 @@ export const successCodeMessage = async (code: string | number, message: string,
 	const {
 		Services: { Success },
 	}: SuccessType = await getDictionary();
+	// description
+	const haveDescription = Success[`${code}Des`];
 	// return notification
 	Success[code] &&
 		createNotification({
-			message: Success["success"],
-			description: Success[code],
+			message: haveDescription ? Success[code] : Success["success"],
+			description: haveDescription || Success[code],
 			type: "success",
 		});
 };
