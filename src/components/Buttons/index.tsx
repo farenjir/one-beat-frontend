@@ -12,6 +12,9 @@ interface IButtons {
 	htmlType?: "submit" | "button" | "reset";
 	classes?: string;
 	onClick?: () => void | undefined;
+	prefix?: any;
+	disabled?: boolean;
+	loading?: boolean;
 }
 
 const Buttons = ({
@@ -23,15 +26,21 @@ const Buttons = ({
 	shape = "default",
 	size = "middle",
 	classes = "",
+	prefix = "",
+	disabled = false,
+	loading = false,
 }: IButtons) => {
 	return (
 		<Form.Item>
 			<Button
-				{...{ onClick, htmlType, size, shape, type: typeColor }}
+				{...{ onClick, htmlType, size, shape, type: typeColor, disabled, loading }}
 				onClick={onClick}
 				className={`${styles["btn-public"]}  ${styles[`btn-public__${color}`]} ${classes}`}
 			>
-				{name}
+				<div className="flex items-center">
+					<span key={"name"}>{name}</span>
+					{prefix}
+				</div>
 			</Button>
 		</Form.Item>
 	);

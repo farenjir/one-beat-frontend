@@ -1,8 +1,6 @@
-"use client";
-
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 
 import { PropsWithDice } from "@/types";
@@ -39,11 +37,27 @@ const LoginForm = ({ dict: { Auth }, mode }: PropsWithDice & { mode: "email" | "
 		},
 		[mode],
 	);
+	// icons switcher
+	const icons = {
+		email: <MailOutlined className="site-form-item-icon" />,
+		username: <UserOutlined className="site-form-item-icon" />,
+	};
 	// return
 	return (
 		<Form name="login-form" className="login-form" layout="vertical" onFinish={onFinish} initialValues={{ remember: true }}>
-			<Inputs name={mode} type="text" label={Auth[mode]} prefix={<UserOutlined />} />
-			<Inputs name="password" type="password" label={Auth.password} prefix={<LockOutlined />} />
+			<Inputs
+				// labelOnMode
+				name={mode}
+				type="text"
+				label={Auth[mode]}
+				prefix={icons[mode]}
+			/>
+			<Inputs
+				name="password"
+				type="password"
+				label={Auth.password}
+				prefix={<LockOutlined className="site-form-item-icon" />}
+			/>
 			<Checkboxes label={Auth.remember} name="remember" />
 			<Buttons name={Auth.loginAccount} color="secondary" htmlType="submit" classes="login-form-button mt-5" />
 		</Form>
