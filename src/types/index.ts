@@ -13,6 +13,7 @@ export type PropsWithDice = Configs.PropsWithDice;
 export type IParams = Configs.IParams;
 export type IDir = Configs.IDir;
 export type ILocale = Configs.ILocale;
+export type PropsWithLocale = Configs.PropsWithLocale;
 export type ILocaleOptions = Configs.ILocaleOptions;
 
 // data types
