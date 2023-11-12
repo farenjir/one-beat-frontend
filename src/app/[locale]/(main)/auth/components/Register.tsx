@@ -3,12 +3,11 @@ import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 
 import { PropsWithDice } from "@/types";
-
+import { createNotification } from "@/utils/notification";
 import { useAppContext } from "@/context";
 
-import { Inputs, Buttons } from "@/components";
 import { userRegistered } from "../../_library/services";
-import { createNotification } from "@/utils/notification";
+import { Inputs, Buttons } from "@/components";
 
 interface IRegisterForm {
 	username: string;

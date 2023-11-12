@@ -1,12 +1,14 @@
 import Link from "next/link";
 
-import { PropsWithDice } from "@/types";
+import { PropsWithLocale } from "@/types";
+import { getDictionary } from "@/langs";
 
 import NavbarMobileMenu from "./components/MobileMenu";
 import Notifications from "./components/Notification";
 import LogoSection from "./components/Logo";
 
-export default function MainNavbar({ dict }: PropsWithDice) {
+export default async function MainNavbar({ locale }: PropsWithLocale) {
+	const dict = await getDictionary(locale);
 	const links = [
 		{ href: "/", title: dict.Layout.home, prefetch: true },
 		{ href: "/sample", title: dict.Layout.samplePack, prefetch: true },
