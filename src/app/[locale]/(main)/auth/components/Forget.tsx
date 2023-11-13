@@ -8,6 +8,7 @@ import { useAppContext } from "@/context";
 import { userForgatPassword } from "../../_library/services";
 import { Inputs, Buttons } from "@/components";
 
+type Mode = "username" | "email";
 interface IForgetForm {
 	username?: string;
 	email?: string;
@@ -27,7 +28,7 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDice) => {
 	// hooks
 	const { callApi } = useAppContext();
 	// handles
-	const onFinish = async ({ username, email }: any) => {
+	const onFinish = async ({ username, email }: IForgetForm) => {
 		const formBody = {
 			[email ? "email" : "username"]: email || username,
 		};
@@ -36,6 +37,9 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDice) => {
 			Object.assign(disableOtherField, { btn: true });
 			setDisableOtherField(disableOtherField);
 		}
+	};
+	const handleOnChange = (mount: Mode, unmount: Mode) => {
+		setDisableOtherField({ ...disableOtherField, [mount]: true, [unmount]: false });
 	};
 	// return
 	return (
@@ -46,7 +50,7 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDice) => {
 				label={Auth.username}
 				prefix={<UserOutlined className="site-form-item-icon" />}
 				required={disableOtherField.username}
-				onChange={() => setDisableOtherField({ email: false, username: true })}
+				onChange={() => handleOnChange("username", "email")}
 			/>
 			<Inputs
 				name="email"
@@ -54,7 +58,7 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDice) => {
 				label={Auth.email}
 				prefix={<MailOutlined className="site-form-item-icon" />}
 				required={disableOtherField.email}
-				onChange={() => setDisableOtherField({ email: true, username: false })}
+				onChange={() => handleOnChange("email", "username")}
 			/>
 			<Buttons
 				name={Auth.forgetBtn}
