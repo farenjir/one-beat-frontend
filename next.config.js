@@ -4,10 +4,10 @@ const { NEXT_APP_BASE_URL, NEXT_APP_BACKEND_SERVER, NODE_ENV } = process.env;
 const env = { NEXT_APP_BASE_URL, NEXT_APP_BACKEND_SERVER };
 
 const withPWA = require("next-pwa")({
-	dest: "public/pwa",
+	dest: "public",
 	register: true,
 	skipWaiting: true,
-	disable: NODE_ENV === "development",
+	// disable: NODE_ENV === "development",
 });
 
 const nextConfig = withPWA({
