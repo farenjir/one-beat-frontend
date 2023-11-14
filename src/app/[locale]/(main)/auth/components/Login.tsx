@@ -44,7 +44,13 @@ const LoginForm = ({ dict: { Auth }, mode }: PropsWithDice & { mode: "email" | "
 	};
 	// return
 	return (
-		<Form name="login-form" className="login-form" layout="vertical" onFinish={onFinish} initialValues={{ remember: true }}>
+		<Form
+			name="login-form"
+			className="login-form"
+			layout="vertical"
+			onFinish={onFinish}
+			initialValues={{ remember: true }}
+		>
 			<Inputs
 				// labelOnMode
 				name={mode}

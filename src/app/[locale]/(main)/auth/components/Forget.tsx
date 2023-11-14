@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { InfoCircleOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Form, Tooltip } from "antd";
 
@@ -6,6 +6,7 @@ import { PropsWithDice } from "@/types";
 import { useAppContext } from "@/context";
 
 import { userForgatPassword } from "../../_library/services";
+
 import { Inputs, Buttons } from "@/components";
 
 type Mode = "username" | "email";
@@ -20,52 +21,61 @@ interface IState {
 }
 
 const ForgetPassword = ({ dict: { Auth } }: PropsWithDice) => {
-	const [disableOtherField, setDisableOtherField] = useState<IState>({
-		username: true,
-		email: true,
+	const [{ username, email, btn }, setDisableOtherField] = useState<IState>({
+		username: false,
+		email: false,
 		btn: false,
 	});
 	// hooks
+	const [form] = Form.useForm();
 	const { callApi } = useAppContext();
 	// handles
-	const onFinish = async ({ username, email }: IForgetForm) => {
+	const onFinish = async ({ username: name, email: mail }: IForgetForm) => {
 		const formBody = {
-			[email ? "email" : "username"]: email || username,
+			[mail ? "email" : "username"]: mail || name,
 		};
 		const sentMail = await userForgatPassword<IForgetForm>(callApi, formBody);
 		if (sentMail) {
-			Object.assign(disableOtherField, { btn: true });
-			setDisableOtherField(disableOtherField);
+			setDisableOtherField({ username, email, btn: true });
 		}
 	};
-	const handleOnChange = (mount: Mode, unmount: Mode) => {
-		setDisableOtherField({ ...disableOtherField, [mount]: true, [unmount]: false });
+	const handleOnChange = (mount: Mode, unmount: Mode, isNotMounted: boolean) => {
+		if (!isNotMounted) {
+			setDisableOtherField((perObject) => ({ ...perObject, [mount]: true, [unmount]: false }));
+			form.setFieldValue(unmount, null);
+		}
 	};
 	// return
 	return (
-		<Form name="forget-password-form" className="forget-password-form" layout="vertical" onFinish={onFinish}>
+		<Form
+			name="forget-password-form"
+			layout="vertical"
+			form={form}
+			onFinish={onFinish}
+			className="forget-password-form"
+		>
 			<Inputs
 				name="username"
 				type="text"
 				label={Auth.username}
 				prefix={<UserOutlined className="site-form-item-icon" />}
-				required={disableOtherField.username}
-				onChange={() => handleOnChange("username", "email")}
+				required={username}
+				onChange={() => handleOnChange("username", "email", username)}
 			/>
 			<Inputs
 				name="email"
 				type="email"
 				label={Auth.email}
 				prefix={<MailOutlined className="site-form-item-icon" />}
-				required={disableOtherField.email}
-				onChange={() => handleOnChange("email", "username")}
+				required={email}
+				onChange={() => handleOnChange("email", "username", email)}
 			/>
 			<Buttons
 				name={Auth.forgetBtn}
-				color={disableOtherField.btn ? "disabled" : "active"}
+				color={btn ? "disabled" : "active"}
 				htmlType="submit"
 				classes="login-form-button mt-5"
-				disabled={disableOtherField.btn}
+				disabled={btn}
 				prefix={
 					<Tooltip title={Auth.forgetInfo}>
 						<InfoCircleOutlined className="site-info-item-icon mx-2" />
