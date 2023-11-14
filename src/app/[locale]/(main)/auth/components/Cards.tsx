@@ -33,11 +33,9 @@ const CardsOfAuth = ({ dict }: PropsWithDice) => {
 	];
 	// return
 	return (
-		<section className="h-full w-full grid place-content-center">
-			<div className="bg-gray-50 p-5 rounded-lg">
-				<TabMenu items={tabItems} type="card" tabPosition="right" tabClasses="px-5" />{" "}
-			</div>
-		</section>
+		<>
+			<TabMenu items={tabItems} type="card" tabPosition="right" tabClasses="px-5" />
+		</>
 	);
 };
 
