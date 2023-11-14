@@ -1,13 +1,12 @@
 module.exports = {
 	root: true,
-	plugins: ["testing-library"],
 	extends: ["next/core-web-vitals"],
 	rules: {},
+	plugins: ["testing-library"],
 	overrides: [
-		// Only uses Testing Library lint rules in test files
 		{
 			files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
-			extends: ["plugin:testing-library/react"],
+			extends: ["plugin:testing-library/react"], // Only uses Testing Library lint rules in test files
 		},
 	],
 };
