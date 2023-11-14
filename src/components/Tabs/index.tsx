@@ -35,7 +35,13 @@ const TabMenu = ({
 	return (
 		<Tabs
 			{...{ defaultActiveKey, centered, type, size, tabBarGutter, tabPosition, onChange }}
-			items={items.map(({ key, content, label }) => ({ key, id: key, label, className: tabClasses, children: content }))}
+			items={items.map(({ key, content, label }) => ({
+				key,
+				id: key,
+				label,
+				className: tabClasses,
+				children: content,
+			}))}
 		/>
 	);
 };
