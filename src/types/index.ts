@@ -9,7 +9,7 @@ import type { IVersion } from "./public/version";
 export type TypeApi = Configs.TypeApi;
 export type GenerateMetaProps = Configs.GenerateMetaProps;
 export type PropsWithParams = Configs.PropsWithParams;
-export type PropsWithDice = Configs.PropsWithDice;
+export type PropsWithDict = Configs.PropsWithDict;
 export type IParams = Configs.IParams;
 export type IDir = Configs.IDir;
 export type ILocale = Configs.ILocale;

@@ -1,13 +1,13 @@
 "use client";
 
-import { PropsWithDice } from "@/types";
+import { PropsWithDict } from "@/types";
 
 import { TabMenu } from "@/components";
 import LoginForm from "./Login";
 import RegisterForm from "./Register";
 import ForgetPassword from "./Forget";
 
-const CardsOfAuth = ({ dict }: PropsWithDice) => {
+const CardsOfAuth = ({ dict }: PropsWithDict) => {
 	// tabItems
 	const tabItems = [
 		{

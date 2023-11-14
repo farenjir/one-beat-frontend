@@ -54,7 +54,7 @@ const Inputs = async ({
 	// textArea
 	autoSize = false,
 }: IInputs) => {
-	const { dict }: any = useLocaleConfigs(locale);
+	const { dict } = useLocaleConfigs(locale);
 	// InputSelected
 	const inputSelected = ({ type = "text" }) => {
 		switch (type) {

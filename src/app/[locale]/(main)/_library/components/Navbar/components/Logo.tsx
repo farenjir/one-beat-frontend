@@ -1,11 +1,11 @@
 import Image from "next/image";
 
-import { PropsWithDice } from "@/types";
+import { PropsWithDict } from "@/types";
 
 import logo from "@/assets/images/HeaderLogo-dark.svg";
 import AuthLink from "./AuthLink";
 
-export default function LogoSection({ dict }: PropsWithDice) {
+export default function LogoSection({ dict }: PropsWithDict) {
 	return (
 		<>
 			<AuthLink dict={dict} />

@@ -1,11 +1,11 @@
 import Image from "next/image";
 import { Carousel } from "antd";
 
-import { PropsWithDice } from "@/types";
+import { PropsWithDict } from "@/types";
 
 import img from "./card-top.jpg";
 
-export default function TopProduct({ dict }: PropsWithDice) {
+export default function TopProduct({ dict }: PropsWithDict) {
 	const {
 		Main: { Header },
 	} = dict;

@@ -1,8 +1,8 @@
 import { CustomerServiceOutlined, HeartOutlined, ShoppingOutlined, StarOutlined } from "@ant-design/icons";
 
-import { PropsWithDice } from "@/types";
+import { PropsWithDict } from "@/types";
 
-export default function MainHeader({ dict }: PropsWithDice) {
+export default function MainHeader({ dict }: PropsWithDict) {
 	const {
 		Main: { Header },
 	} = dict;

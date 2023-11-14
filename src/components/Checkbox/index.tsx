@@ -27,7 +27,7 @@ const Checkboxes = ({
 	checked = undefined,
 	locale = undefined,
 }: ICheckbox) => {
-	const { dict }: any = useLocaleConfigs(locale);
+	const { dict } = useLocaleConfigs(locale);
 	// rules
 	const rules = [
 		{

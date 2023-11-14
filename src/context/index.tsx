@@ -3,21 +3,25 @@
 import { ReactNode, createContext, useContext, useEffect } from "react";
 import { Provider } from "react-redux";
 
+import { getDictionary } from "@/langs";
+import { ILocale, ILocaleOptions } from "@/types";
+
 import store from "@/store/store";
 import { useAppDispatch } from "@/store/selector";
-
 import { getCurrentUser } from "@/store/auth/action";
 import { initializeAppDep } from "@/store/app/action";
 
 import callApi from "@/service";
-import { ILocale, ILocaleOptions } from "@/types";
+import { useLocaleConfigs } from "@/hooks";
 
 import StyledComponentsRegistry from "@/components/AntdRegistry";
-import { useLocaleConfigs } from "@/hooks";
 
 interface IContext {
 	callApi: typeof callApi;
-	localeConfigs: ILocaleOptions;
+	localeConfigs: {
+		dict?: typeof getDictionary.arguments;
+		locale?: ILocaleOptions;
+	};
 }
 
 const AppContext = createContext<IContext>({

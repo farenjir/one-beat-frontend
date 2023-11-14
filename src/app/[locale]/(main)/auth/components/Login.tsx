@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 
-import { PropsWithDice } from "@/types";
+import { PropsWithDict } from "@/types";
 import { useAppContext } from "@/context";
 import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
@@ -17,7 +17,7 @@ interface ILoginForm {
 	password: string;
 }
 
-const LoginForm = ({ dict: { Auth }, mode }: PropsWithDice & { mode: "email" | "username" }) => {
+const LoginForm = ({ dict: { Auth }, mode }: PropsWithDict & { mode: "email" | "username" }) => {
 	// hooks
 	const router = useRouter();
 	const dispatch = useAppDispatch();

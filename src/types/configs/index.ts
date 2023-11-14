@@ -21,7 +21,7 @@ export interface IParams {
 	params: { locale: ILocale };
 }
 
-export type PropsWithDice = {
+export type PropsWithDict = {
 	dict: any;
 };
 

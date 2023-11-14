@@ -2,7 +2,7 @@ import { Suspense, useState } from "react";
 import { InfoCircleOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Form, Tooltip } from "antd";
 
-import { PropsWithDice } from "@/types";
+import { PropsWithDict } from "@/types";
 import { useAppContext } from "@/context";
 
 import { userForgatPassword } from "../../_library/services";
@@ -20,7 +20,7 @@ interface IState {
 	btn?: boolean;
 }
 
-const ForgetPassword = ({ dict: { Auth } }: PropsWithDice) => {
+const ForgetPassword = ({ dict: { Auth } }: PropsWithDict) => {
 	const [{ username, email, btn }, setDisableOtherField] = useState<IState>({
 		username: false,
 		email: false,

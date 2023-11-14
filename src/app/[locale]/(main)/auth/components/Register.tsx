@@ -2,7 +2,7 @@ import { useRouter } from "next/navigation";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 
-import { PropsWithDice } from "@/types";
+import { PropsWithDict } from "@/types";
 import { createNotification } from "@/utils/notification";
 import { useAppContext } from "@/context";
 
@@ -16,7 +16,7 @@ interface IRegisterForm {
 	repeatPassword?: string;
 }
 
-const RegisterForm = ({ dict: { Auth } }: PropsWithDice) => {
+const RegisterForm = ({ dict: { Auth } }: PropsWithDict) => {
 	// hooks
 	const router = useRouter();
 	const { callApi } = useAppContext();
