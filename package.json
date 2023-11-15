@@ -9,7 +9,7 @@
 		"lint": "next lint",
 		"test:w": "jest --watch",
 		"test": "jest --coverage",
-		"commit": "npm run lint && npx prettier --write . && git add . && git commit -m \"$npm_config_message\""
+		"commit": "npm run lint && npx prettier --write . && git add . && git commit -m \"$npm_config_message!\""
 	},
 	"dependencies": {
 		"@ant-design/cssinjs": "^1.17.2",
