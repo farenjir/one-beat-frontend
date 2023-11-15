@@ -11,9 +11,6 @@
 		"test": "jest --coverage",
 		"commit": "npm run lint && npx prettier --write . && git add . && git commit -m "
 	},
-	"config": {
-		"gitMessage": "gitMessage"
-	},
 	"dependencies": {
 		"@ant-design/cssinjs": "^1.17.2",
 		"@ant-design/icons": "^5.2.6",
