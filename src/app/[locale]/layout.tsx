@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import type { Metadata, ResolvingMetadata } from "next";
 
-import { mainLayoutMetadata } from "@/meta/mainLayout";
+import { rootLayoutMetadata } from "@/meta/RootLayout";
 
 import "@/assets/styles/global.css";
 import "@/assets/styles/antd.overwrite.css";
@@ -34,7 +34,7 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata(params: GenerateMetaProps, parent: ResolvingMetadata): Promise<Metadata> {
-	return await mainLayoutMetadata(params, parent);
+	return await rootLayoutMetadata(params, parent);
 }
 
 export default function RootLayout({ children, params: { locale } }: PropsWithParams) {
