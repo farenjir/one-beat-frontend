@@ -3,7 +3,7 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { getDictionary } from "@/langs";
 import { GenerateMetaProps } from "@/types";
 
-export async function mainLayoutMetadata(parameters: GenerateMetaProps, parent: ResolvingMetadata): Promise<Metadata> {
+export async function rootLayoutMetadata(parameters: GenerateMetaProps, parent: ResolvingMetadata): Promise<Metadata> {
 	const {
 		searchParams,
 		params: { locale },
