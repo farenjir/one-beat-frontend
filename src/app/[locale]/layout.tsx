@@ -10,7 +10,7 @@ import { GenerateMetaProps, PropsWithParams } from "@/types";
 import { getLocaleConfigs } from "@/utils/global";
 import { locales } from "@/langs";
 
-import GlobalStates from "@/context";
+import Globals from "@/context";
 
 const yekan = localFont({
 	variable: "--font-yekan",
@@ -41,8 +41,8 @@ export default function RootLayout({ children, params: { locale } }: PropsWithPa
 	const { lang, dir } = getLocaleConfigs(locale);
 	return (
 		<html lang={lang} dir={dir} className={`${yekan.variable}`}>
-			<body className={`${yekan.className}`}>
-				<GlobalStates locale={locale}>{children}</GlobalStates>
+			<body className={`${yekan.className} bg-black`}>
+				<Globals locale={locale}>{children}</Globals>
 			</body>
 		</html>
 	);

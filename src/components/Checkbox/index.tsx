@@ -37,7 +37,7 @@ const Checkboxes = ({
 	];
 	return (
 		<Form.Item {...{ name, initializeValue, rules, disabled }} valuePropName="checked" noStyle className={classes}>
-			<Checkbox defaultChecked={initializeValue} checked={checked} disabled={disabled} className={inputClasses}>
+			<Checkbox {...{ checked, disabled }} defaultChecked={initializeValue} className={inputClasses}>
 				{label}
 			</Checkbox>
 		</Form.Item>

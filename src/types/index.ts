@@ -1,4 +1,5 @@
 import { Roles } from "./enums";
+
 import type * as Configs from "./configs";
 
 import type { IUser } from "./public/user";
