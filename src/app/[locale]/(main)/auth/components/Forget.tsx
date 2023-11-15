@@ -1,4 +1,6 @@
-import { Suspense, useState } from "react";
+"use client";
+
+import { useState } from "react";
 import { InfoCircleOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Form, Tooltip } from "antd";
 

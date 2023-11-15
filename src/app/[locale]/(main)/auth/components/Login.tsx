@@ -1,3 +1,5 @@
+"use client";
+
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
