@@ -60,7 +60,7 @@ const ApplicationContext = ({ children, locale }: { children: ReactNode; locale:
 export const useAppContext = () => useContext(AppContext);
 
 // state management of the application
-export default function ({ children, locale }: { children: ReactNode; locale: ILocale }) {
+export default function GlobalStates({ children, locale }: { children: ReactNode; locale: ILocale }) {
 	return (
 		<Provider store={store}>
 			<StyledComponentsRegistry>

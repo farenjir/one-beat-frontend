@@ -30,7 +30,7 @@ interface IInputs {
 	autoSize?: boolean;
 }
 
-const Inputs = async ({
+const Inputs = ({
 	type = "text",
 	label = "",
 	name = "",

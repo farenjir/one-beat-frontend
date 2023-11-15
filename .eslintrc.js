@@ -2,7 +2,7 @@ module.exports = {
 	root: true,
 	extends: ["next/core-web-vitals"],
 	rules: {
-		"react/display-name": "off",
+		"react-hooks/exhaustive-deps": "off",
 	},
 	plugins: ["testing-library"],
 	overrides: [
