@@ -9,7 +9,7 @@
 		"lint": "next lint",
 		"test:w": "jest --watch",
 		"test": "jest --coverage",
-		"postinstall": "husky install"
+		"beforeCommit": "npx prettier --write . && npm run lint"
 	},
 	"dependencies": {
 		"@ant-design/cssinjs": "^1.17.2",
