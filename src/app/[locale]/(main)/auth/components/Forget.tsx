@@ -47,13 +47,7 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDict) => {
 	};
 	// return
 	return (
-		<Form
-			name="forget-password-form"
-			layout="vertical"
-			form={form}
-			onFinish={onFinish}
-			className="forget-password-form"
-		>
+		<Form name="forget-password-form" layout="vertical" form={form} onFinish={onFinish} className="forget-password-form">
 			<Inputs
 				name="username"
 				type="text"

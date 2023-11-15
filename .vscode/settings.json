@@ -1,23 +1,23 @@
 {
-    "cSpell.words": [
-        "antd",
-        "Appstore",
-        "cssinjs",
-        "ducanh",
-        "Etags",
-        "headlessui",
-        "persistor",
-        "reduxjs",
-        "roboto",
-        "tailwindcss",
-        "tanstack",
-        "yekan",
-        "YekanBakh",
-        "zustand"
-    ],
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#13286C",
-        "titleBar.activeBackground": "#1A3797",
-        "titleBar.activeForeground": "#FCFDFE"
-    }
+	"cSpell.words": [
+		"antd",
+		"Appstore",
+		"cssinjs",
+		"ducanh",
+		"Etags",
+		"headlessui",
+		"persistor",
+		"reduxjs",
+		"roboto",
+		"tailwindcss",
+		"tanstack",
+		"yekan",
+		"YekanBakh",
+		"zustand"
+	],
+	"workbench.colorCustomizations": {
+		"activityBar.background": "#13286C",
+		"titleBar.activeBackground": "#1A3797",
+		"titleBar.activeForeground": "#FCFDFE"
+	}
 }

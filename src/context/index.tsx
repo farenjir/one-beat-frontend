@@ -42,7 +42,7 @@ const ApplicationContext = ({ children, locale }: { children: ReactNode; locale:
 			appPromise.abort();
 			userPromise.abort();
 		};
-	}, [locale]);
+	}, [locale, dispatch]);
 	// return context
 	return (
 		<AppContext.Provider
