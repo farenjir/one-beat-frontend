@@ -6,7 +6,7 @@ import LoginForm from "./components/Login";
 import RegisterForm from "./components/Register";
 import ForgetPassword from "./components/Forget";
 
-export default async function Users({ params: { locale } }: IParams) {
+export default async function Auth({ params: { locale } }: IParams) {
 	const dict = await getDictionary(locale);
 	// tabItems
 	const tabItems = [

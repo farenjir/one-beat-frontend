@@ -10,7 +10,7 @@ const withPWA = require("next-pwa")({
 	disable: NODE_ENV === "development",
 });
 
-const nextConfig = withPWA({
+module.exports = withPWA({
 	reactStrictMode: true,
 	swcMinify: true,
 	env,
@@ -24,5 +24,3 @@ const nextConfig = withPWA({
 	// generateEtags: false,
 	// webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => config,
 });
-
-module.exports = nextConfig;
