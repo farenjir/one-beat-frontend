@@ -20,6 +20,21 @@ module.exports = withPWA({
 	// typescript: {
 	// 	ignoreBuildErrors: true,
 	// },
+	// images: {
+	//     remotePatterns: [{
+	//         protocol: 'https',
+	//         hostname: '**.notion.so',
+	//     }, {
+	//         protocol: 'https',
+	//         hostname: '**.amazonaws.com',
+	//     }, {
+	//         protocol: 'https',
+	//         hostname: '**.googleapis.com',
+	//     }],
+	//     domains: ['flagcdn.com'],
+	//     formats: ['image/avif', 'image/webp'],
+	//     minimumCacheTTL: 60 * 60, // cache for 1h
+	// }
 	// generateBuildId: async () => "my-build-id",
 	// generateEtags: false,
 	// webpack: (config, { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }) => config,
