@@ -1,65 +1,72 @@
 import Image from "next/image";
 
-import { CaretLeftOutlined } from "@ant-design/icons";
+import { CaretLeftOutlined, ShoppingOutlined } from "@ant-design/icons";
 
-import img from "./card-top.jpg";
-
-const TitleItem = () => (
-	<li className="flex">
-		<p>POOLAD</p>
-		<span className="text-appOrange flex justify-end">
-			<p className="mx-2">: سبک </p> <CaretLeftOutlined className="pb-1" />
-		</span>
-	</li>
-);
+import img from "../../card-top.jpg";
 
 const Title = () => {
+	const TitleItem = () => (
+		<li className="flex">
+			<p>POOLAD</p>
+			<span className="text-appOrange flex justify-end">
+				<p className="mx-2">: سبک </p> <CaretLeftOutlined className="pb-1" />
+			</span>
+		</li>
+	);
+	// return
 	return (
-		<div className="grow-0 text-white">
-			<div className="flex flex-col items-end">
-				<h5 className="mb-2 text-4xl font-extrabold">واقعیت اینه</h5>
-				<small className="mb-5 mx-2">
-					<strong className="mx-1">POOLAD</strong> آهنگساز
-				</small>
+		<div className=" w-2/3 text-white">
+			<div className="flex flex-col items-end justify-between h-full">
+				<div className="beat-descriptions flex flex-col items-end">
+					<h5 className="mb-2 text-4xl font-extrabold">واقعیت اینه</h5>
+					<small className="mb-5 mx-2">
+						<strong className="mx-1">POOLAD</strong> آهنگساز
+					</small>
+				</div>
 				<ul className="list-outside text-xl grid gap-3">
 					<TitleItem />
 					<TitleItem />
 					<TitleItem />
 					<TitleItem />
 				</ul>
+				<button className="text-appOrange border border-appOrange rounded-lg cursor-pointer hover:bg-appOrangeLight hover:border-white hover:text-white w-1/2 pt-1">
+					<ShoppingOutlined />
+					<span className="mx-1">خرید</span>
+				</button>
 			</div>
 		</div>
 	);
 };
 
 const Description = () => (
-	<div className="grow-0 text-white hidden md:block">
-		{/* <div className="grow-0 text-white"> */}
-		<div className="flex flex-col justify-between p-4 leading-normal">
-			<h5 className="mb-2 text-2xl font-bold tracking-tight ">Noteworthy technology acquisitions 2021</h5>
-			<p className="mb-3 font-normal">
-				Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
-			</p>
-		</div>
+	<div className="w-3/4 text-white hidden md:block">
+		<p className="font-normal text-justify text-slate-400 hover:text-white">
+			لورم ایپسوم یا طرح‌نما به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک
+			از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده
+			استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای
+			صفحه‌آرایی، نخست از متن‌های آزمایشی و بی‌معنی استفاده می‌کنند تا صرفا به مشتری یا صاحب کار خود نشان دهند که صفحه
+			طراحی یا صفحه بندی شده بعد از اینکه متن در آن قرار گیرد چگونه به نظر می‌رسد و قلم‌ها و اندازه‌بندی‌ها چگونه در
+			نظر گرفته شده‌است. از آنجایی که طراحان عموما نویسنده متن نیستند و وظیفه رعایت حق تکثیر متون را ندارند و در همان
+			حال کار آنها به نوعی وابسته به متن می‌باشد آنها با استفاده از محتویات ساختگی، صفحه گرافیکی خود را صفحه‌آرایی
+			می‌کنند تا مرحله طراحی و صفحه‌بندی را به پایان برند.
+		</p>
 	</div>
 );
 
 const ImageItem = () => (
-	<div className="grow-0">
-		<Image className="rounded-xl" src={img} alt="" loading="lazy" />
+	<div className="w-full">
+		<Image className="rounded-xl" sizes="" src={img} alt="" loading="lazy" />
 	</div>
 );
 
-const SingleCard = () => {
+export default function SingleCard({ id }: { id: string }) {
 	return (
-		<div className="single-card">
-			<section className="flex flex-col-reverse md:flex-row">
+		<div className="single-card" key={id}>
+			<section className="flex flex-col-reverse gap-3 md:flex-row-reverse">
 				<Title />
 				<Description />
 				<ImageItem />
 			</section>
 		</div>
 	);
-};
-
-export default SingleCard;
+}
