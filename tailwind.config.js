@@ -8,6 +8,9 @@ module.exports = {
 				yekan: ["var(--font-yekan)"],
 			},
 			colors: {
+				black: "#141414",
+				// custom colors
+				appBlack: "#3b3d3f",
 				appGrey: "#0000000d",
 				appOrange: "#fa9600cc",
 				appOrangeLight: "#ffa50050",
