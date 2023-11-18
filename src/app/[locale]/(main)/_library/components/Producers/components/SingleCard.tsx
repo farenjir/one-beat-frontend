@@ -19,8 +19,8 @@ const Descriptions = () => {
 				<TitleItem />
 			</ul>
 			<button className="text-appOrange cursor-pointer pt-5">
-				<span >ورود به صفحه</span>
-				<UserOutlined  className="mx-2 p-1 rounded-full border border-appOrange"/>
+				<span>ورود به صفحه</span>
+				<UserOutlined className="mx-2 p-1 rounded-full border border-appOrange" />
 			</button>
 		</>
 	);
@@ -29,13 +29,13 @@ const Descriptions = () => {
 export default function ProducersSingleCard({ id }: { id: string }) {
 	return (
 		<div
-			className="producer-card w-full rounded-3xl rounded-tr-[2.5rem] bg-slate-900 text-white p-6 text-center shadow-2xl border border-appOrange"
+			className="producer-card w-full rounded-3xl rounded-tr-[2.5rem] bg-slate-900/40 text-white p-6 text-center shadow-2xl border border-appOrange"
 			key={id}
 		>
 			<div className="producer-header text-2xl relative w-full flex justify-between align-middle -mt-10 mx-10 h-24">
 				<SafetyOutlined className="absolute -right-10 top-10 rounded-tr-full rounded-bl-full bg-appOrange px-8 py-2 -m-6" />
 				<Image
-					className="absolute top-0 left-0 rounded-full h-28 w-28 shadow shadow-appOrange" 
+					className="absolute top-0 left-0 rounded-full h-28 w-28 shadow shadow-appOrange"
 					width={100}
 					height={100}
 					src={img}
