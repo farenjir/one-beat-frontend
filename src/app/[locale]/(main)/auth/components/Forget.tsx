@@ -26,7 +26,7 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDict) => {
 	const [{ username, email, btn }, setDisableOtherField] = useState<IState>({
 		username: false,
 		email: false,
-		btn: false,
+		btn: true,
 	});
 	// hooks
 	const [form] = Form.useForm();
@@ -43,7 +43,7 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDict) => {
 	};
 	const handleOnChange = (mount: Mode, unmount: Mode, isNotMounted: boolean) => {
 		if (!isNotMounted) {
-			setDisableOtherField((perObject) => ({ ...perObject, [mount]: true, [unmount]: false }));
+			setDisableOtherField((perObject) => ({ ...perObject, [mount]: true, [unmount]: false, btn: false }));
 			form.setFieldValue(unmount, null);
 		}
 	};

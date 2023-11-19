@@ -37,7 +37,7 @@ const Buttons = ({
 				onClick={onClick}
 				className={`${styles["btn-public"]}  ${styles[`btn-public__${color}`]} ${classes}`}
 			>
-				<div className="flex items-center">
+				<div className="flex justify-center items-center">
 					<span key={"name"}>{name}</span>
 					{prefix}
 				</div>
