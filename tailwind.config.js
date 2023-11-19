@@ -11,7 +11,9 @@ module.exports = {
 				black: "#141414",
 				// custom colors
 				appBlack: "#3b3d3f",
-				appGrey: "#0000000d",
+				appBlur: "#0000000d",
+				appGrey: "#808080",
+				appGreyLighter: "#bdb9b9",
 				appOrange: "#fa9600cc",
 				appOrangeLight: "#ffa50050",
 				appGreen: "#52c41a",

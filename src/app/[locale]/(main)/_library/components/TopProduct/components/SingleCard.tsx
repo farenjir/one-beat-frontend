@@ -7,15 +7,15 @@ import img from "../../card-top.jpg";
 const Title = () => {
 	const TitleItem = () => (
 		<li className="flex">
-			<p>POOLAD</p>
+			<p className="truncate max-w-[220px]">POOLAD POOLAD</p>
 			<span className="text-appOrange flex justify-end">
-				<p className="mx-2">: سبک </p> <CaretLeftOutlined className="pb-1" />
+				<p className="mx-2 text-base">: سبک </p> <CaretLeftOutlined className="pb-1" />
 			</span>
 		</li>
 	);
 	// return
 	return (
-		<div className=" w-2/3 text-white">
+		<div className="md:w-2/3 text-white">
 			<div className="flex flex-col items-end justify-between h-full">
 				<div className="beat-descriptions flex flex-col items-end">
 					<h5 className="mb-2 text-4xl font-extrabold">واقعیت اینه</h5>
@@ -29,7 +29,7 @@ const Title = () => {
 					<TitleItem />
 					<TitleItem />
 				</ul>
-				<button className="text-appOrange border border-appOrange rounded-lg cursor-pointer hover:bg-appOrangeLight hover:border-white hover:text-white w-1/2 pt-1">
+				<button className="text-appOrange border border-appOrange rounded-lg cursor-pointer hover:bg-appOrangeLight hover:border-white hover:text-white w-full mt-3 md:mt-1 md:w-1/2 pt-1 ">
 					<ShoppingOutlined />
 					<span className="mx-1">خرید</span>
 				</button>

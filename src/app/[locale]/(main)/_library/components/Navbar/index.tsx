@@ -18,7 +18,7 @@ export default async function MainNavbar({ locale }: PropsWithLocale) {
 	];
 	// return
 	return (
-		<nav className="bg-appGrey w-full absolute top-0 left-0">
+		<nav className="bg-appBlur w-full absolute top-0 left-0">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<div className="relative flex h-16 items-center justify-between">
 					{/* NavbarMobileMenu */}
