@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { AppBases } from "@/types";
+import { AppTransformBases } from "@/types";
 
 import { initializeAppDep } from "./action";
 
@@ -8,7 +8,7 @@ export interface IAppState {
 	baseVersion: number;
 	appVersion: number;
 	description: string[];
-	bases: AppBases[];
+	bases: AppTransformBases[];
 	loading: boolean;
 }
 

@@ -53,9 +53,7 @@ export default function ProducersSingleCard({ id, color }: ICard) {
 			<div className="producer-info flex flex-col text-left mt-10">
 				<h5 className="text-4xl font-bold">Hassan BABA</h5>
 				<strong className="text-gray-500 text-3xl">آهنگساز</strong>
-				<small className="text-white">
-					187 دنبال کننده
-				</small>
+				<small className="text-white">187 دنبال کننده</small>
 			</div>
 			<Descriptions color={color} />
 		</div>

@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { AppBases, ILocale, IVersion, TypeApi } from "@/types";
+import { AppBases, AppTransformBases, ILocale, IVersion, TypeApi } from "@/types";
 
-import { storeInCookie } from "@/utils/cookie";
+import { getFromCookie, storeInCookie } from "@/utils/cookie";
 import { getFromStorage, setToStorage } from "@/utils/storage";
 
 type IProps = {
@@ -11,18 +11,19 @@ type IProps = {
 };
 
 export const initializeAppDep = createAsyncThunk("app/initialize", async ({ callApi, locale }: IProps, _thunkAPI) => {
-	const { currentAppVersion, currentBaseVersion, currentBases } = initializeHandles.currentAppDep(locale);
+	const { currentAppVersion, currentBaseVersion, currentBases, localeChanged } = initializeHandles.currentAppDep(locale);
 	// return
 	return await callApi<IVersion, null>({ url: "version/getLatest" })
 		.then(async (response) => {
 			const { appVersion = currentAppVersion, baseVersion = currentBaseVersion, description = [] } = response || {};
 			const bases = await initializeHandles.updateAppDep(
-				{ callApi },
+				{ callApi, locale },
 				appVersion,
 				currentAppVersion,
 				baseVersion,
 				currentBaseVersion,
 				currentBases,
+				localeChanged,
 			);
 			return {
 				bases,
@@ -43,31 +44,37 @@ export const initializeAppDep = createAsyncThunk("app/initialize", async ({ call
 
 export const initializeHandles = {
 	currentAppDep: (locale: ILocale) => {
-		storeInCookie("locale", locale);
+		const currentLocale = getFromCookie("locale");
+		if (currentLocale !== locale) {
+			storeInCookie("locale", locale);
+		}
 		return {
+			localeChanged: currentLocale !== locale,
 			currentAppVersion: +(getFromStorage("appVersion") || 0),
 			currentBaseVersion: +(getFromStorage("baseVersion") || 0),
 			currentBases: getFromStorage("appBases") || [],
 		};
 	},
 	updateAppDep: async (
-		{ callApi }: Omit<IProps, "locale">,
+		{ callApi, locale }: IProps,
 		appVersion: number,
 		currentAppVersion: number,
 		baseVersion: number,
 		currentBaseVersion: number,
-		currentBases: AppBases[],
-	): Promise<AppBases[]> => {
+		currentBases: AppTransformBases[],
+		localeChanged: boolean,
+	): Promise<AppTransformBases[]> => {
 		// get bases
 		let bases = currentBases;
-		if (baseVersion !== currentBaseVersion) {
+		if (baseVersion !== currentBaseVersion || localeChanged) {
 			bases = await callApi<AppBases[], null>({ url: "base/getAll" })
 				.then((response) => {
 					if (response) {
+						const appBases = initializeHandles.baseTransformer(response, locale);
 						// setToStorage
 						setToStorage("baseVersion", baseVersion);
-						setToStorage("appBases", response);
-						return response;
+						setToStorage("appBases", appBases);
+						return appBases;
 					} else {
 						return currentBases;
 					}
@@ -81,5 +88,21 @@ export const initializeHandles = {
 		}
 		// return
 		return bases;
+	},
+	baseTransformer: (bases: AppBases[], locale: ILocale): AppTransformBases[] => {
+		return bases.map(({ id = 0, type = "", children = [], ...name }) => ({
+			id,
+			type,
+			key: type,
+			label: name[`${locale}Name`],
+			name: name[`${locale}Name`],
+			children: children.map(({ id = 0, type = "", ...name }) => ({
+				id,
+				type,
+				key: type,
+				label: name[`${locale}Name`],
+				name: name[`${locale}Name`],
+			})),
+		}));
 	},
 };
