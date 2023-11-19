@@ -9,7 +9,7 @@ export interface AppBases {
 
 export interface AppTransformBases {
 	id: number;
-	key: string;
+	key: number;
 	type: string;
 	label: string;
 	name: string;

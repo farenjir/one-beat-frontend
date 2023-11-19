@@ -24,6 +24,7 @@ const ProductFilters = ({ dict }: PropsWithDict) => {
 	};
 	// filters
 	const filters = ["genre", "tempo", "mood", "group"];
+	const handleOnClickFilter = ({ key: id, ...other }: { key: string }) => {};
 	// return
 	return (
 		<div className="filter-section grid gap-3 items-center align-middle grid-cols-4 lg:grid-cols-5 lg:w-2/3 lg:gap-1">
@@ -31,7 +32,14 @@ const ProductFilters = ({ dict }: PropsWithDict) => {
 				{Product.filterBy}
 			</small>
 			{filters.map((item) => (
-				<DropdownMenu key={item} title={Product[item]} items={findItems(item)} type="link" {...commonStyles} />
+				<DropdownMenu
+					key={item}
+					title={Product[item]}
+					items={findItems(item)}
+					onClick={handleOnClickFilter}
+					type="link"
+					{...commonStyles}
+				/>
 			))}
 		</div>
 	);

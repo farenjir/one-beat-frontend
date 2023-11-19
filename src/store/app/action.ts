@@ -93,13 +93,13 @@ export const initializeHandles = {
 		return bases.map(({ id = 0, type = "", children = [], ...name }) => ({
 			id,
 			type,
-			key: type,
+			key: id,
 			label: name[`${locale}Name`],
 			name: name[`${locale}Name`],
 			children: children.map(({ id = 0, type = "", ...name }) => ({
 				id,
 				type,
-				key: type,
+				key: id,
 				label: name[`${locale}Name`],
 				name: name[`${locale}Name`],
 			})),
