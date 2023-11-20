@@ -9,6 +9,14 @@
 	}
 }
 
+/* @font-face {
+	font-family: Dana-FaNum-Regular;
+	src: url("../fonts/Dana-FaNum-Regular.ttf");
+}
+.faNumber * {
+	font-family: Dana-FaNum-Regular !important;
+} */
+
 /* document style */
 html {
 	overflow-x: hidden;
@@ -23,11 +31,13 @@ body {
 
 /* scroll style */
 * {
+	scroll-behavior: smooth;
 	scrollbar-width: thin;
 	scrollbar-color: #ffa50050 #0000000d;
 }
 *::-webkit-scrollbar {
 	width: 7px;
+	height: 7px;
 }
 *::-webkit-scrollbar-track {
 	background: #ffa6001a;

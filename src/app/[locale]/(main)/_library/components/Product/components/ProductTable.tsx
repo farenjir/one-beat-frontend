@@ -1,11 +1,12 @@
-"use client";
-
-import { ShoppingOutlined } from "@ant-design/icons";
+import { Suspense } from "react";
 
 import { PropsWithDict } from "@/types";
 
+import { handleBuyItem } from "./utils";
+
 import { Tables } from "@/components";
 import ProductFilters from "./Filters";
+import { Spin } from "antd";
 
 const ProductTable = ({ dict }: PropsWithDict) => {
 	const {
@@ -42,17 +43,12 @@ const ProductTable = ({ dict }: PropsWithDict) => {
 			key: "buy",
 			dataIndex: "buy",
 			title: Product["buy"],
-			render: (_value: any, _record: any, _index: any) => (
-				<button className="w-full pt-1 text-appOrange border border-appOrange rounded-lg cursor-pointer hover:bg-appOrangeLight hover:border-white hover:text-white">
-					<ShoppingOutlined />
-					<span className="mx-1">خرید</span>
-				</button>
-			),
+			render: handleBuyItem,
 		},
 	];
 	// return
 	return (
-		<>
+		<Suspense fallback={<Spin spinning className="w-full text-center" />}>
 			<ProductFilters dict={dict} />
 			<Tables
 				dataSource={[
@@ -69,7 +65,7 @@ const ProductTable = ({ dict }: PropsWithDict) => {
 				className="pb-10"
 				themeMode={{ token: "default", algorithm: "darkAlgorithm" }}
 			/>
-		</>
+		</Suspense>
 	);
 };
 

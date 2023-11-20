@@ -17,20 +17,20 @@ interface IExtraProps {
 	};
 }
 const Tables = ({
-	bordered,
-	loading,
+	bordered = false,
+	loading = false,
 	size,
 	expandable,
 	showHeader,
 	rowSelection,
-	scroll,
+	scroll = { x: "calc(400px + 50%)" },
 	tableLayout,
 	// classes
 	classes = "",
-	rowClassName,
-	className,
+	rowClassName = "",
+	className = "",
 	// pagination
-	pagination,
+	pagination = false,
 	// components
 	title,
 	footer,

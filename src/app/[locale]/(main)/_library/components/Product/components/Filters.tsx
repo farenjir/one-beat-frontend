@@ -1,3 +1,5 @@
+"use client";
+
 import { PropsWithDict } from "@/types";
 
 import { basesSelector, useAppSelector } from "@/store/selector";
