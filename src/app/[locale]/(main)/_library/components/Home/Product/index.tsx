@@ -8,6 +8,7 @@ import { handleBuyItem } from "./components/utils";
 import ProductFilters from "./components/Filters";
 
 const fakeData = Array(8).fill({
+	key: `${Math.random()}`,
 	name: "اشکان کاگان",
 	demo: "اشکان کاگان",
 	speed: "127 bpm",

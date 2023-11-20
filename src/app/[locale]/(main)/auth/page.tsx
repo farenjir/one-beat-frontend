@@ -2,9 +2,9 @@ import { IParams } from "@/types";
 import { getDictionary } from "@/langs";
 
 import { TabMenu } from "@/components";
-import LoginForm from "./components/Login";
-import RegisterForm from "./components/Register";
-import ForgetPassword from "./components/Forget";
+import LoginForm from "../_library/components/Auth/Login";
+import RegisterForm from "../_library/components/Auth/Register";
+import ForgetPassword from "../_library/components/Auth/Forget";
 
 export default async function Auth({ params: { locale } }: IParams) {
 	const dict = await getDictionary(locale);

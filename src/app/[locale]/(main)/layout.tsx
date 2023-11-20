@@ -2,7 +2,7 @@ import { PropsWithParams } from "@/types";
 
 import gStyle from "@/assets/styles/global.module.css";
 
-import MainNavbar from "./_library/components/Navbar";
+import MainNavbar from "./_library/components/Layout/Navbar";
 
 export default function MainLayout({ children, params: { locale } }: PropsWithParams) {
 	return (
