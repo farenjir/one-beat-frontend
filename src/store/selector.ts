@@ -13,7 +13,7 @@ export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 // *** app selector handles
 
 export const versionSelector = ({ app: { description, appVersion } }: RootState) => ({ appVersion, description });
-export const basesSelector = (state: RootState) => state.app.bases;
+export const basesSelector = (state: RootState) => state.app.bases || [];
 export const basesSelectorByType = (state: RootState, baseType: string) => {
 	return state?.app?.bases?.find((base) => base?.type === baseType);
 };

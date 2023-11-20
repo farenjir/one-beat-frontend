@@ -15,7 +15,6 @@ export default async function MainPage({ params: { locale } }: IParams) {
 			<TopProduct dict={dict} />
 			<Producers dict={dict} />
 			<Product dict={dict} />
-			<Producers dict={dict} />
 		</>
 	);
 }

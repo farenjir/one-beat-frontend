@@ -5,13 +5,12 @@ export type ILocale = "fa" | "en";
 export type IDir = "rtl" | "ltr";
 
 export interface ILocaleOptions {
-	[key: string]: {
-		lang: ILocale;
-		dir: IDir;
-		fontType: "yekan" | "roboto";
-		rtl: boolean;
-		ltr: boolean;
-	};
+	lang: ILocale;
+	dir: IDir;
+	fontType: "yekan" | "roboto";
+	rtl: boolean;
+	ltr: boolean;
+	locale: any; // antDictionaries
 }
 export interface GenerateMetaProps {
 	params: { locale: ILocale };

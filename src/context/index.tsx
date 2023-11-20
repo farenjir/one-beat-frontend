@@ -14,7 +14,7 @@ import { initializeAppDep } from "@/store/app/action";
 import callApi from "@/service";
 import { useLocaleConfigs } from "@/hooks";
 
-import AntdComponentsRegistry from "@/components/AntdRegistry";
+import AntdComponentsRegistry from "@/components/Registry";
 
 interface IContext {
 	callApi: typeof callApi;

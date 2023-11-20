@@ -4,7 +4,6 @@ import type { Metadata, ResolvingMetadata } from "next";
 import { rootLayoutMetadata } from "@/meta/RootLayout";
 
 import "@/assets/styles/global.css";
-import "@/assets/styles/antd.overwrite.css";
 
 import { GenerateMetaProps, PropsWithParams } from "@/types";
 import { getLocaleConfigs } from "@/utils/global";

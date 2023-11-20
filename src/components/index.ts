@@ -3,6 +3,7 @@ export { default as Checkboxes } from "./Checkbox";
 
 export { default as Buttons } from "./Buttons";
 
+export { default as Tables } from "./Tables";
 export { default as TabMenu } from "./Tabs";
 
 export { default as DropdownMenu } from "./Dropdown/menu";
