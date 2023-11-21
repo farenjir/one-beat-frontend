@@ -12,7 +12,7 @@ export interface IApi<TBody> {
 	responseType?: ResponseType;
 }
 
-const callApi = <TRes, TBody>({
+const callApi = <TRes, TBody = {}>({
 	url = "",
 	method = "GET",
 	body = {},
