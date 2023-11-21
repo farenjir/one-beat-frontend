@@ -23,7 +23,7 @@ const Tables = ({
 	expandable,
 	showHeader,
 	rowSelection,
-	scroll = { x: "calc(400px + 50%)" },
+	scroll = { x: "calc(400px + 60%)" },
 	tableLayout,
 	// classes
 	classes = "",
@@ -74,7 +74,7 @@ const Tables = ({
 					title,
 					footer,
 				}}
-				rowKey={(record) => record?.id || record?.key}
+				rowKey={(record: { [key: string]: string | number }) => record?.id || record?.key}
 				pagination={pagination}
 			/>
 		</ConfigProvider>
