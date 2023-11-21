@@ -1,7 +1,7 @@
 import axios, { AxiosError, AxiosHeaderValue, AxiosResponse, Method, ResponseType } from "axios";
 
-import { ISuccess, successCodeMessage } from "./messageSuccessCode";
-import { IError, errorCodeMessage } from "./messageErrorCode";
+import { ISuccess, successCodeMessage } from "./messages/successCode";
+import { IError, errorCodeMessage } from "./messages/errorCode";
 
 export interface IApi<TBody> {
 	url: string;

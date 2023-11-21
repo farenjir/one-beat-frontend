@@ -10,7 +10,7 @@ import Product from "./_library/components/Home/Product";
 
 export default async function MainPage({ params: { locale } }: IParams) {
 	const dict = await getDictionary(locale);
-	// const [topProduct, producers, products] = [await getTopProducts(), await getProducts(), await getProducers()];
+	const [topProduct, producers, products] = [await getTopProducts(), await getProducts(), await getProducers()];
 	// return
 	return (
 		<>

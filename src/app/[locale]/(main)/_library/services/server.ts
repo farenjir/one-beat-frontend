@@ -1,31 +1,25 @@
 import { cache } from "react";
 
-import callApi from "@/service";
+import callApiServerSide from "@/service/server";
 import { TypeApi } from "@/types";
 
 import "server-only";
 
-// export const preload = (id: string) => {
-// 	void getItem(id);
-// };
-
-// export const getItem = cache(async (id: string) => {
-// 	// ...
-// });
+// https://nextjs.org/docs/app/building-your-application/data-fetching/patterns
 
 // home
 export const getTopProducts = cache(async () => {
-	return await callApi<unknown>({ url: "product/top" })
+	return await callApiServerSide<unknown>({ url: "product/top" })
 		.then((response) => response)
-		.catch((_error) => null);
+		.catch((_error) => []);
 });
 export const getProducts = cache(async () => {
-	return await callApi<unknown>({ url: "product/getAll" })
+	return await callApiServerSide<unknown>({ url: "product/getAll" })
 		.then((response) => response)
-		.catch((_error) => null);
+		.catch((_error) => []);
 });
 export const getProducers = cache(async () => {
-	return await callApi<unknown>({ url: "producer/top" })
+	return await callApiServerSide<unknown>({ url: "producer/top" })
 		.then((response) => response)
-		.catch((_error) => null);
+		.catch((_error) => []);
 });

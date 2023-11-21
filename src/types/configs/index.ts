@@ -1,4 +1,4 @@
-import callApi from "@/service";
+import callApi from "@/service/client";
 
 export type ILocale = "fa" | "en";
 

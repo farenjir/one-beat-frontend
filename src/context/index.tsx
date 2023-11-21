@@ -11,7 +11,7 @@ import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 import { initializeAppDep } from "@/store/app/action";
 
-import callApi from "@/service";
+import callApi from "@/service/client";
 import { useLocaleConfigs } from "@/hooks";
 
 import AntdComponentsRegistry from "@/components/Registry";
