@@ -34,6 +34,7 @@ const Descriptions = ({ color }: Pick<ICard, "color">) => {
 export default function ProducersSingleCard({ id, color }: ICard) {
 	return (
 		<div
+			dir="rtl"
 			className={`producer-card w-full rounded-3xl rounded-tr-[2.5rem] bg-slate-900/40 text-white border border-app${color} p-6 text-center shadow-2xl`}
 			key={id}
 		>
