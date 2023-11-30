@@ -9,14 +9,6 @@
 	}
 }
 
-/* @font-face {
-	font-family: Dana-FaNum-Regular;
-	src: url("../fonts/Dana-FaNum-Regular.ttf");
-}
-.faNumber * {
-	font-family: Dana-FaNum-Regular !important;
-} */
-
 /* document style */
 html {
 	overflow-x: hidden;
