@@ -12,6 +12,8 @@ export default function TopProduct({ dict }: PropsWithDict) {
 	return (
 		<section className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 md:my-10">
 			<Carousel
+				key="top-product"
+				id="top-product"
 				dotPosition="bottom"
 				autoplaySpeed={5000}
 				autoplay

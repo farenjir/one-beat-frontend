@@ -3,8 +3,8 @@ import { Spin } from "antd";
 
 import { PropsWithDict } from "@/types";
 
+import { handleBuyItem } from "./utils";
 import { Tables } from "@/components";
-import { handleBuyItem } from "./components/utils";
 import ProductFilters from "./components/Filters";
 
 const fakeData = Array(8).fill({
@@ -64,7 +64,7 @@ export default function Product({ dict }: PropsWithDict) {
 	];
 	// return
 	return (
-		<section className="product-section mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 md:my-10">
+		<section className="product-section mx-auto max-w-7xl px-2 sm:px-6 md:mb-10 md:mt-5 lg:px-8">
 			<Suspense fallback={<Spin spinning className="w-full text-center" />}>
 				<ProductFilters dict={dict} />
 			</Suspense>

@@ -32,9 +32,9 @@ export default async function MainNavbar({ locale }: PropsWithLocale) {
 							<div className="flex space-x-4">
 								{links.map(({ title, ...linkOptions }) => (
 									<Link
-										className="px-3 py-2 text-sm font-medium text-white hover:text-orange-400 no-underline"
 										key={title}
 										{...linkOptions}
+										className="px-3 py-2 text-white text-sm hover:text-appOrange"
 									>
 										{title}
 									</Link>

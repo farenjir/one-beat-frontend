@@ -19,7 +19,7 @@ export default async function MainPage({ params: { locale } }: IParams) {
 			<MainHeader dict={dict} />
 			<TopProduct dict={dict} />
 			<Producers dict={dict} />
-			{/* <Product dict={dict} /> */}
+			<Product dict={dict} />
 			<VipSection dict={dict} />
 			<Members dict={dict} />
 		</>

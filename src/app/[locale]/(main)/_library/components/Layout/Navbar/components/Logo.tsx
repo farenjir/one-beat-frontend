@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { PropsWithDict } from "@/types";
 
-import logo from "@/assets/images/HeaderLogo-dark.svg";
+import logo from "@/assets/images/header-logo.png";
 import AuthLink from "./AuthLink";
 
 export default function LogoSection({ dict }: PropsWithDict) {
@@ -10,7 +10,7 @@ export default function LogoSection({ dict }: PropsWithDict) {
 		<>
 			<AuthLink dict={dict} />
 			<div className="flex flex-shrink-0 items-center">
-				<Image width={200} height={100} className="h-8 w-auto text-white" src={logo} alt="1Beat-logo" />
+				<Image width={100} height={50} className="h-7 w-auto text-white" src={logo} alt="1Beat-logo" />
 			</div>
 		</>
 	);
