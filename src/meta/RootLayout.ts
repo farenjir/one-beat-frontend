@@ -10,21 +10,21 @@ export async function rootLayoutMetadata(parameters: GenerateMetaProps, parent: 
 	} = parameters;
 	// getDictionary
 	const {
-		App: { DEFAULT_TITLE, DESCRIPTION, NAME, TITLE_TEMPLATE },
+		App: { appName, appDescription, defaultTitle, titleTemplate },
 	} = await getDictionary(locale);
 	// return
 	return {
-		applicationName: NAME,
+		applicationName: appName,
 		title: {
-			default: DEFAULT_TITLE,
-			template: TITLE_TEMPLATE,
+			default: defaultTitle,
+			template: titleTemplate,
 		},
-		description: DESCRIPTION,
+		description: appDescription,
 		manifest: `/assets/${locale}_manifest.json`,
 		appleWebApp: {
 			capable: true,
 			statusBarStyle: "default",
-			title: DEFAULT_TITLE,
+			title: defaultTitle,
 			// startUpImage: [],
 		},
 		formatDetection: {

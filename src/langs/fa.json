@@ -1,9 +1,9 @@
 {
 	"App": {
-		"DEFAULT_TITLE": "1Beat",
-		"NAME": "1Beat",
-		"TITLE_TEMPLATE": "%s | 1Beat",
-		"DESCRIPTION": "1Beat world of Awesome beats !"
+		"appName": "1Beat",
+		"defaultTitle": "1Beat",
+		"titleTemplate": "%s | 1Beat",
+		"appDescription": "1Beat world of Awesome beats !"
 	},
 	"Services": {
 		"Errors": { "error": "خطا", "500": "خطایی رخ داده است !", "4001": "کاربری با این مشخصات در سامانه وجود ندارد !" },
@@ -66,6 +66,15 @@
 			"speed": "سرعت",
 			"payment": "قیمت",
 			"buy": "خرید"
+		},
+		"Vip": {
+			"title": "اشتراک ویـــژه دریافت کنید !",
+			"description": "اشتراک ویژه از آکادمی اِندلس پلاس تهیه کن تا امکان استفاده از تمام آموزش ها و ابزار های ویرایش فیلم و عکس رو به صورت نامحدود دریافت کنید ...",
+			"btnTitle": "خرید اشتراک ویژه"
+		},
+		"Members": {
+			"title": "اعتبار سنجی لحظه ای",
+			"description": "افتخار همراهی و آموزش بیش از ۵۳۰۰ هنرآموز از عناوین مختلف آموزشی آکادمی اندلس پلاس تا این لحظه تو نفر ..."
 		}
 	}
 }

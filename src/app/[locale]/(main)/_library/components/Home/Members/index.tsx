@@ -13,6 +13,9 @@ const Description = () => {
 	);
 };
 export default function Members({ dict }: PropsWithDict) {
+	const {
+		Main: { Members },
+	} = dict;
 	return (
 		<section className="member-sections mx-auto max-w-7xl mb-5 px-5 pt-10 lg:p-10">
 			<div className={`w-full  rounded-3xl text-white text-center border-r border-b border-appOrange`}>
@@ -26,10 +29,8 @@ export default function Members({ dict }: PropsWithDict) {
 						loading="lazy"
 					/>
 				</div>
-				<h3 className="text-2xl lg:text-5xl font-extrabold">اعتبار سنجی لحظه ای</h3>
-				<p className="my-3 text-sm lg:text-lg text-slate-400">
-					افتخار همراهی و آموزش بیش از ۵۳۰۰ هنرآموز از عناوین مختلف آموزشی آکادمی اندلس پلاس تا این لحظه تو نفر ...
-				</p>
+				<h3 className="text-2xl lg:text-5xl font-extrabold">{Members.title}</h3>
+				<p className="my-3 text-sm lg:text-lg text-slate-400">{Members.description}</p>
 				<div className={`flex justify-around align-middle py-4 lg:py-7 rounded-3xl bg-appLightGrey text-white`}>
 					<Description />
 					<Description />
