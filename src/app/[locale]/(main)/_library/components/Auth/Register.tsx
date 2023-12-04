@@ -59,7 +59,7 @@ const RegisterForm = ({ dict: { Auth } }: PropsWithDict) => {
 				placeholder={Auth.repeatPassword}
 				prefix={<LockOutlined className="site-form-item-icon" />}
 			/>
-			<Buttons name={Auth.register} color="success" htmlType="submit" classes="register-form-button mt-5" />
+			<Buttons name={Auth.registerAccount} color="success" htmlType="submit" classes="register-form-button mt-5" />
 		</Form>
 	);
 };

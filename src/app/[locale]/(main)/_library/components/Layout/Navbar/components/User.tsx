@@ -4,10 +4,20 @@ import { Badge, Avatar } from "antd";
 import { UserOutlined, ShoppingCartOutlined, BellOutlined } from "@ant-design/icons";
 
 import { PropsWithDict } from "@/types";
-import { useAppSelector, userSelector } from "@/store/selector";
+import { useAppContext } from "@/context";
 
-export default function Notifications({ dict }: PropsWithDict) {
+import { useAppDispatch, useAppSelector, userSelector } from "@/store/selector";
+import { clearCurrentUser } from "@/store/auth/action";
+
+export default function User({ dict }: PropsWithDict) {
 	const user = useAppSelector(userSelector);
+	// hooks
+	const dispatch = useAppDispatch();
+	const { callApi } = useAppContext();
+	// handles
+	const handleSignOut = async () => {
+		dispatch(clearCurrentUser({ callApi }));
+	};
 	return (
 		<>
 			{user ? (
@@ -16,6 +26,7 @@ export default function Notifications({ dict }: PropsWithDict) {
 						className="w-[30px] h-[30px] cursor-pointer"
 						shape="square"
 						icon={<UserOutlined />}
+						onClick={handleSignOut}
 						src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
 						alt="user-avatar"
 					/>

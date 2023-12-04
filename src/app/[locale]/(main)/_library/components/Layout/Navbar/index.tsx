@@ -4,7 +4,7 @@ import { PropsWithLocale } from "@/types";
 import { getDictionary } from "@/langs";
 
 import NavbarMobileMenu from "./components/MobileMenu";
-import Notifications from "./components/Notification";
+import User from "./components/User";
 import LogoSection from "./components/Logo";
 
 export default async function MainNavbar({ locale }: PropsWithLocale) {
@@ -27,7 +27,7 @@ export default async function MainNavbar({ locale }: PropsWithLocale) {
 					</div>
 					{/* MenuSection */}
 					<div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-						<Notifications dict={dict} />
+						<User dict={dict} />
 						<div className="hidden sm:mx-5 sm:block">
 							<div className="flex space-x-4">
 								{links.map(({ title, ...linkOptions }) => (
