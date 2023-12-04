@@ -20,9 +20,9 @@ export default function Producers({ dict }: PropsWithDict) {
 				<ProducerCards id="2" />
 				<ProducerCards id="3" />
 			</Carousel>
-			{colors.map((color) => (
-				<div key={color} className={`hidden border-${color} bg-${color} text-${color} shadow-${color}`} />
-			))}
+			<div key={"appBlue"} className={`hidden border-appBlue bg-appBlue text-appBlue shadow-appBlue`} />
+			<div key={"appGrey"} className={`hidden border-appGrey bg-appGrey text-appGrey shadow-appGrey`} />
+			<div key={"appOrange"} className={`hidden border-appOrange bg-appOrange text-appOrange shadow-appOrange`} />
 		</section>
 	);
 }

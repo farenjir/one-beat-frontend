@@ -38,7 +38,7 @@ const callApiServerSide = <TRes, TBody = {}>({
 			let customConfig = Object.assign({}, config, {
 				contentType,
 				responseType,
-				withCredentials: false, // send cookie with request
+				withCredentials: true, // send cookie with request
 			});
 			// return
 			return customConfig;
@@ -49,12 +49,8 @@ const callApiServerSide = <TRes, TBody = {}>({
 	);
 	//  set response configs
 	axiosInstance.interceptors.response.use(
-		(response: AxiosResponse<TRes>) => {
-			return response;
-		},
-		({ response, ...error }: AxiosError<null>) => {
-			return { data: { result: null }, ...error };
-		},
+		(response: AxiosResponse<TRes>) => response,
+		(result: AxiosError<null>) => result,
 	);
 	// return
 	return new Promise((resolve, reject) => {
