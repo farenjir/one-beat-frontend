@@ -14,7 +14,8 @@ const initialState: IAuthState = {
 	loading: true,
 };
 
-const authSlice = createSlice<IAuthState, {}, "auth">({
+//
+const authSlice = createSlice<IAuthState, {}, "auth", {}, "auth">({
 	name: "auth",
 	initialState,
 	reducers: {},

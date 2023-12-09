@@ -20,7 +20,7 @@ const initialState: IAppState = {
 	loading: true,
 };
 
-const appSlice = createSlice<IAppState, {}, "app">({
+const appSlice = createSlice<IAppState, {}, "app", {}, "app">({
 	name: "app",
 	initialState,
 	reducers: {},
@@ -33,8 +33,7 @@ const appSlice = createSlice<IAppState, {}, "app">({
 				state.loading = false;
 			})
 			.addCase(initializeAppDep.fulfilled, (state, action) => {
-				const { appVersion, baseVersion, bases, description } = action.payload;
-				Object.assign(state, { appVersion, baseVersion, bases, description, loading: false });
+				Object.assign(state, { ...action.payload, loading: false });
 			});
 	},
 });
