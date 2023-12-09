@@ -1,13 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import appReducer from "./app/reducer";
+import { appReducer } from "./app/reducer";
 import { authReducer } from "./auth/reducer";
-
-const additionalMiddleware: any[] = [];
-if (process.env.NODE_ENV !== "production") {
-	const { logger } = require("redux-logger");
-	additionalMiddleware.push(logger);
-}
 
 const reducer = {
 	app: appReducer,
@@ -16,6 +10,13 @@ const reducer = {
 	// admin reducers
 	// producer reducers
 };
+
+// *** middleware
+const additionalMiddleware: any[] = [];
+if (process.env.NODE_ENV !== "production") {
+	const { logger } = require("redux-logger");
+	additionalMiddleware.push(logger);
+}
 
 // *** initialize redux store
 export const store = configureStore({

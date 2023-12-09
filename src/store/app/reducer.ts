@@ -38,4 +38,4 @@ const appSlice = createSlice<IAppState, {}, "app", {}, "app">({
 	},
 });
 
-export default appSlice.reducer;
+export const { reducer: appReducer, actions: appActions } = appSlice;
