@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import appReducer from "./app/reducer";
-import authReducer from "./auth/reducer";
+import { authReducer } from "./auth/reducer";
 
 const additionalMiddleware: any[] = [];
 if (process.env.NODE_ENV !== "production") {
@@ -18,10 +18,12 @@ const reducer = {
 };
 
 // *** initialize redux store
-const store = configureStore({
+export const store = configureStore({
 	reducer,
 	devTools: process.env.NODE_ENV !== "production",
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(additionalMiddleware),
 });
 
-export default store;
+// *** infer the `RootState` and `AppDispatch` types from the store
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

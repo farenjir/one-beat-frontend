@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { getDictionary } from "@/langs";
 import { ILocale, ILocaleOptions } from "@/types";
 
-import store from "@/store/store";
+import { store } from "@/store/store";
 import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 import { initializeAppDep } from "@/store/app/action";
