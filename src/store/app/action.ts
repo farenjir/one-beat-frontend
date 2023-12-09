@@ -67,7 +67,7 @@ export const initializeHandles = {
 		// get bases
 		let bases = currentBases;
 		if (baseVersion !== currentBaseVersion || localeChanged) {
-			bases = await callApi<AppBases[]>({ url: "base/getAll" })
+			bases = await callApi<AppBases[]>({ url: "base/all" })
 				.then((response) => {
 					if (response) {
 						const appBases = initializeHandles.baseTransformer(response, locale);

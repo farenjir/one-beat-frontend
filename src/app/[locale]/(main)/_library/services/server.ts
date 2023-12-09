@@ -14,7 +14,7 @@ export const getTopProducts = cache(async () => {
 		.catch((_error) => []);
 });
 export const getProducts = cache(async () => {
-	return await callApiServerSide<unknown>({ url: "product/getAll" })
+	return await callApiServerSide<unknown>({ url: "product/all" })
 		.then((response) => response)
 		.catch((_error) => []);
 });
