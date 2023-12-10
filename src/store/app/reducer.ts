@@ -20,7 +20,7 @@ const initialState: IAppState = {
 	loading: true,
 };
 
-const appSlice = createSlice<IAppState, {}, "app", {}, "app">({
+const appSlice = createSlice<IAppState, {}, "app", {}>({
 	name: "app",
 	initialState,
 	reducers: {},
