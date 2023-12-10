@@ -19,7 +19,7 @@ import AntdComponentsRegistry from "@/components/Registry";
 interface IContext {
 	callApi: typeof callApi;
 	localeConfigs: {
-		dict?: typeof getDictionary.arguments;
+		dict?: ReturnType<typeof getDictionary.arguments>
 		locale?: ILocaleOptions;
 	};
 }

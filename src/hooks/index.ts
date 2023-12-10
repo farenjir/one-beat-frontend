@@ -9,7 +9,7 @@ import { getLocaleConfigs } from "@/utils/global";
 
 export const useLocaleConfigs = (currentLocale?: ILocale | undefined) => {
 	const [locale, setLocale] = useState<{
-		dict?: typeof getDictionary.arguments;
+		dict?: ReturnType<typeof getDictionary.arguments>;
 		localeConfigs?: ILocaleOptions;
 	}>({});
 	// init
