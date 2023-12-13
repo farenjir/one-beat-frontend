@@ -1,5 +1,3 @@
-"use client";
-
 import { ConfigProvider, Table, theme } from "antd";
 import type { TableProps } from "antd/es/table";
 

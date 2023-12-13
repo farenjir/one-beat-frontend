@@ -14,7 +14,7 @@ import { initializeAppDep } from "@/store/app/action";
 import callApi from "@/service/client";
 import { useLocaleConfigs } from "@/hooks";
 
-import AntdComponentsRegistry from "@/components/Registry";
+import StyledComponentsRegistry from "@/components/Registry";
 
 interface IContext {
 	callApi: typeof callApi;
@@ -63,9 +63,9 @@ export const useAppContext = () => useContext(AppContext);
 export default function Globals({ children, locale }: { children: ReactNode; locale: ILocale }) {
 	return (
 		<Provider store={store}>
-			<AntdComponentsRegistry>
+			<StyledComponentsRegistry>
 				<ApplicationContext locale={locale}>{children}</ApplicationContext>
-			</AntdComponentsRegistry>
+			</StyledComponentsRegistry>
 		</Provider>
 	);
 }

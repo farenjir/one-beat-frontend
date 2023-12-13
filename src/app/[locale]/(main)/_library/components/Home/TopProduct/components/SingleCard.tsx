@@ -2,7 +2,7 @@ import Image from "next/image";
 
 import { CaretLeftOutlined, ShoppingOutlined } from "@ant-design/icons";
 
-import img from "../../card-top.jpg";
+import img from "../../test.jpg";
 
 const Title = () => {
 	const TitleItem = () => (

@@ -1,7 +1,8 @@
 "use client";
 
-import { PropsWithDict } from "@/types";
+import { memo } from "react";
 
+import { PropsWithDict } from "@/types";
 import { basesSelector, useAppSelector } from "@/store/selector";
 
 import { DropdownSelectable } from "@/components";
@@ -44,4 +45,4 @@ const ProductFilters = ({ dict }: PropsWithDict) => {
 	);
 };
 
-export default ProductFilters;
+export default memo(ProductFilters);

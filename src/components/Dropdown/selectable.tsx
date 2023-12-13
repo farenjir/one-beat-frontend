@@ -1,5 +1,3 @@
-"use client";
-
 import { Dropdown, MenuProps } from "antd";
 import { DownOutlined, RedoOutlined } from "@ant-design/icons";
 

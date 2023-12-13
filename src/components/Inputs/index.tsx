@@ -1,5 +1,3 @@
-"use client";
-
 import { Form, Input, InputNumber } from "antd";
 
 import { ILocale } from "@/types";

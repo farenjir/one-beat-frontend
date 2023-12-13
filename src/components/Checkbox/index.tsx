@@ -1,5 +1,3 @@
-"use client";
-
 import { Checkbox, Form } from "antd";
 
 import { ILocale } from "@/types";

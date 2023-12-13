@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { SafetyOutlined, UserOutlined } from "@ant-design/icons";
 
-import img from "../../card-top.jpg";
+import img from "../../test.jpg";
 
 interface ICard {
 	id: string;

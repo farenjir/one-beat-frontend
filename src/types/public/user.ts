@@ -26,7 +26,7 @@ export interface IUser {
 	id: number;
 	username: string;
 	email: string;
-	roles: Roles[];
+	role: Roles;
 	kyc: UserKyc;
 	profile: UserProfile;
 	createdAt: Date;
