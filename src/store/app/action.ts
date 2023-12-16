@@ -13,7 +13,7 @@ type IProps = {
 export const initializeAppDep = createAsyncThunk("app/initialize", async ({ callApi, locale }: IProps, _thunkAPI) => {
 	const { currentAppVersion, currentBaseVersion, currentBases, localeChanged } = initializeHandles.currentAppDep(locale);
 	// return
-	return await callApi<IVersion>({ url: "version/getLatest" })
+	return await callApi<IVersion>({ url: "version/latest" })
 		.then(async (response) => {
 			const { appVersion = currentAppVersion, baseVersion = currentBaseVersion, description = [] } = response || {};
 			const bases = await initializeHandles.updateAppDep(
