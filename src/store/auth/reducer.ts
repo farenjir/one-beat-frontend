@@ -22,7 +22,6 @@ const authSlice = createSlice<IAuthState, {}, "auth", {}>({
 		builder
 			// getCurrentUser
 			.addCase(getCurrentUser.pending, (state) => {
-				state.user = state.user;
 				state.loading = true;
 			})
 			.addCase(getCurrentUser.rejected, (state) => {
