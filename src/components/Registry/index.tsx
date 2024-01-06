@@ -34,6 +34,8 @@ const AntdRegistry: FC<{ children: ReactNode }> = ({ children }) => {
 
 export default AntdRegistry;
 
+// *** "@ant-design/cssinjs": "^1.17.5",
+
 // import React from "react";
 // import { createCache, extractStyle, StyleProvider } from "@ant-design/cssinjs";
 // import type Entity from "@ant-design/cssinjs/es/Cache";
