@@ -19,12 +19,16 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 // *** initialize redux store
-export const store = configureStore({
-	reducer,
-	devTools: process.env.NODE_ENV !== "production",
-	middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(additionalMiddleware),
-});
+export const makeStore = () => {
+  return configureStore({
+		reducer,
+		devTools: process.env.NODE_ENV !== "production",
+		middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(additionalMiddleware),
+	});
+}
 
-// *** infer the `RootState` and `AppDispatch` types from the store
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+// Infer the type of makeStore
+export type AppStore = ReturnType<typeof makeStore>
+// Infer the `RootState` and `AppDispatch` types from the store itself
+export type RootState = ReturnType<AppStore['getState']>
+export type AppDispatch = AppStore['dispatch']

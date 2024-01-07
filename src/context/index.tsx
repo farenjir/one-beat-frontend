@@ -1,12 +1,12 @@
 "use client";
 
-import { ReactNode, createContext, useContext, useEffect } from "react";
+import { ReactNode, createContext, useContext, useEffect, useRef } from "react";
 import { Provider } from "react-redux";
 
 import { getDictionary } from "@/langs";
 import { ILocale, ILocaleOptions } from "@/types";
 
-import { store } from "@/store/store";
+import { AppStore, makeStore } from "@/store/store";
 import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 import { initializeAppDep } from "@/store/app/action";
@@ -61,8 +61,12 @@ export const useAppContext = () => useContext(AppContext);
 
 // state management of the application
 export default function Globals({ children, locale }: { children: ReactNode; locale: ILocale }) {
+	const storeRef = useRef<AppStore>();
+	if (!storeRef.current) {
+		storeRef.current = makeStore();
+	}
 	return (
-		<Provider store={store}>
+		<Provider store={storeRef.current}>
 			<StyledComponentsRegistry>
 				<ApplicationContext locale={locale}>{children}</ApplicationContext>
 			</StyledComponentsRegistry>
