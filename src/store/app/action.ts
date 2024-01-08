@@ -90,15 +90,17 @@ export const initializeHandles = {
 		return bases;
 	},
 	baseTransformer: (bases: AppBases[], locale: ILocale): AppTransformBases[] => {
-		return bases.map(({ id = 0, type = "", children = [], ...name }) => ({
-			id,
+		return bases.map(({ id: pId, type = "", children = [], ...name }) => ({
 			type,
-			key: id,
+			id: pId,
+			key: pId,
+			value: pId,
 			label: name[`${locale}Name`],
 			name: name[`${locale}Name`],
 			children: children.map(({ id = 0, type = "", ...name }) => ({
 				id,
 				type,
+				value: id,
 				key: id,
 				label: name[`${locale}Name`],
 				name: name[`${locale}Name`],

@@ -35,8 +35,8 @@ const ApplicationContext = ({ children, locale }: { children: ReactNode; locale:
 	const dispatch = useAppDispatch();
 	// initialize context
 	useEffect(() => {
-		const appPromise = dispatch(initializeAppDep({ callApi, locale }));
 		const userPromise = dispatch(getCurrentUser({ callApi }));
+		const appPromise = dispatch(initializeAppDep({ callApi, locale }));
 		// cleanUp
 		return () => {
 			appPromise.abort();
