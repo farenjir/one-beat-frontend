@@ -110,6 +110,18 @@ export const initializeHandles = {
 					name: name[`${locale}Name`],
 				})),
 			};
+			const baseChild: any = {};
+			children?.forEach(({ id = 0, type = "", ...name }) => {
+				baseChild[id] = {
+					id,
+					type,
+					value: id,
+					key: id,
+					label: name[`${locale}Name`],
+					name: name[`${locale}Name`],
+				};
+			});
+			basesObject[`${type}Children`] = baseChild;
 		});
 		// return
 		return basesObject;

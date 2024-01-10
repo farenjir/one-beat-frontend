@@ -16,13 +16,8 @@ export const basesSelector = (state: RootState) => state.app.bases || [];
 export const basesSelectorByType = (state: RootState, baseType: string[]) => {
 	const bases: any = {};
 	baseType.forEach((type) => {
-		const baseChild: any = {};
-		const { children, ...baseObj } = state.app.bases[type] || {};
-		children?.forEach((child) => {
-			baseChild[child.id] = child;
-		});
-		bases[`${type}Children`] = baseChild;
-		bases[type] = { ...baseObj, children };
+		bases[type] = state.app.bases[type] || {};
+		bases[`${type}Children`] = state.app.bases[`${type}Children`] || {};
 	});
 	return bases;
 };
