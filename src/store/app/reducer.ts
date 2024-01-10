@@ -8,7 +8,7 @@ export interface IAppState {
 	baseVersion: number;
 	appVersion: number;
 	description: string[];
-	bases: AppTransformBases[];
+	bases: Record<string, AppTransformBases>;
 	loading: boolean;
 }
 
@@ -16,7 +16,7 @@ const initialState: IAppState = {
 	appVersion: 0,
 	baseVersion: 0,
 	description: [],
-	bases: [],
+	bases: {},
 	loading: true,
 };
 

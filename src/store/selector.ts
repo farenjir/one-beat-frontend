@@ -8,11 +8,21 @@ export const useAppStore: () => AppStore = useStore;
 
 // *** app selector handles
 
-export const versionSelector = ({ app: { description, appVersion } }: RootState) => ({ appVersion, description });
-export const basesSelector = (state: RootState) => state.app.bases || [];
-export const basesSelectorByType = (state: RootState, baseType: string) => {
-	return state?.app?.bases?.find((base: { type: string }) => base?.type === baseType);
-};
-
 export const authSelector = (state: RootState) => state.auth;
 export const userSelector = (state: RootState) => state.auth.user;
+
+export const versionSelector = ({ app: { description, appVersion } }: RootState) => ({ appVersion, description });
+export const basesSelector = (state: RootState) => state.app.bases || [];
+export const basesSelectorByType = (state: RootState, baseType: string[]) => {
+	const bases: any = {};
+	baseType.forEach((type) => {
+		const baseChild: any = {};
+		const { children, ...baseObj } = state.app.bases[type] || {};
+		children?.forEach((child) => {
+			baseChild[child.id] = child;
+		});
+		bases[`${type}Children`] = baseChild;
+		bases[type] = { ...baseObj, children };
+	});
+	return bases;
+};

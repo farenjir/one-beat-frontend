@@ -1,5 +1,3 @@
-"use client";
-
 import { memo } from "react";
 
 import { PropsWithDict } from "@/types";
@@ -22,10 +20,6 @@ const ProductFilters = ({ dict }: PropsWithDict) => {
 	const filters = ["genre", "tempo", "mood", "group"];
 	// handles
 	const handleOnClickFilter = ({ key: id, ...other }: { key: string }, mode: string) => {};
-	const findItems = (itemType: string) => {
-		const { children } = bases.find(({ type }) => type === itemType) || {};
-		return children || [];
-	};
 	// return
 	return (
 		<div className="filter-section mb-5 grid gap-3 items-center align-middle grid-cols-4 lg:grid-cols-5 lg:w-2/3">
@@ -36,7 +30,7 @@ const ProductFilters = ({ dict }: PropsWithDict) => {
 				<DropdownSelectable
 					key={item}
 					title={Product[item]}
-					items={findItems(item)}
+					items={bases[item]?.children || []}
 					onClick={(e) => handleOnClickFilter(e, item)}
 					{...commonStyles}
 				/>

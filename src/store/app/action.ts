@@ -10,6 +10,8 @@ type IProps = {
 	callApi: TypeApi;
 };
 
+type Bases = Record<string, AppTransformBases>;
+
 export const initializeAppDep = createAsyncThunk("app/initialize", async ({ callApi, locale }: IProps, _thunkAPI) => {
 	const { currentAppVersion, currentBaseVersion, currentBases, localeChanged } = initializeHandles.currentAppDep(locale);
 	// return
@@ -61,9 +63,9 @@ export const initializeHandles = {
 		currentAppVersion: number,
 		baseVersion: number,
 		currentBaseVersion: number,
-		currentBases: AppTransformBases[],
+		currentBases: Bases,
 		localeChanged: boolean,
-	): Promise<AppTransformBases[]> => {
+	): Promise<Bases> => {
 		// get bases
 		let bases = currentBases;
 		if (baseVersion !== currentBaseVersion || localeChanged) {
@@ -89,22 +91,27 @@ export const initializeHandles = {
 		// return
 		return bases;
 	},
-	baseTransformer: (bases: AppBases[], locale: ILocale): AppTransformBases[] => {
-		return bases.map(({ id: pId, type = "", children = [], ...name }) => ({
-			type,
-			id: pId,
-			key: pId,
-			value: pId,
-			label: name[`${locale}Name`],
-			name: name[`${locale}Name`],
-			children: children.map(({ id = 0, type = "", ...name }) => ({
-				id,
+	baseTransformer: (bases: AppBases[], locale: ILocale): Bases => {
+		const basesObject: Bases = {};
+		bases.forEach(({ id: pId, type = "", children = [], ...name }) => {
+			basesObject[type] = {
 				type,
-				value: id,
-				key: id,
+				id: pId,
+				key: pId,
+				value: pId,
 				label: name[`${locale}Name`],
 				name: name[`${locale}Name`],
-			})),
-		}));
+				children: children.map(({ id = 0, type = "", ...name }) => ({
+					id,
+					type,
+					value: id,
+					key: id,
+					label: name[`${locale}Name`],
+					name: name[`${locale}Name`],
+				})),
+			};
+		});
+		// return
+		return basesObject;
 	},
 };

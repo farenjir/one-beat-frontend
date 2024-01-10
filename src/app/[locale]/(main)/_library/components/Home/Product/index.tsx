@@ -1,26 +1,33 @@
+"use client";
+
 import { Suspense } from "react";
 import { Spin } from "antd";
+import { ShoppingOutlined } from "@ant-design/icons";
 
 import { PropsWithDict } from "@/types";
+import { basesSelectorByType, useAppSelector } from "@/store/selector";
 
-import { handleBuyItem } from "./utils";
 import { Tables } from "@/components";
 import ProductFilters from "./components/Filters";
 
-const fakeData = Array(8).fill({
-	key: `${Math.random()}`,
-	name: "اشکان کاگان",
-	demo: "اشکان کاگان",
-	speed: "127 bpm",
-	genre: " هیپ هاپ",
-	payment: "350,000",
-	buy: "اشکان کاگان",
-});
+const fakeData = Array(8)
+	.fill(null)
+	.map((_, idx) => ({
+		key: `${idx + 1}`,
+		name: "اشکان کاگان",
+		demo: "اشکان کاگان",
+		speed: "127 bpm",
+		genre: 113,
+		payment: "350,000",
+		buy: "اشکان کاگان",
+	}));
 
 export default function Product({ dict }: PropsWithDict) {
 	const {
 		Main: { Product },
 	} = dict;
+	// hooks
+	const { genreChildren } = useAppSelector((state) => basesSelectorByType(state, ["genre"]));
 	// columns
 	const columns = [
 		{
@@ -34,7 +41,12 @@ export default function Product({ dict }: PropsWithDict) {
 			dataIndex: "demo",
 			title: Product["demo"],
 			width: 200,
-			render: handleBuyItem,
+			render: (_value: any, _record: any, _index: any) => (
+				<button className="w-full pt-1 text-appOrange border border-appOrange rounded-lg cursor-pointer hover:bg-appOrangeLight hover:border-white hover:text-white">
+					<span className="mx-1">خرید</span>
+					<ShoppingOutlined />
+				</button>
+			),
 		},
 		{
 			key: "speed",
@@ -47,6 +59,10 @@ export default function Product({ dict }: PropsWithDict) {
 			dataIndex: "genre",
 			title: Product["genre"],
 			width: 120,
+			render: (value: number, _record: any, _index: any) => {
+				const { label } = genreChildren?.[value] || { label: "-" };
+				return <span className="mx-1">{label}</span>;
+			},
 		},
 		{
 			key: "payment",
@@ -59,7 +75,12 @@ export default function Product({ dict }: PropsWithDict) {
 			dataIndex: "buy",
 			title: Product["buy"],
 			width: 100,
-			render: handleBuyItem,
+			render: (_value: any, _record: any, _index: any) => (
+				<button className="w-full pt-1 text-appOrange border border-appOrange rounded-lg cursor-pointer hover:bg-appOrangeLight hover:border-white hover:text-white">
+					<span className="mx-1">خرید</span>
+					<ShoppingOutlined />
+				</button>
+			),
 		},
 	];
 	// return

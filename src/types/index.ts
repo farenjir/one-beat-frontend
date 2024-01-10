@@ -3,7 +3,7 @@ import { Roles } from "./enums";
 import type * as Configs from "./configs";
 
 import type { IUser } from "./public/user";
-import type { AppBases, AppTransformBases } from "./public/base";
+import type { AppBases, AppTransformBases, UserChildBase } from "./public/base";
 import type { IVersion } from "./public/version";
 
 // configs
@@ -18,7 +18,7 @@ export type PropsWithLocale = Configs.PropsWithLocale;
 export type ILocaleOptions = Configs.ILocaleOptions;
 
 // data types
-export type { AppBases, AppTransformBases, IVersion, IUser };
+export type { AppBases, AppTransformBases, UserChildBase, IVersion, IUser };
 
 // app enums
 export { Roles };
