@@ -13,7 +13,7 @@ export const userSelector = (state: RootState) => state.auth.user;
 
 export const versionSelector = ({ app: { description, appVersion } }: RootState) => ({ appVersion, description });
 export const basesSelector = (state: RootState) => state.app.bases || [];
-export const basesSelectorByType = (state: RootState, baseType: string[]) => {
+export const  basesSelectorByType = (state: RootState, baseType: string[]) => {
 	const bases: any = {};
 	baseType.forEach((type) => {
 		bases[type] = state.app.bases[type] || {};
