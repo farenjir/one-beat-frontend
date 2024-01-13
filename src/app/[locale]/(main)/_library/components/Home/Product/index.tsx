@@ -1,12 +1,11 @@
 "use client";
 
 import { Suspense } from "react";
-import { shallowEqual } from "react-redux";
 import { Spin } from "antd";
 import { ShoppingOutlined } from "@ant-design/icons";
 
 import { PropsWithDict } from "@/types";
-import { basesSelectorByType, useAppSelector } from "@/store/selector";
+import { basesSelector, useAppSelector } from "@/store/selector";
 
 import { Tables } from "@/components";
 import ProductFilters from "./components/Filters";
@@ -28,7 +27,7 @@ export default function Product({ dict }: PropsWithDict) {
 		Main: { Product },
 	} = dict;
 	// hooks
-	const { genreChildren } = useAppSelector((state) => basesSelectorByType(state, ["genre"]), shallowEqual);
+	const { genreChildren } = useAppSelector(basesSelector);
 	// columns
 	const columns = [
 		{

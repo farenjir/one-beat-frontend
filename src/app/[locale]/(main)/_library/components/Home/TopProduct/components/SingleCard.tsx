@@ -2,6 +2,8 @@ import Image from "next/image";
 
 import { CaretLeftOutlined, ShoppingOutlined } from "@ant-design/icons";
 
+import { IProduct } from "@/types";
+
 import img from "../../test.jpg";
 
 const Title = () => {
@@ -59,9 +61,9 @@ const ImageItem = () => (
 	</div>
 );
 
-export default function SingleCard({ id }: { id: string }) {
+export default function SingleCard({ product }: { product: IProduct }) {
 	return (
-		<div className="single-card" key={id}>
+		<div className="single-card">
 			<section className="flex flex-col-reverse gap-3 md:flex-row-reverse">
 				<Title />
 				<Description />

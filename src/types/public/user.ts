@@ -1,4 +1,4 @@
-import { Roles } from "@/types/enums";
+import { Roles } from "@/types/configs/enums";
 import { AppBases } from "./base";
 
 export interface UserKyc {

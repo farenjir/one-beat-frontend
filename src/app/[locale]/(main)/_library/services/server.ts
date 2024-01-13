@@ -1,25 +1,28 @@
 import { cache } from "react";
 
 import callApiServerSide from "@/service/server";
-import { TypeApi } from "@/types";
+
+import { IProduct, IUser } from "@/types";
+import { ProducerStatus, ProductStatus, Roles } from "@/types/configs/enums";
 
 import "server-only";
 
 // https://nextjs.org/docs/app/building-your-application/data-fetching/patterns
 
-// home
-export const getTopProducts = cache(async () => {
-	return await callApiServerSide<unknown>({ url: "product/top" })
-		.then((response) => response)
+export const getTopProducts = cache(async (): Promise<IProduct[]> => {
+	return await callApiServerSide<{ data: IProduct[] }>({
+		url: "product/all",
+		queries: { page: 1, take: 3, status: ProductStatus.TopProduct },
+	})
+		.then(({ data }) => data)
 		.catch((_error) => []);
 });
-export const getProducts = cache(async () => {
-	return await callApiServerSide<unknown>({ url: "product/all" })
-		.then((response) => response)
-		.catch((_error) => []);
-});
-export const getProducers = cache(async () => {
-	return await callApiServerSide<unknown>({ url: "producer/top" })
-		.then((response) => response)
+
+export const getProducers = cache(async (): Promise<IUser[]> => {
+	return await callApiServerSide<{ data: IUser[] }>({
+		url: "user/all",
+		queries: { page: 1, take: 9, producerKyc: ProducerStatus.TopProducer, userKyc: true, role: Roles.Producer },
+	})
+		.then(({ data }) => data)
 		.catch((_error) => []);
 });

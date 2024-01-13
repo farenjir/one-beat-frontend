@@ -12,12 +12,4 @@ export const authSelector = (state: RootState) => state.auth;
 export const userSelector = (state: RootState) => state.auth.user;
 
 export const versionSelector = ({ app: { description, appVersion } }: RootState) => ({ appVersion, description });
-export const basesSelector = (state: RootState) => state.app.bases || [];
-export const  basesSelectorByType = (state: RootState, baseType: string[]) => {
-	const bases: any = {};
-	baseType.forEach((type) => {
-		bases[type] = state.app.bases[type] || {};
-		bases[`${type}Children`] = state.app.bases[`${type}Children`] || {};
-	});
-	return bases;
-};
+export const basesSelector = (state: RootState): any => state.app.bases;

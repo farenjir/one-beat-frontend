@@ -1,11 +1,14 @@
 import Image from "next/image";
 import { SafetyOutlined, UserOutlined } from "@ant-design/icons";
 
+import { IUser } from "@/types";
+
 import img from "../../test.jpg";
 
+type Colors = "Grey" | "Blue" | "Orange";
 interface ICard {
 	id: string;
-	color: "Grey" | "Blue" | "Orange";
+	color: Colors;
 }
 
 const Descriptions = ({ color }: Pick<ICard, "color">) => {
@@ -31,10 +34,10 @@ const Descriptions = ({ color }: Pick<ICard, "color">) => {
 	);
 };
 
-export default function ProducersSingleCard({ id, color }: ICard) {
+export default function ProducersSingleCard({ producer }: { producer: IUser }) {
+	const color: Colors = "Blue";
 	return (
 		<div
-			key={id}
 			dir="rtl"
 			className={`producer-card w-full rounded-3xl rounded-tr-[2.5rem] bg-appLightGrey text-white border border-app${color} p-6 text-center`}
 		>

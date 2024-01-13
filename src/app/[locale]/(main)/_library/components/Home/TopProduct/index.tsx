@@ -1,10 +1,10 @@
 import { Carousel } from "antd";
 
-import { PropsWithDict } from "@/types";
+import { IProduct, PropsWithDict } from "@/types";
 
 import SingleCard from "./components/SingleCard";
 
-export default function TopProduct({ dict }: PropsWithDict) {
+export default function TopProduct({ dict, topProduct = [] }: PropsWithDict & { topProduct: IProduct[] }) {
 	const {
 		Main: { Header },
 	} = dict;
@@ -21,9 +21,12 @@ export default function TopProduct({ dict }: PropsWithDict) {
 				waitForAnimate
 				className="pb-10 px-2"
 			>
-				<SingleCard id="1" />
-				<SingleCard id="2" />
-				<SingleCard id="3" />
+				{topProduct.map((product) => (
+					<>
+						<SingleCard key={product.id} product={product} />
+						<SingleCard key={product.id} product={product} />
+					</>
+				))}
 			</Carousel>
 		</section>
 	);
