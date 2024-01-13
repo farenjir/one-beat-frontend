@@ -3,7 +3,7 @@ import { cache } from "react";
 import callApiServerSide from "@/service/server";
 
 import { IProduct, IUser } from "@/types";
-import { ProducerStatus, ProductStatus, Roles } from "@/types/configs/enums";
+import { ProductStatus } from "@/types/configs/enums";
 
 import "server-only";
 
@@ -20,8 +20,8 @@ export const getTopProducts = cache(async (): Promise<IProduct[]> => {
 
 export const getProducers = cache(async (): Promise<IUser[]> => {
 	return await callApiServerSide<{ data: IUser[] }>({
-		url: "user/all",
-		queries: { page: 1, take: 9, producerKyc: ProducerStatus.TopProducer, userKyc: true, role: Roles.Producer },
+		url: "user/topProducers",
+		queries: { page: 1, take: 9 },
 	})
 		.then(({ data }) => data)
 		.catch((_error) => []);
