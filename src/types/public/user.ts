@@ -1,4 +1,4 @@
-import { Roles } from "@/types/configs/enums";
+import { ProducerStatus, Roles } from "@/types/configs/enums";
 import { AppBases } from "./base";
 
 export interface UserKyc {
@@ -7,13 +7,14 @@ export interface UserKyc {
 	mobileKyc: boolean;
 	googleKyc: boolean;
 	emailKyc: boolean;
-	producerKyc: boolean;
+	producerKyc: ProducerStatus;
 }
 
 export interface UserProfile {
 	id: number;
 	firstName: string;
 	lastName: string;
+	nickname: string;
 	mobileNumber: string;
 	age: number;
 	gender: AppBases;

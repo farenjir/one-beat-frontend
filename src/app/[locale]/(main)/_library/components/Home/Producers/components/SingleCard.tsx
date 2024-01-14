@@ -1,11 +1,14 @@
+import { useMemo } from "react";
 import Image from "next/image";
 import { SafetyOutlined, UserOutlined } from "@ant-design/icons";
 
 import { IUser } from "@/types";
+import { ProducerStatus } from "@/types/configs/enums";
 
 import img from "../../test.jpg";
 
 type Colors = "Grey" | "Blue" | "Orange";
+
 interface ICard {
 	id: string;
 	color: Colors;
@@ -35,7 +38,17 @@ const Descriptions = ({ color }: Pick<ICard, "color">) => {
 };
 
 export default function ProducersSingleCard({ producer }: { producer: IUser }) {
-	const color: Colors = "Blue";
+	const color: Colors = useMemo(() => {
+		switch (producer?.kyc?.producerKyc) {
+			case ProducerStatus.Accepted:
+				return "Orange";
+			case ProducerStatus.TopProducer:
+				return "Blue";
+			default:
+				return "Grey";
+		}
+	}, [producer]);
+	// return
 	return (
 		<div
 			dir="rtl"
@@ -55,7 +68,7 @@ export default function ProducersSingleCard({ producer }: { producer: IUser }) {
 				/>
 			</div>
 			<div className="producer-info flex flex-col text-left mt-10">
-				<h5 className="text-4xl font-bold">Hassan BABA</h5>
+				<h5 className="text-4xl font-bold">{producer?.profile?.nickname}</h5>
 				<strong className="text-gray-500 text-3xl">آهنگساز</strong>
 				<small className="text-white">187 دنبال کننده</small>
 			</div>
