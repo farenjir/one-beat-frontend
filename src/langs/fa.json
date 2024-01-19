@@ -32,6 +32,7 @@
 	},
 	"Auth": {
 		"auth": "ورود / ثبت نام",
+		"authCheck": "درحال بررسی حساب کاربری",
 		"register": "ثبت نام",
 		"registerAccount": "ثبت نام حساب",
 		"login": "ورود",

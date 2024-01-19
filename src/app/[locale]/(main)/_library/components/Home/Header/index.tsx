@@ -8,7 +8,7 @@ export default function MainHeader({ dict }: PropsWithDict) {
 	} = dict;
 	// return
 	return (
-		<section className="h-full flex flex-col justify-center align-around  mx-auto max-w-7xl px-8">
+		<section className="h-screen flex flex-col justify-center align-around  mx-auto max-w-7xl px-8">
 			<sub className="text-appOrange uppercase font-extrabold text-[10px]">{Header.sub}</sub>
 			<div className="py-8 text-white text-justify">
 				<h1 className="font-thin pb-4 text-[2.5rem] md:text-6xl lg:text-6xl"> {Header.title}</h1>

@@ -29,8 +29,8 @@ export default async function MainPage({ params: { locale } }: IParams) {
 				<Product dict={dict} />
 			</Suspense>
 			<Suspense fallback={<Spin spinning className="w-full h-96 grid place-items-center" size="large" />}>
-				<VipSection dict={dict} />
 				<Members dict={dict} />
+				<VipSection dict={dict} />
 			</Suspense>
 		</>
 	);

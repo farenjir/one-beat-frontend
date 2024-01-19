@@ -11,7 +11,7 @@ export default function VipSection({ dict }: PropsWithDict) {
 	return (
 		<section className="vip-sections mx-auto max-w-7xl mt-20 mb-10 lg:mt-5 px-5 pt-10 lg:p-10">
 			<div
-				className={`vip-card w-full pb-8 px-10 rounded-3xl bg-appLightGrey text-white border-l border-b border-appOrange text-center`}
+				className={`vip-card w-full pb-8 px-10 rounded-3xl bg-appLightGrey text-white text-center`}
 			>
 				<div className="relative h-28 lg:h-14">
 					<Image

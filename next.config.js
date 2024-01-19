@@ -14,6 +14,10 @@ module.exports = withPWA({
 	reactStrictMode: true,
 	swcMinify: true,
 	env,
+	// *** next 14 caching
+	// cacheHandler: require.resolve('./cache-handler.js'),
+	// cacheMaxMemorySize: 0, // disable default in-memory caching
+	// ***
 	// eslint: {
 	//   ignoreDuringBuilds: true,
 	// },

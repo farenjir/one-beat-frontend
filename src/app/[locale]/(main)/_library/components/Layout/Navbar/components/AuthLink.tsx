@@ -3,10 +3,10 @@
 import Link from "next/link";
 
 import { PropsWithDict } from "@/types";
-import { useAppSelector, userSelector } from "@/store/selector";
+import { useAppSelector, authSelector } from "@/store/selector";
 
 export default function AuthLink({ dict }: PropsWithDict) {
-	const user = useAppSelector(userSelector);
+	const { user, loading } = useAppSelector(authSelector);
 	return (
 		<>
 			{!user && (
