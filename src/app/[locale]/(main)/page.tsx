@@ -1,3 +1,6 @@
+import { Suspense } from "react";
+import { Spin } from "antd";
+
 import { IParams } from "@/types";
 import { getDictionary } from "@/langs";
 
@@ -19,10 +22,16 @@ export default async function MainPage({ params: { locale } }: IParams) {
 		<>
 			<MainHeader dict={dict} />
 			<TopProduct dict={dict} topProduct={topProduct} />
-			<Producers dict={dict} producers={producers} />
-			<Product dict={dict} />
-			<VipSection dict={dict} />
-			<Members dict={dict} />
+			<Suspense fallback={<Spin spinning className="w-full h-96 grid place-items-center" size="large" />}>
+				<Producers dict={dict} producers={producers} />
+			</Suspense>
+			<Suspense fallback={<Spin spinning className="w-full h-96 grid place-items-center" size="large" />}>
+				<Product dict={dict} />
+			</Suspense>
+			<Suspense fallback={<Spin spinning className="w-full h-96 grid place-items-center" size="large" />}>
+				<VipSection dict={dict} />
+				<Members dict={dict} />
+			</Suspense>
 		</>
 	);
 }

@@ -1,9 +1,6 @@
 "use client";
 
-import { Suspense } from "react";
-import { Spin } from "antd";
 import { ShoppingOutlined } from "@ant-design/icons";
-
 import { PropsWithDict } from "@/types";
 import { basesSelector, useAppSelector } from "@/store/selector";
 
@@ -86,17 +83,13 @@ export default function Product({ dict }: PropsWithDict) {
 	// return
 	return (
 		<section className="product-section mx-auto max-w-7xl px-2 sm:px-6 md:mb-10 md:mt-5 lg:px-8">
-			<Suspense fallback={<Spin spinning className="w-full text-center" />}>
-				<ProductFilters dict={dict} />
-			</Suspense>
-			<Suspense fallback={<Spin spinning className="w-full h-96 grid place-items-center" size="large" />}>
-				<Tables
-					dataSource={fakeData}
-					columns={columns}
-					className="pb-10"
-					themeMode={{ token: "default", algorithm: "darkAlgorithm" }}
-				/>
-			</Suspense>
+			<ProductFilters dict={dict} />
+			<Tables
+				dataSource={fakeData}
+				columns={columns}
+				className="pb-10"
+				themeMode={{ token: "default", algorithm: "darkAlgorithm" }}
+			/>
 		</section>
 	);
 }
