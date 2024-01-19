@@ -17,8 +17,8 @@ export default function Members({ dict }: PropsWithDict) {
 		Main: { Members },
 	} = dict;
 	return (
-		<section className="member-sections mx-auto max-w-7xl mb-5 px-5 pt-10 lg:p-10">
-			<div className={`w-full  rounded-3xl text-white text-center border-r border-b border-appOrange`}>
+		<section className="member-sections mx-auto max-w-7xl mb-5 lg:mb-10 px-5 pt-10 lg:p-10">
+			<div className={`w-full rounded-3xl text-white text-center border-t border-appOrange`}>
 				<div className="relative h-10 hidden lg:block">
 					<Image
 						className={`absolute top-12 left-0 rounded-full`}
