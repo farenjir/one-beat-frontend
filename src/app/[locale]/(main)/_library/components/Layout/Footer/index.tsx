@@ -27,16 +27,6 @@ export default async function MainFooter({ locale }: PropsWithLocale) {
 						توضیح مختصر از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت توضیح مختصر
 						از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت ...
 					</p>
-					<div className="flex px-5 mt-8">
-						<EnvironmentOutlined className="text-xl" />
-						<b className="text-xs text-slate-500 m-2">
-							تهران , خیابان ولی عصر , پاسداران جنوبی , خیابان مظفر , ساختمان شماره 17
-						</b>
-					</div>
-					<div className="flex px-5 mt-3">
-						<PhoneOutlined className="text-xl" />
-						<b className="text-sm text-slate-500 mx-2">09125858595</b>
-					</div>
 				</Col>
 				<Col xs={24} lg={3}>
 					<h5 className="text-xl m-2 text-white">دسترسی سریع</h5>
