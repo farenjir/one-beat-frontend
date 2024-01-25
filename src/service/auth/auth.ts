@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 
 import authConfig from "./auth.config";
+import { currentUser } from "./auth.services";
 
 export const {
 	handlers: { GET, POST },
@@ -24,26 +25,16 @@ export const {
 	// },
 	callbacks: {
 		async signIn({ user, account }) {
-			// Allow OAuth without email verification
-			// if (account?.provider !== "credentials") return true;
-
-			// const existingUser = await getUserById(user.id);
-
-			// // Prevent sign in without email verification
-			// if (!existingUser?.emailVerified) return false;
-
-			// if (existingUser.isTwoFactorEnabled) {
-			// 	const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id);
-
-			// 	if (!twoFactorConfirmation) return false;
-
-			// 	// Delete two factor confirmation for next sign in
-			// 	await db.twoFactorConfirmation.delete({
-			// 		where: { id: twoFactorConfirmation.id },
-			// 	});
-			// }
-
-			return true;
+			// allow google without email verification
+			if (account?.provider !== "credentials") return true;
+			// current user
+			const existingUser = await currentUser();
+			// check confirmed user
+			if (existingUser?.kyc?.userKyc) {
+				return true;
+			} else {
+				return false;
+			}
 		},
 		async session({ session, trigger, newSession }) {
 			// if (token.sub && session.user) {

@@ -1,52 +1,87 @@
 import NextAuth from "next-auth";
 
-import { DEFAULT_LOCALE, locales } from "./langs";
 import { ILocale } from "./types";
+import { DEFAULT_LOCALE, locales } from "./langs";
+
+import { Roles } from "./types/configs/enums";
 
 import authConfig from "./service/auth/auth.config";
-import { DEFAULT_LOGIN_REDIRECT, apiAuthPrefix, authRoutes, publicRoutes } from "@/service/auth/route";
+
+/**
+ * An array of routes that are used for authentication
+ */
+const authRoutes: string[] = ["/auth", "/auth/error"];
+const DEFAULT_AUTH_REDIRECT: string = "/auth";
+/**
+ * The default redirect path after logging in
+ */
+const loggedRoutes: string[] = [`/${Roles.Admin}`, `/${Roles.Producer}`, `/${Roles.User}`];
+const DEFAULT_LOGGED_REDIRECT: Record<Roles, string> = {
+	[Roles.Admin]: `/${Roles.Admin}`,
+	[Roles.Author]: `/${Roles.Admin}`,
+	[Roles.Editor]: `/${Roles.Admin}`,
+	[Roles.Producer]: `/${Roles.Producer}`,
+	[Roles.User]: `/${Roles.User}`,
+};
+/**
+ * An array of routes that are accessible to the public
+ * These routes do not require authentication
+ */
+const handleAuthRoutes = (pathname: string): boolean => {
+	return !authRoutes.some((route) => pathname.includes(route));
+};
+const handleLoggedRoutes = (pathname: string): boolean => {
+	return !loggedRoutes.some((route) => pathname.includes(route));
+};
 
 const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
 	const { nextUrl } = req;
-	const isLoggedIn = !!req.auth;
-	const { value: customerLocale }: any = req.cookies.get("locale") || { value: DEFAULT_LOCALE };
-
-	const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
-	const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
-	const isAuthRoute = authRoutes.includes(nextUrl.pathname);
-
-	if (isApiAuthRoute) {
-		return null;
+	const { value: locale }: { value: string } = req.cookies.get("locale") || { value: DEFAULT_LOCALE };
+	// check lang with pathname
+	if (!locales.some((locale) => nextUrl.pathname.startsWith(`/${locale}/`) || nextUrl.pathname === `/${locale}`)) {
+		nextUrl.pathname = `/${locale}${nextUrl.pathname}`;
 	}
-
+	// check conditions
+	const isLoggedIn = !!req.auth;
+	const isAuthRoute = handleAuthRoutes(nextUrl.pathname);
+	const isLoggedRoute = handleLoggedRoutes(nextUrl.pathname);
+	// actions
 	if (isAuthRoute) {
 		if (isLoggedIn) {
-			return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+			// const loggedPath: string = DEFAULT_LOGIN_REDIRECT[req.auth?.user.role];
+			return Response.redirect(new URL(`${locale}${"/admin"}`, nextUrl));
 		}
 		return null;
 	}
-
-	if (!isLoggedIn && !isPublicRoute) {
-		let callbackUrl = nextUrl.pathname;
-		if (nextUrl.search) {
-			callbackUrl += nextUrl.search;
+	// actions
+	if (isLoggedRoute) {
+		if (isLoggedIn) {
+			// const loggedPath: string = DEFAULT_LOGIN_REDIRECT[req.auth?.user.role];
+			return Response.redirect(new URL(`${locale}${"/admin"}`, nextUrl));
 		}
-
-		const encodedCallbackUrl = encodeURIComponent(callbackUrl);
-
-		return Response.redirect(new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, nextUrl));
+		return Response.redirect(new URL(`${locale}${DEFAULT_AUTH_REDIRECT}`, nextUrl));
 	}
-
 	return null;
 });
 
-// Optionally, don't invoke Middleware on some paths
+// don't invoke Middleware on some paths
 export const config = {
-	matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
-	// 		"/((?!_next|_next/static|_next/image|api|favicon.ico|robots.txt|assets|pwa).*)", // skip all paths
+	matcher: ["/((?!_next|_next/static|_next/image|api|favicon.ico|robots.txt|assets|pwa).*)"], // skip lang pathnames
+	// matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };
+
+// if (!isLoggedIn && !isPublicRoute) {
+// 	let callbackUrl = nextUrl.pathname;
+// 	if (nextUrl.search) {
+// 		callbackUrl += nextUrl.search;
+// 	}
+
+// 	const encodedCallbackUrl = encodeURIComponent(callbackUrl);
+
+// 	return Response.redirect(new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, nextUrl));
+// }
 
 // export function middleware(request: NextRequest) {
 // 	const checkAuth = request.cookies.get("app-token");
