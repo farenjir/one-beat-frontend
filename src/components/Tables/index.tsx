@@ -1,8 +1,6 @@
 import { ConfigProvider, Table, theme } from "antd";
 import type { TableProps } from "antd/es/table";
 
-import colorTokens from "@/utils/theme";
-
 import { ILocale } from "@/types";
 import { useLocaleConfigs } from "@/hooks";
 
@@ -50,7 +48,7 @@ const Tables = ({
 			locale={localeConfigs?.locale}
 			theme={{
 				algorithm: theme[themeMode.algorithm],
-				token: colorTokens[themeMode.token],
+				// token: colorTokens[themeMode.token],
 			}}
 		>
 			<Table

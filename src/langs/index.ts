@@ -3,7 +3,7 @@ import { getLocaleConfigs } from "@/utils/global";
 
 export const locales: ILocale[] = ["fa", "en"];
 
-export const [defaultLocale] = locales;
+export const [DEFAULT_LOCALE] = locales;
 
 const dictionaries = {
 	fa: () => import("./fa.json").then((module) => module.default),
