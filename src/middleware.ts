@@ -1,10 +1,9 @@
 import NextAuth from "next-auth";
 
-import { DEFAULT_LOCALE, locales } from "./langs";
+import authConfig from "./service/auth/auth.config";
 
 import { Roles } from "./types/configs/enums";
-
-import authConfig from "./service/auth/auth.config";
+import { DEFAULT_LOCALE, locales } from "./langs";
 
 /**
  * An array of routes that are used for authentication
@@ -52,7 +51,7 @@ export default auth((req) => {
 			const loggedPath: string = DEFAULT_LOGGED_REDIRECT[req?.auth?.user?.role || "user"];
 			return Response.redirect(new URL(`${locale}${loggedPath}`, nextUrl));
 		}
-		return null;
+		return Response.redirect(new URL(nextUrl.pathname, nextUrl));
 	}
 	// actions
 	if (isLoggedRoute) {
@@ -67,7 +66,11 @@ export default auth((req) => {
 
 // don't invoke Middleware on some paths
 export const config = {
-	matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/(api|favicon.ico|robots.txt|assets|pwa)(.*)"],
+	// matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/(api|favicon.ico|robots.txt|assets|pwa)(.*)"],
+	matcher: [
+		"/((?!.+\\.[\\w]+$|_next|__nextjs).*)",
+		"/((?!__nextjs|_next|_next/static|_next/image|api|favicon.ico|robots.txt|assets|pwa).*)",
+	],
 };
 
 // if (!isLoggedIn && !isPublicRoute) {
@@ -75,9 +78,7 @@ export const config = {
 // 	if (nextUrl.search) {
 // 		callbackUrl += nextUrl.search;
 // 	}
-
 // 	const encodedCallbackUrl = encodeURIComponent(callbackUrl);
-
 // 	return Response.redirect(new URL(`/auth/login?callbackUrl=${encodedCallbackUrl}`, nextUrl));
 // }
 
