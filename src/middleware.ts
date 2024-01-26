@@ -1,6 +1,5 @@
 import NextAuth from "next-auth";
 
-import { ILocale } from "./types";
 import { DEFAULT_LOCALE, locales } from "./langs";
 
 import { Roles } from "./types/configs/enums";
@@ -11,11 +10,11 @@ import authConfig from "./service/auth/auth.config";
  * An array of routes that are used for authentication
  */
 const authRoutes: string[] = ["/auth", "/auth/error"];
-const DEFAULT_AUTH_REDIRECT: string = "/auth";
+const loggedRoutes: string[] = [`/${Roles.Admin}`, `/${Roles.Producer}`, `/${Roles.User}`];
 /**
  * The default redirect path after logging in
  */
-const loggedRoutes: string[] = [`/${Roles.Admin}`, `/${Roles.Producer}`, `/${Roles.User}`];
+const DEFAULT_AUTH_REDIRECT: string = "/auth";
 const DEFAULT_LOGGED_REDIRECT: Record<Roles, string> = {
 	[Roles.Admin]: `/${Roles.Admin}`,
 	[Roles.Author]: `/${Roles.Admin}`,
@@ -50,16 +49,16 @@ export default auth((req) => {
 	// actions
 	if (isAuthRoute) {
 		if (isLoggedIn) {
-			// const loggedPath: string = DEFAULT_LOGIN_REDIRECT[req.auth?.user.role];
-			return Response.redirect(new URL(`${locale}${"/admin"}`, nextUrl));
+			const loggedPath: string = DEFAULT_LOGGED_REDIRECT[req?.auth?.user?.role || "user"];
+			return Response.redirect(new URL(`${locale}${loggedPath}`, nextUrl));
 		}
 		return null;
 	}
 	// actions
 	if (isLoggedRoute) {
 		if (isLoggedIn) {
-			// const loggedPath: string = DEFAULT_LOGIN_REDIRECT[req.auth?.user.role];
-			return Response.redirect(new URL(`${locale}${"/admin"}`, nextUrl));
+			const loggedPath: string = DEFAULT_LOGGED_REDIRECT[req?.auth?.user?.role || "user"];
+			return Response.redirect(new URL(`${locale}${loggedPath}`, nextUrl));
 		}
 		return Response.redirect(new URL(`${locale}${DEFAULT_AUTH_REDIRECT}`, nextUrl));
 	}

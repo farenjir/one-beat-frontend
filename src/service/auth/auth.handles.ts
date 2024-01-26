@@ -24,7 +24,7 @@ export const {
 	// 	},
 	// },
 	callbacks: {
-		async signIn({ user, account }) {
+		async signIn({ account }) {
 			// allow google without email verification
 			if (account?.provider !== "credentials") return true;
 			// current user
@@ -40,25 +40,21 @@ export const {
 			// if (token.sub && session.user) {
 			// 	session.user.id = token.sub;
 			// }
-
 			// if (token.role && session.user) {
 			// 	// session.user.role = token.role as UserRole;
 			// }
-
 			// if (session.user) {
 			// 	// session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
 			// }
-
 			// if (session.user) {
 			// 	session.user.name = token.name;
 			// 	session.user.email = token.email;
 			// 	// session.user.isOAuth = token.isOAuth as boolean;
 			// }
-
 			return session;
 		},
 		async jwt({ token }) {
-			if (!token.sub) return token;
+			// if (!token.sub) return token;
 
 			// const existingUser = await getUserById(token.sub);
 

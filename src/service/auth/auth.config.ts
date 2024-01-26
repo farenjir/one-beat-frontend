@@ -1,14 +1,28 @@
-import type { NextAuthConfig } from "next-auth";
+import { IUser } from "@/types";
+import type { NextAuthConfig, DefaultSession } from "next-auth";
+import type { JWT } from "next-auth/jwt";
 
 import Credentials from "next-auth/providers/credentials";
-import Google from "next-auth/providers/google";
+// import Google from "next-auth/providers/google";
+
+declare module "next-auth" {
+	interface Session extends DefaultSession {
+		user: DefaultSession["user"] & Partial<IUser>;
+	}
+}
+
+declare module "next-auth/jwt" {
+	interface JWT {
+		user: Partial<IUser>;
+	}
+}
 
 export default {
 	providers: [
-		Google({
-			clientId: process.env.GOOGLE_CLIENT_ID,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-		}),
+		// Google({
+		// 	clientId: process.env.GOOGLE_CLIENT_ID,
+		// 	clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+		// }),
 		Credentials({
 			async authorize(credentials) {
 				// const validatedFields = LoginSchema.safeParse(credentials);
