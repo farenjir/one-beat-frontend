@@ -27,10 +27,10 @@ const DEFAULT_LOGGED_REDIRECT: Record<Roles, string> = {
  * These routes do not require authentication
  */
 const handleAuthRoutes = (pathname: string): boolean => {
-	return !authRoutes.some((route) => pathname.includes(route));
+	return authRoutes.some((route) => pathname.includes(route));
 };
 const handleLoggedRoutes = (pathname: string): boolean => {
-	return !loggedRoutes.some((route) => pathname.includes(route));
+	return loggedRoutes.some((route) => pathname.includes(route));
 };
 
 const { auth } = NextAuth(authConfig);
@@ -67,8 +67,7 @@ export default auth((req) => {
 
 // don't invoke Middleware on some paths
 export const config = {
-	matcher: ["/((?!_next|_next/static|_next/image|api|favicon.ico|robots.txt|assets|pwa).*)"], // skip lang pathnames
-	// matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
+	matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/(api|favicon.ico|robots.txt|assets|pwa)(.*)"],
 };
 
 // if (!isLoggedIn && !isPublicRoute) {

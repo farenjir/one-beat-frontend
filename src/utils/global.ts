@@ -4,7 +4,7 @@ import fa from "antd/locale/fa_IR";
 import { ILocale, ILocaleOptions } from "@/types";
 
 import { getFromCookie } from "./cookie";
-import { defaultLocale } from "@/langs";
+import { DEFAULT_LOCALE } from "@/langs";
 
 export const localeOptions: { [key: string]: ILocaleOptions } = {
 	fa: { lang: "fa", dir: "rtl", rtl: true, ltr: false, fontType: "yekan", locale: fa },
@@ -12,7 +12,7 @@ export const localeOptions: { [key: string]: ILocaleOptions } = {
 };
 
 export const getLocaleConfigs = (locale?: ILocale | undefined) => {
-	const currentLang: ILocale = locale ?? getFromCookie("locale") ?? defaultLocale;
+	const currentLang: ILocale = locale ?? getFromCookie("locale") ?? DEFAULT_LOCALE;
 	return localeOptions[currentLang];
 };
 
