@@ -8,7 +8,7 @@ export default async function MainFooter({ locale }: PropsWithLocale) {
 	const dict = await getDictionary(locale);
 	return (
 		<footer className="main bg-black footer border-t border-appOrange p-10">
-			<Row gutter={[8, 8]}>
+			<Row gutter={[16, 16]}>
 				<Col xs={24} lg={10}>
 					<Image
 						src={"/assets/images/header-logo.png"}
@@ -20,7 +20,8 @@ export default async function MainFooter({ locale }: PropsWithLocale) {
 					/>
 					<p className="text-xs text-slate-500 px-5">
 						توضیح مختصر از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت توضیح مختصر
-						از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت ...
+						از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت از یک بیت توضیح مختصر از یک بیت توضیح مختصر از
+						یک بیت ...
 					</p>
 				</Col>
 				<Col xs={24} lg={3}>
