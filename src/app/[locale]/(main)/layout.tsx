@@ -9,10 +9,8 @@ export default function MainLayout({ children, params: { locale } }: PropsWithPa
 	return (
 		<>
 			<MainNavbar locale={locale} />
-			<main className={gStyle["main__home-container"]}>
-				{children}
-				<MainFooter locale={locale} />
-			</main>
+			<main className={gStyle["main__home-container"]}>{children}</main>
+			<MainFooter locale={locale} />
 		</>
 	);
 }

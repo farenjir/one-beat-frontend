@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-import vipVector from "@/assets/images/vip-vector.png";
-
 import { PropsWithDict } from "@/types";
 
 export default function VipSection({ dict }: PropsWithDict) {
@@ -18,7 +16,7 @@ export default function VipSection({ dict }: PropsWithDict) {
 						className={`absolute -top-16 right-0 rounded-full`}
 						width={120}
 						height={150}
-						src={vipVector}
+						src={"/assets/images/vip-vector.png"}
 						alt="vip-Vector"
 						loading="lazy"
 					/>

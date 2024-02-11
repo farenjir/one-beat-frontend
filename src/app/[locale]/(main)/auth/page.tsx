@@ -34,7 +34,7 @@ export default async function Auth({ params: { locale } }: IParams) {
 	// return
 	return (
 		<>
-			<TabMenu items={tabItems} type="card" tabPosition="right" tabClasses="px-5" />
+			<TabMenu items={tabItems} type="card" tabPosition="right" tabClasses="px-10" />
 		</>
 	);
 }
