@@ -1,4 +1,4 @@
-import { ProductLevel, ProductStatus } from "../configs/enums";
+import { ProductLevel, ProductStatus } from "../enums";
 import { IUser } from "./user";
 
 export interface IProduct {

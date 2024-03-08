@@ -3,7 +3,7 @@ import { cache } from "react";
 import callApiServerSide from "@/service/server";
 
 import { IProduct, IUser } from "@/types";
-import { ProductStatus } from "@/types/configs/enums";
+import { ProductStatus } from "@/types/enums";
 
 import "server-only";
 

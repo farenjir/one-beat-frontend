@@ -1,15 +1,15 @@
 import localFont from "next/font/local";
 import type { Metadata, ResolvingMetadata } from "next";
 
-import { rootLayoutMetadata } from "@/meta/RootLayout";
+import { rootLayoutMetadata } from "@/app/lib/meta/RootLayout";
 
 import "@/assets/styles/global.css";
 
 import { GenerateMetaProps, PropsWithParams } from "@/types";
 import { getLocaleConfigs } from "@/utils/global";
-import { locales } from "@/langs";
+import { locales } from "@/assets/langs";
 
-import Globals from "@/context";
+import Globals from "@/app/lib/context";
 
 const yekan = localFont({
 	variable: "--font-yekan",

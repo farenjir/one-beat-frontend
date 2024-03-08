@@ -6,7 +6,7 @@ import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 
 import { PropsWithDict } from "@/types";
-import { useAppContext } from "@/context";
+import { useAppContext } from "@/app/lib/context";
 import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 

@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { PropsWithLocale } from "@/types";
-import { getDictionary } from "@/langs";
+import { getDictionary } from "@/assets/langs";
 
 import NavbarMobileMenu from "./components/MobileMenu";
 import User from "./components/User";

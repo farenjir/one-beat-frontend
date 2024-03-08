@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from "next";
 
-import { getDictionary } from "@/langs";
+import { getDictionary } from "@/assets/langs";
 import { GenerateMetaProps } from "@/types";
 
 export async function rootLayoutMetadata(parameters: GenerateMetaProps, parent: ResolvingMetadata): Promise<Metadata> {

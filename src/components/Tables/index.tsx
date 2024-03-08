@@ -4,7 +4,7 @@ import type { TableProps } from "antd/es/table";
 import colorTokens from "@/utils/theme";
 
 import { ILocale } from "@/types";
-import { useLocaleConfigs } from "@/hooks";
+import { useLocaleConfigs } from "@/app/lib/hooks";
 
 interface IExtraProps {
 	classes?: string;

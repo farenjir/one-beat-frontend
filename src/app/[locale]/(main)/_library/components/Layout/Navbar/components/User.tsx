@@ -4,7 +4,7 @@ import { Badge, Avatar } from "antd";
 import { UserOutlined, ShoppingCartOutlined, BellOutlined } from "@ant-design/icons";
 
 import { PropsWithDict } from "@/types";
-import { useAppContext } from "@/context";
+import { useAppContext } from "@/app/lib/context";
 
 import { useAppDispatch, useAppSelector, userSelector } from "@/store/selector";
 import { clearCurrentUser } from "@/store/auth/action";

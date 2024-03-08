@@ -1,7 +1,7 @@
 import { Checkbox, Form } from "antd";
 
 import { ILocale } from "@/types";
-import { useLocaleConfigs } from "@/hooks";
+import { useLocaleConfigs } from "@/app/lib/hooks";
 
 interface ICheckbox {
 	name: string;

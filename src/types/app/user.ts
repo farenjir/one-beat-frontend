@@ -1,4 +1,4 @@
-import { ProducerStatus, Roles } from "@/types/configs/enums";
+import { ProducerStatus, Roles } from "@/types/enums";
 import { AppBases } from "./base";
 
 export interface UserKyc {

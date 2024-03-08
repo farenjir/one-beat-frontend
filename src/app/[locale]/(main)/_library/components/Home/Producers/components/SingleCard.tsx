@@ -3,7 +3,7 @@ import Image from "next/image";
 import { SafetyOutlined, UserOutlined } from "@ant-design/icons";
 
 import { IUser } from "@/types";
-import { ProducerStatus } from "@/types/configs/enums";
+import { ProducerStatus } from "@/types/enums";
 
 import img from "../../test.jpg";
 

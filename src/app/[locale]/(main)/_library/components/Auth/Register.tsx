@@ -6,7 +6,7 @@ import { Form } from "antd";
 
 import { PropsWithDict } from "@/types";
 import { createNotification } from "@/utils/notification";
-import { useAppContext } from "@/context";
+import { useAppContext } from "@/app/lib/context";
 
 import { userRegistered } from "../../services";
 import { Inputs, Buttons } from "@/components";

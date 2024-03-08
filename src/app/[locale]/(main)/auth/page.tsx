@@ -1,5 +1,5 @@
 import { IParams } from "@/types";
-import { getDictionary } from "@/langs";
+import { getDictionary } from "@/assets/langs";
 
 import { TabMenu } from "@/components";
 import LoginForm from "../_library/components/Auth/Login";

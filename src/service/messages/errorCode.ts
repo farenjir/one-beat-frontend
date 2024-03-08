@@ -1,4 +1,4 @@
-import { getDictionary } from "@/langs";
+import { getDictionary } from "@/assets/langs";
 import { createNotification } from "@/utils/notification";
 
 export interface IError {

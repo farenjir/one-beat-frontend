@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Col, Row } from "antd";
 
-import { getDictionary } from "@/langs";
+import { getDictionary } from "@/assets/langs";
 import { PropsWithLocale } from "@/types";
 
 export default async function MainFooter({ locale }: PropsWithLocale) {

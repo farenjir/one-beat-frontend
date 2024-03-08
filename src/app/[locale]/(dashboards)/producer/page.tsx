@@ -1,5 +1,5 @@
 import { IParams } from "@/types";
-import { getDictionary } from "@/langs";
+import { getDictionary } from "@/assets/langs";
 
 export default async function ProducerPage({ params: { locale } }: IParams) {
 	const dict = await getDictionary(locale);

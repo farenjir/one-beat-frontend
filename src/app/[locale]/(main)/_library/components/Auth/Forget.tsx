@@ -5,7 +5,7 @@ import { InfoCircleOutlined, MailOutlined, UserOutlined } from "@ant-design/icon
 import { Form, Tooltip } from "antd";
 
 import { PropsWithDict } from "@/types";
-import { useAppContext } from "@/context";
+import { useAppContext } from "@/app/lib/context";
 
 import { userForgatPassword } from "../../services";
 

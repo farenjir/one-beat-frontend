@@ -2,7 +2,7 @@ import { Dropdown, MenuProps } from "antd";
 import { DownOutlined, RedoOutlined } from "@ant-design/icons";
 
 import { ILocale } from "@/types";
-import { useLocaleConfigs } from "@/hooks";
+import { useLocaleConfigs } from "@/app/lib/hooks";
 
 interface IDropDown {
 	title: string;

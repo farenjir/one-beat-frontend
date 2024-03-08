@@ -1,7 +1,7 @@
 import { Form, Input, InputNumber } from "antd";
 
 import { ILocale } from "@/types";
-import { useLocaleConfigs } from "@/hooks";
+import { useLocaleConfigs } from "@/app/lib/hooks";
 
 interface IInputs {
 	type: "text" | "password" | "number" | "textArea" | "email";

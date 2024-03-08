@@ -3,7 +3,7 @@
 import { ReactNode, createContext, useContext, useEffect, useRef } from "react";
 import { Provider } from "react-redux";
 
-import { getDictionary } from "@/langs";
+import { getDictionary } from "@/assets/langs";
 import { ILocale, ILocaleOptions } from "@/types";
 
 import { AppStore, makeStore } from "@/store/store";
@@ -12,7 +12,7 @@ import { getCurrentUser } from "@/store/auth/action";
 import { initializeAppDep } from "@/store/app/action";
 
 import callApi from "@/service/client";
-import { useLocaleConfigs } from "@/hooks";
+import { useLocaleConfigs } from "@/app/lib/hooks";
 
 import StyledComponentsRegistry from "@/components/Registry";
 

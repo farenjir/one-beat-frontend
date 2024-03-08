@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { Spin } from "antd";
 
 import { IParams } from "@/types";
-import { getDictionary } from "@/langs";
+import { getDictionary } from "@/assets/langs";
 
 import { getProducers, getTopProducts } from "./_library/services/server";
 

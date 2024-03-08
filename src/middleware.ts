@@ -1,6 +1,6 @@
 import type { NextRequest } from "next/server";
 
-import { defaultLocale, locales } from "./langs";
+import { defaultLocale, locales } from "./assets/langs";
 import { ILocale } from "./types";
 
 function getLocale(request: NextRequest): ILocale {
