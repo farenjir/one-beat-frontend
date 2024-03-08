@@ -5,7 +5,7 @@ import { PropsWithDict } from "@/types";
 import { basesSelector, useAppSelector } from "@/store/selector";
 
 import { Tables } from "@/components";
-import ProductFilters from "./components/Filters";
+import ProductFilters from "./Filters";
 
 const fakeData = Array(8)
 	.fill(null)

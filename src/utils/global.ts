@@ -4,7 +4,7 @@ import fa from "antd/locale/fa_IR";
 import { defaultLocale } from "@/assets/langs";
 import { ILocale, ILocaleOptions } from "@/types";
 
-import { getFromCookie } from "./cookie";
+import { getFromCookie } from "./storage";
 
 export const localeOptions: { [key: string]: ILocaleOptions } = {
 	fa: { lang: "fa", dir: "rtl", rtl: true, ltr: false, fontType: "yekan", locale: fa },

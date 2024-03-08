@@ -2,10 +2,11 @@ import { CustomerServiceOutlined, HeartOutlined, ShoppingOutlined, StarOutlined 
 
 import { PropsWithDict } from "@/types";
 
-export default function MainHeader({ dict }: PropsWithDict) {
-	const {
+export default function MainHeader({
+	dict: {
 		Main: { Header },
-	} = dict;
+	},
+}: PropsWithDict) {
 	// return
 	return (
 		<section className="h-screen flex flex-col justify-center align-around  mx-auto max-w-7xl px-8">

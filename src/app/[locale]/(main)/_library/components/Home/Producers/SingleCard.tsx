@@ -5,7 +5,7 @@ import { SafetyOutlined, UserOutlined } from "@ant-design/icons";
 import { IUser } from "@/types";
 import { ProducerStatus } from "@/types/enums";
 
-import img from "../../test.jpg";
+import img from "../test.jpg";
 
 type Colors = "Grey" | "Blue" | "Orange";
 

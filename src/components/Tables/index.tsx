@@ -1,7 +1,7 @@
 import { ConfigProvider, Table, theme } from "antd";
 import type { TableProps } from "antd/es/table";
 
-import colorTokens from "@/utils/theme";
+import colorTokens from "@/assets/theme";
 
 import { ILocale } from "@/types";
 import { useLocaleConfigs } from "@/app/lib/hooks";

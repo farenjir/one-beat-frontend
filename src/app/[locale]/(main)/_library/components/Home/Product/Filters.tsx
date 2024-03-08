@@ -10,12 +10,13 @@ const commonStyles = {
 	titleClasses: "px-3 text-lg border-b border-appGrey text-appGrey rounded-lg",
 };
 
-const ProductFilters = ({ dict }: PropsWithDict) => {
+const ProductFilters = ({
+	dict: {
+		Main: { Product },
+	},
+}: PropsWithDict) => {
 	// hooks
 	const bases = useAppSelector(basesSelector);
-	const {
-		Main: { Product },
-	} = dict;
 	// filters
 	const filters = ["genre", "tempo", "mood", "group"];
 	// handles

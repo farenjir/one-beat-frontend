@@ -10,10 +10,11 @@ const Description = () => {
 		</div>
 	);
 };
-export default function Members({ dict }: PropsWithDict) {
-	const {
+export default function Members({
+	dict: {
 		Main: { Members },
-	} = dict;
+	},
+}: PropsWithDict) {
 	return (
 		<section className="member-sections mx-auto max-w-7xl px-5 pt-10 lg:p-10">
 			<div className={`w-full rounded-3xl text-white text-center border-t border-appOrange`}>

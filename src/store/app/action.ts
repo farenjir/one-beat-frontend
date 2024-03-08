@@ -2,8 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import { AppBases, AppTransformBases, ILocale, IVersion, TypeApi } from "@/types";
 
-import { getFromCookie, storeInCookie } from "@/utils/cookie";
-import { getFromStorage, setToStorage } from "@/utils/storage";
+import { getFromStorage, setToStorage, getFromCookie, storeInCookie } from "@/utils/storage";
 
 type IProps = {
 	locale: ILocale;

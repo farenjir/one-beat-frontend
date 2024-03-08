@@ -1,3 +1,23 @@
+import Cookies from "universal-cookie";
+
+const cookie = new Cookies();
+
+export const getFromCookie = <T>(key: string): T => {
+	return cookie.get(key);
+};
+
+export const removeFromCookie = (key: string): void => {
+	cookie.remove(key);
+};
+
+export const storeInCookie = (key: string, value: unknown, maxAge?: number): void => {
+	cookie.set(key, value, {
+		path: "/",
+		maxAge,
+		// maxAge: 24 * 24 * 3600,
+	});
+};
+
 export const setToStorage = (key = "", value: unknown, sessionStorage?: boolean) => {
 	if (typeof window !== "undefined") {
 		try {

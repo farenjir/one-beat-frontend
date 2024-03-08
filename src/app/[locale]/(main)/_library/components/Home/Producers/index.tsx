@@ -2,7 +2,7 @@ import { Carousel } from "antd";
 
 import { IUser, PropsWithDict } from "@/types";
 
-import ProducersSingleCard from "./components/SingleCard";
+import ProducersSingleCard from "./SingleCard";
 
 export default function Producers({ dict, producers = [] }: PropsWithDict & { producers: IUser[] }) {
 	const [p1, p2, p3, p4, p5, p6, p7, p8, p9] = producers;

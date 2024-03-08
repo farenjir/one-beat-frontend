@@ -2,15 +2,14 @@ import Image from "next/image";
 
 import { PropsWithDict } from "@/types";
 
-export default function VipSection({ dict }: PropsWithDict) {
-	const {
+export default function VipSection({
+	dict: {
 		Main: { Vip },
-	} = dict;
+	},
+}: PropsWithDict) {
 	return (
 		<section className="vip-sections mx-auto max-w-7xl mt-20 mb-10 lg:mt-5 px-5 pt-10 lg:p-10">
-			<div
-				className={`vip-card w-full pb-8 px-10 rounded-3xl bg-appLightGrey text-white text-center`}
-			>
+			<div className={`vip-card w-full pb-8 px-10 rounded-3xl bg-appLightGrey text-white text-center`}>
 				<div className="relative h-28 lg:h-14">
 					<Image
 						className={`absolute -top-16 right-0 rounded-full`}
