@@ -7,7 +7,7 @@ import { PropsWithLocale } from "@/types";
 export default async function MainFooter({ locale }: PropsWithLocale) {
 	const dict = await getDictionary(locale);
 	return (
-		<footer className="main bg-black footer border-t border-appOrange p-10">
+		<footer className="bg-black footer border-t border-appOrange p-10">
 			<Row gutter={[16, 16]}>
 				<Col xs={24} lg={10}>
 					<Image
