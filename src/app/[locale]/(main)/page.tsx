@@ -4,14 +4,14 @@ import { Spin } from "antd";
 import { IParams } from "@/types";
 import { getDictionary } from "@/assets/langs";
 
-import { getProducers, getTopProducts } from "./_library/services/server";
+import { getProducers, getTopProducts } from "@/app/lib/services/main/server";
 
-import MainHeader from "./_library/components/Home/Header";
-import TopProduct from "./_library/components/Home/TopProduct";
-import Producers from "./_library/components/Home/Producers";
-import Product from "./_library/components/Home/Product";
-import VipSection from "./_library/components/Home/Vip";
-import Members from "./_library/components/Home/Members";
+import MainHeader from "./_components/Home/Header";
+import TopProduct from "./_components/Home/TopProduct";
+import Producers from "./_components/Home/Producers";
+import Product from "./_components/Home/Product";
+import VipSection from "./_components/Home/Vip";
+import Members from "./_components/Home/Members";
 
 export default async function MainPage({ params: { locale } }: IParams) {
 	const dict = await getDictionary(locale);

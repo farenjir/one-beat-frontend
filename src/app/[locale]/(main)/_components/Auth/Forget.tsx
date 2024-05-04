@@ -7,7 +7,7 @@ import { Form, Tooltip } from "antd";
 import { PropsWithDict } from "@/types";
 import { useAppContext } from "@/app/lib/context";
 
-import { userForgatPassword } from "../../services";
+import { userForgatPassword } from "@/app/lib/services/main";
 
 import { Inputs, Buttons } from "@/components";
 

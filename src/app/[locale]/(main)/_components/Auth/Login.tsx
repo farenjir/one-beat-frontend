@@ -10,7 +10,7 @@ import { useAppContext } from "@/app/lib/context";
 import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 
-import { userAuthentication } from "../../services";
+import { userAuthentication } from "@/app/lib/services/main";
 import { Inputs, Buttons, Checkboxes } from "@/components";
 
 interface ILoginForm {

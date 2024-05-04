@@ -1,5 +1,7 @@
 "use client";
 
+// global components
+
 export { default as Inputs } from "./Inputs";
 export { default as Checkboxes } from "./Checkbox";
 

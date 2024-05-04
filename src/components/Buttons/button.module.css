@@ -59,7 +59,3 @@
 	@apply border-appGrey !important;
 	@apply bg-transparent;
 }
-.btn-public__disable {
-	border-color: #888888;
-	cursor: default;
-}
