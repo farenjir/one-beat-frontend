@@ -11,7 +11,7 @@ import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 import { initializeAppDep } from "@/store/app/action";
 
-import callApi from "@/service/client";
+import callApi from "@/service";
 import { useLocaleConfigs } from "@/app/lib/hooks";
 
 import StyledComponentsRegistry from "@/components/Registry";

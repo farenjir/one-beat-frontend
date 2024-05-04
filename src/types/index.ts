@@ -1,4 +1,4 @@
-import callApi from "@/service/client";
+import callApi from "@/service";
 
 import type { IUser } from "./app/user";
 import type { AppBases, AppTransformBases, UserChildBase } from "./app/base";

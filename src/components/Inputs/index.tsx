@@ -3,6 +3,7 @@ import { Form, Input, InputNumber } from "antd";
 import { ILocale } from "@/types";
 import { useLocaleConfigs } from "@/app/lib/hooks";
 
+const { TextArea } = Input;
 interface IInputs {
 	type: "text" | "password" | "number" | "textArea" | "email";
 	name: string;
@@ -71,7 +72,7 @@ const Inputs = ({
 				);
 			case "textarea":
 				return (
-					<Input.TextArea
+					<TextArea
 						className={classes}
 						placeholder={placeholder}
 						disabled={disabled}

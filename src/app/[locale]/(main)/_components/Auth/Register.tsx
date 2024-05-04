@@ -28,7 +28,7 @@ const RegisterForm = ({ dict: { Auth } }: PropsWithDict) => {
 			return createNotification({ message: Auth.password, type: "warning", description: Auth.passwordDuplicated });
 		}
 		const registerUser = await userRegistered<IRegisterForm>(callApi, { username, email, password });
-		if (registerUser) {
+		if (registerUser?.id) {
 			router.push("/");
 		}
 	};
