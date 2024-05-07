@@ -19,6 +19,7 @@ const callApi = <TRes, TBody = {}>({
 }: IApi<TBody>): Promise<TRes> => {
 	// check ssr and csr
 	const isCSR = typeof window !== "undefined";
+	// notification makers
 	if (isCSR) {
 		var { ISuccess, successCodeMessage } = require("./messages/successCode");
 		var { IError, errorCodeMessage } = require("./messages/errorCode");
@@ -39,7 +40,7 @@ const callApi = <TRes, TBody = {}>({
 	// if (isCSR) {
 	// 	token = getFromCookie("app-token");
 	// } else {
-	// 	const { cookies } = await import("next/headers"),
+	// 	const { cookies } = require("next/headers");
 	// 		token = cookies().get("token")?.value;
 	// }
 	axiosInstance.interceptors.request.use(
