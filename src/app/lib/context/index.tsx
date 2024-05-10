@@ -5,6 +5,8 @@ import { Provider } from "react-redux";
 
 import { getDictionary } from "@/assets/langs";
 import { ILocale, ILocaleOptions } from "@/types";
+import { ACCESS_TOKEN_ID } from "@/types/constance";
+import { getFromCookie } from "@/utils/storage";
 
 import { AppStore, makeStore } from "@/store/store";
 import { useAppDispatch } from "@/store/selector";
@@ -29,18 +31,21 @@ const AppContext = createContext<IContext>({
 	localeConfigs: {},
 });
 
+const checkUser = getFromCookie(ACCESS_TOKEN_ID);
+
 const ApplicationContext = ({ children, locale }: { children: ReactNode; locale: ILocale }) => {
 	// hooks
 	const localeConfigs = useLocaleConfigs(locale);
 	const dispatch = useAppDispatch();
 	// initialize context
 	useEffect(() => {
-		const userPromise = dispatch(getCurrentUser({ callApi }));
 		const appPromise = dispatch(initializeAppDep({ callApi, locale }));
+		if (checkUser) {
+			dispatch(getCurrentUser({ callApi }));
+		}
 		// cleanUp
 		return () => {
 			appPromise.abort();
-			userPromise.abort();
 		};
 	}, [locale, dispatch]);
 	// return context

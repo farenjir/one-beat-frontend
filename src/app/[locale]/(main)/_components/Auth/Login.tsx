@@ -6,11 +6,12 @@ import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Form } from "antd";
 
 import { PropsWithDict } from "@/types";
+
 import { useAppContext } from "@/app/lib/context";
 import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 
-import { userAuthentication } from "@/app/lib/services/main";
+import { userAuthentication } from "@/app/lib/services/main/client";
 import { Inputs, Buttons, Checkboxes } from "@/components";
 
 interface ILoginForm {

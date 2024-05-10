@@ -8,7 +8,7 @@ import { PropsWithDict } from "@/types";
 import { createNotification } from "@/utils/notification";
 import { useAppContext } from "@/app/lib/context";
 
-import { userRegistered } from "@/app/lib/services/main";
+import { userRegistered } from "@/app/lib/services/main/client";
 import { Inputs, Buttons } from "@/components";
 
 interface IRegisterForm {
