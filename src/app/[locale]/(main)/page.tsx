@@ -10,7 +10,7 @@ import MainHeader from "./_components/Home/Header";
 import TopProduct from "./_components/Home/TopProduct";
 import Producers from "./_components/Home/Producers";
 import Product from "./_components/Home/Product";
-import VipSection from "./_components/Home/Vip";
+import VipSection from "./_components/Home/VipSection";
 import Members from "./_components/Home/Members";
 
 export default async function MainPage({ params: { locale } }: IParams) {

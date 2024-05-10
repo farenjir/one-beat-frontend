@@ -3,7 +3,7 @@ import { Carousel } from "antd";
 import { IProduct, PropsWithDict } from "@/types";
 import { uIdMaker } from "@/utils/global";
 
-import SingleCard from "./SingleCard";
+import { ProductCard } from "@/app/components";
 
 export default function TopProduct({ dict, topProduct = [] }: PropsWithDict & { topProduct: IProduct[] }) {
 	const {
@@ -24,8 +24,8 @@ export default function TopProduct({ dict, topProduct = [] }: PropsWithDict & { 
 			>
 				{[{ id: 1 }, { id: 2 }].map((product, idx) => (
 					<>
-						<SingleCard key={uIdMaker(idx + 2)} product={product} />
-						<SingleCard key={uIdMaker(idx + 3)} product={product} />
+						<ProductCard key={uIdMaker(idx + 2)} product={product} />
+						<ProductCard key={uIdMaker(idx + 3)} product={product} />
 					</>
 				))}
 			</Carousel>

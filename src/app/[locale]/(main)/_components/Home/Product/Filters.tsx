@@ -1,5 +1,3 @@
-import { memo } from "react";
-
 import { PropsWithDict } from "@/types";
 import { basesSelector, useAppSelector } from "@/store/selector";
 
@@ -40,4 +38,4 @@ const ProductFilters = ({
 	);
 };
 
-export default memo(ProductFilters);
+export default ProductFilters

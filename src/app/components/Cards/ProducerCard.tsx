@@ -5,8 +5,6 @@ import { SafetyOutlined, UserOutlined } from "@ant-design/icons";
 import { IUser } from "@/types";
 import { ProducerStatus } from "@/types/enums";
 
-import img from "../test.jpg";
-
 type Colors = "Grey" | "Blue" | "Orange";
 
 interface ICard {
@@ -37,7 +35,7 @@ const Descriptions = ({ color }: Pick<ICard, "color">) => {
 	);
 };
 
-export default function ProducersSingleCard({ producer }: { producer: IUser }) {
+export default function ProducerCard({ producer }: { producer: IUser }) {
 	const color: Colors = useMemo(() => {
 		switch (producer?.kyc?.producerKyc) {
 			case ProducerStatus.Accepted:
@@ -62,7 +60,7 @@ export default function ProducersSingleCard({ producer }: { producer: IUser }) {
 					className={`absolute top-0 left-0 rounded-full h-28 w-28 shadow-md shadow-app${color}`}
 					width={100}
 					height={100}
-					src={img}
+					src={"/assets/images/test.jpg"}
 					alt=""
 					loading="lazy"
 				/>

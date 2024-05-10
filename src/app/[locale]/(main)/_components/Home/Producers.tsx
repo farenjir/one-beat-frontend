@@ -2,7 +2,7 @@ import { Carousel } from "antd";
 
 import { IUser, PropsWithDict } from "@/types";
 
-import ProducersSingleCard from "./SingleCard";
+import { ProducerCard } from "@/app/components";
 
 export default function Producers({ dict, producers = [] }: PropsWithDict & { producers: IUser[] }) {
 	const [p1, p2, p3, p4, p5, p6, p7, p8, p9] = producers;
@@ -18,23 +18,23 @@ export default function Producers({ dict, producers = [] }: PropsWithDict & { pr
 			<Carousel key="producers" id="producers" dotPosition="right" autoplaySpeed={5000} autoplay waitForAnimate>
 				<div className="py-10 px-3 lg:px-10">
 					<section className="producer-sections flex flex-col md:flex-row justify-between align-middle items-center gap-8">
-						<ProducersSingleCard key="producer-1" producer={p1} />
-						<ProducersSingleCard key="producer-2" producer={p2} />
-						<ProducersSingleCard key="producer-3" producer={p3} />
+						<ProducerCard key="producer-1" producer={p1} />
+						<ProducerCard key="producer-2" producer={p2} />
+						<ProducerCard key="producer-3" producer={p3} />
 					</section>
 				</div>
 				<div className="py-10 px-3 lg:px-10">
 					<section className="producer-sections flex flex-col md:flex-row justify-between align-middle items-center gap-8">
-						<ProducersSingleCard key="producer-4" producer={p4} />
-						<ProducersSingleCard key="producer-5" producer={p5} />
-						<ProducersSingleCard key="producer-6" producer={p6} />
+						<ProducerCard key="producer-4" producer={p4} />
+						<ProducerCard key="producer-5" producer={p5} />
+						<ProducerCard key="producer-6" producer={p6} />
 					</section>
 				</div>
 				<div className="py-10 px-3 lg:px-10">
 					<section className="producer-sections flex flex-col md:flex-row justify-between align-middle items-center gap-8">
-						<ProducersSingleCard key="producer-7" producer={p7} />
-						<ProducersSingleCard key="producer-8" producer={p8} />
-						<ProducersSingleCard key="producer-9" producer={p9} />
+						<ProducerCard key="producer-7" producer={p7} />
+						<ProducerCard key="producer-8" producer={p8} />
+						<ProducerCard key="producer-9" producer={p9} />
 					</section>
 				</div>
 			</Carousel>

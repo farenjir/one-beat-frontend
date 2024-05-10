@@ -1,10 +1,7 @@
 import Image from "next/image";
-
 import { CaretLeftOutlined, ShoppingOutlined } from "@ant-design/icons";
 
 import { IProduct } from "@/types";
-
-import img from "../test.jpg";
 
 const Title = () => {
 	const TitleItem = () => (
@@ -55,19 +52,23 @@ const Description = () => (
 	</div>
 );
 
-const ImageItem = () => (
-	<div className="w-full">
-		<Image className="rounded-xl" sizes="" src={img} alt="" loading="lazy" />
-	</div>
-);
-
-export default function SingleCard({ product }: { product: Partial<IProduct> }) {
+export default function ProductCard({ product }: { product: Partial<IProduct> }) {
 	return (
 		<div className="single-card">
 			<section className="flex flex-col-reverse gap-3 md:flex-row-reverse">
 				<Title />
 				<Description />
-				<ImageItem />
+				<Image
+					className="rounded-xl object-fill"
+					sizes="300px"
+					fill
+					style={{
+						objectFit: "contain",
+					}}
+					src={"/assets/images/test.jpg"}
+					alt="new-img"
+					loading="lazy"
+				/>
 			</section>
 		</div>
 	);
