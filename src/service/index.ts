@@ -9,10 +9,10 @@ export interface IApi<TBody> {
 	method?: Method;
 	contentType?: AxiosHeaderValue;
 	responseType?: ResponseType;
-	setTokenToHeader?: boolean;
 	// https://nextjs.org/docs/app/api-reference/functions/fetch
-	nextCatch?: "default" | "force-cache" | "no-cache" | "no-store" | "no-store" | "only-if-cached" | "reload" | undefined;
-	next?: { revalidate?: false | 0 | number ; tags?: string[] } | undefined;
+	nextCatch?: RequestCache
+	next?: NextFetchRequestConfig
+	setTokenToHeader?: boolean;
 }
 
 const callApi = <TRes, TBody = {}>({
@@ -38,7 +38,6 @@ const callApi = <TRes, TBody = {}>({
 	// axiosInstance
 	const axiosInstance = axios.create({
 		baseURL,
-		
 		headers: {
 			"Accept-Language": "en",
 			"Api-Version": "1.0",

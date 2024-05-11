@@ -28,8 +28,8 @@ body {
 	scrollbar-color: #ffa50050 #0000000d;
 }
 *::-webkit-scrollbar {
-	width: 6px;
-	height: 6px;
+	width: 2px;
+	height: 2px;
 }
 *::-webkit-scrollbar-track {
 	background: #ffa6001a;
