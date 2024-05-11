@@ -1,15 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { InfoCircleOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
-import { Form, Tooltip } from "antd";
+import { Tooltip } from "antd";
 
 import { PropsWithDict } from "@/types";
 import { useAppContext } from "@/app/lib/context";
 
 import { userForgatPassword } from "@/app/lib/services/main/client";
 
-import { Inputs, Buttons } from "@/components";
+import { Inputs, Buttons, Forms, formType } from "@/components";
 
 type Mode = "username" | "email";
 interface IForgetForm {
@@ -29,8 +29,8 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDict) => {
 		btn: true,
 	});
 	// hooks
-	const [form] = Form.useForm();
 	const { callApi } = useAppContext();
+	const formRef = useRef<formType>();
 	// handles
 	const onFinish = async ({ username: name, email: mail }: IForgetForm) => {
 		const formBody = {
@@ -44,12 +44,12 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDict) => {
 	const handleOnChange = (mount: Mode, unmount: Mode, isNotMounted: boolean) => {
 		if (!isNotMounted) {
 			setDisableOtherField((perObject) => ({ ...perObject, [mount]: true, [unmount]: false, btn: false }));
-			form.setFieldValue(unmount, null);
+			formRef?.current?.setFieldValue(unmount, null);
 		}
 	};
 	// return
 	return (
-		<Form name="forget-password-form" layout="vertical" form={form} onFinish={onFinish} className="forget-password-form">
+		<Forms name="forget-password-form" onFinish={onFinish} ref={formRef}>
 			<Inputs
 				name="username"
 				type="text"
@@ -78,7 +78,7 @@ const ForgetPassword = ({ dict: { Auth } }: PropsWithDict) => {
 					</Tooltip>
 				}
 			/>
-		</Form>
+		</Forms>
 	);
 };
 

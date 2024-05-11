@@ -3,7 +3,6 @@
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
-import { Form } from "antd";
 
 import { PropsWithDict } from "@/types";
 
@@ -12,7 +11,7 @@ import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 
 import { userAuthentication } from "@/app/lib/services/main/client";
-import { Inputs, Buttons, Checkboxes } from "@/components";
+import { Inputs, Buttons, Checkboxes, Forms } from "@/components";
 
 interface ILoginForm {
 	username?: string;
@@ -47,13 +46,7 @@ const LoginForm = ({ dict: { Auth }, mode }: PropsWithDict & { mode: "email" | "
 	};
 	// return
 	return (
-		<Form
-			name="login-form"
-			className="login-form"
-			layout="vertical"
-			onFinish={onFinish}
-			initialValues={{ remember: true }}
-		>
+		<Forms name="login-form" onFinish={onFinish} initialValues={{ remember: true }}>
 			<Inputs
 				// labelOnMode
 				name={mode}
@@ -69,7 +62,7 @@ const LoginForm = ({ dict: { Auth }, mode }: PropsWithDict & { mode: "email" | "
 			/>
 			<Checkboxes label={Auth.remember} name="remember" />
 			<Buttons name={Auth.loginAccount} color="secondary" htmlType="submit" classes="login-form-button mt-5" />
-		</Form>
+		</Forms>
 	);
 };
 

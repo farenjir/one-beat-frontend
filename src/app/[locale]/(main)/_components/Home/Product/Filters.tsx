@@ -38,4 +38,4 @@ const ProductFilters = ({
 	);
 };
 
-export default ProductFilters
+export default ProductFilters;

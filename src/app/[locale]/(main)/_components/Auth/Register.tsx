@@ -2,14 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
-import { Form } from "antd";
 
 import { PropsWithDict } from "@/types";
 import { createNotification } from "@/utils/notification";
 import { useAppContext } from "@/app/lib/context";
 
 import { userRegistered } from "@/app/lib/services/main/client";
-import { Inputs, Buttons } from "@/components";
+import { Inputs, Buttons, Forms } from "@/components";
 
 interface IRegisterForm {
 	username: string;
@@ -25,16 +24,17 @@ const RegisterForm = ({ dict: { Auth } }: PropsWithDict) => {
 	// handles
 	const onFinish = async ({ username, email, password, repeatPassword }: IRegisterForm) => {
 		if (password !== repeatPassword) {
-			return createNotification({ message: Auth.password, type: "warning", description: Auth.passwordDuplicated });
-		}
-		const registerUser = await userRegistered<IRegisterForm>(callApi, { username, email, password });
-		if (registerUser?.id) {
-			router.push("/");
+			createNotification({ message: Auth.password, type: "warning", description: Auth.passwordDuplicated });
+		} else {
+			const registerUser = await userRegistered<IRegisterForm>(callApi, { username, email, password });
+			if (registerUser?.id) {
+				router.push("/");
+			}
 		}
 	};
 	// return
 	return (
-		<Form name="register-form" className="register-form" layout="vertical" onFinish={onFinish}>
+		<Forms name="register-form" onFinish={onFinish}>
 			<Inputs
 				name="username"
 				type="text"
@@ -60,7 +60,7 @@ const RegisterForm = ({ dict: { Auth } }: PropsWithDict) => {
 				prefix={<LockOutlined className="site-form-item-icon" />}
 			/>
 			<Buttons name={Auth.registerAccount} color="success" htmlType="submit" classes="register-form-button mt-5" />
-		</Form>
+		</Forms>
 	);
 };
 
