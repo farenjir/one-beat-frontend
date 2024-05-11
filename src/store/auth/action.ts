@@ -8,7 +8,7 @@ import { IUser, TypeApi } from "@/types";
 export const getCurrentUser = createAsyncThunk("auth/currentUser", async ({ callApi }: { callApi: TypeApi }, _thunkAPI) => {
 	return await callApi<IUser>({ url: "user/whoAmI" })
 		.then((response) => {
-			storeInCookie(ACCESS_TOKEN_ID, response.id);
+			storeInCookie(ACCESS_TOKEN_ID, response.id, 24 * 24 * 3600);
 			return { user: response };
 		})
 		.catch((_error) => ({ user: null }));

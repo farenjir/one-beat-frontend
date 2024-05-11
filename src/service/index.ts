@@ -1,5 +1,7 @@
 import axios, { AxiosError, AxiosHeaderValue, AxiosResponse, Method, ResponseType } from "axios";
 
+import { ACCESS_TOKEN } from "@/types/constance";
+
 export interface IApi<TBody> {
 	url: string;
 	queries?: { [key: string]: any };
@@ -7,6 +9,10 @@ export interface IApi<TBody> {
 	method?: Method;
 	contentType?: AxiosHeaderValue;
 	responseType?: ResponseType;
+	setTokenToHeader?: boolean;
+	// https://nextjs.org/docs/app/api-reference/functions/fetch
+	nextCatch?: "default" | "force-cache" | "no-cache" | "no-store" | "no-store" | "only-if-cached" | "reload" | undefined;
+	next?: { revalidate?: false | 0 | number ; tags?: string[] } | undefined;
 }
 
 const callApi = <TRes, TBody = {}>({
@@ -16,6 +22,9 @@ const callApi = <TRes, TBody = {}>({
 	queries = {},
 	contentType = "application/json",
 	responseType = "json",
+	setTokenToHeader = false,
+	nextCatch,
+	next,
 }: IApi<TBody>): Promise<TRes> => {
 	// check ssr and csr
 	const isCSR = typeof window !== "undefined";
@@ -29,32 +38,38 @@ const callApi = <TRes, TBody = {}>({
 	// axiosInstance
 	const axiosInstance = axios.create({
 		baseURL,
+		
 		headers: {
 			"Accept-Language": "en",
 			"Api-Version": "1.0",
 			Accept: "application/json",
 		},
 	});
-	// set request configs
+	// set token
 	let token = "";
-	// if (isCSR) {
-	// 	token = getFromCookie("app-token");
-	// } else {
-	// 	const { cookies } = require("next/headers");
-	// 		token = cookies().get("token")?.value;
-	// }
+	if (setTokenToHeader) {
+		if (isCSR) {
+			// token = getFromCookie(ACCESS_TOKEN);
+		} else {
+			const { cookies } = require("next/headers");
+			token = cookies().get(ACCESS_TOKEN)?.value;
+		}
+	}
+	// set request configs
 	axiosInstance.interceptors.request.use(
 		(config) => {
 			if (token) {
 				config.headers.Authorization = `Bearer ${token}`;
 			}
-			let customConfig = Object.assign({}, config, {
+			Object.assign(config, {
 				contentType,
-				responseType,
 				withCredentials: true, // send cookie with request
+				responseType,
+				catch: nextCatch, // next fetch extended configs
+				next,
 			});
 			// return
-			return customConfig;
+			return config;
 		},
 		(err) => {
 			throw err;
@@ -65,7 +80,7 @@ const callApi = <TRes, TBody = {}>({
 		// (response: AxiosResponse<ISuccess<TRes>, IError>) => {
 		(response: AxiosResponse<TRes>) => {
 			const { code, message, description, timestamp }: any = response?.data || {};
-			if (code && isCSR) {
+			if (isCSR && code) {
 				successCodeMessage(code, message, description);
 			}
 			return response;
