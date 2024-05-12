@@ -34,7 +34,7 @@ const LoginForm = ({ dict: { Auth }, mode }: PropsWithDict & { mode: "email" | "
 			const loginUser = await userAuthentication<ILoginForm>(callApi, formBody);
 			if (loginUser?.id) {
 				dispatch(getCurrentUser({ callApi }));
-				router.push("/");
+				router.replace("/");
 			}
 		},
 		[mode],

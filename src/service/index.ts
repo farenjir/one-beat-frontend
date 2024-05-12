@@ -10,9 +10,8 @@ export interface IApi<TBody> {
 	contentType?: AxiosHeaderValue;
 	responseType?: ResponseType;
 	// https://nextjs.org/docs/app/api-reference/functions/fetch
-	nextCatch?: RequestCache
-	next?: NextFetchRequestConfig
-	setTokenToHeader?: boolean;
+	next?: NextFetchRequestConfig;
+	nextCatch?: RequestCache;
 }
 
 const callApi = <TRes, TBody = {}>({
@@ -22,7 +21,6 @@ const callApi = <TRes, TBody = {}>({
 	queries = {},
 	contentType = "application/json",
 	responseType = "json",
-	setTokenToHeader = false,
 	nextCatch,
 	next,
 }: IApi<TBody>): Promise<TRes> => {
@@ -46,13 +44,11 @@ const callApi = <TRes, TBody = {}>({
 	});
 	// set token
 	let token = "";
-	if (setTokenToHeader) {
-		if (isCSR) {
-			// token = getFromCookie(ACCESS_TOKEN);
-		} else {
-			const { cookies } = require("next/headers");
-			token = cookies().get(ACCESS_TOKEN)?.value;
-		}
+	if (isCSR) {
+		// token = getFromCookie(ACCESS_TOKEN);
+	} else {
+		const { cookies } = require("next/headers");
+		token = cookies().get(ACCESS_TOKEN)?.value;
 	}
 	// set request configs
 	axiosInstance.interceptors.request.use(

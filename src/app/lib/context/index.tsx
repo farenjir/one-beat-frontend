@@ -31,7 +31,7 @@ const AppContext = createContext<IContext>({
 	localeConfigs: {},
 });
 
-const checkUser = getFromCookie(ACCESS_TOKEN_ID);
+const checkUserAuth = getFromCookie(ACCESS_TOKEN_ID);
 
 const ApplicationContext = ({ children, locale }: { children: ReactNode; locale: ILocale }) => {
 	// hooks
@@ -40,7 +40,7 @@ const ApplicationContext = ({ children, locale }: { children: ReactNode; locale:
 	// initialize context
 	useEffect(() => {
 		const appPromise = dispatch(initializeAppDep({ callApi, locale }));
-		if (checkUser) {
+		if (checkUserAuth) {
 			dispatch(getCurrentUser({ callApi }));
 		}
 		// cleanUp

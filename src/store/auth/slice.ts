@@ -11,7 +11,7 @@ export interface IAuthState {
 
 const initialState: IAuthState = {
 	user: null,
-	loading: true,
+	loading: false,
 };
 
 const authSlice = createSlice<IAuthState, {}, "auth", {}>({
