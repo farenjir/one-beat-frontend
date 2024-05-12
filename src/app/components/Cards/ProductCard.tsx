@@ -2,6 +2,7 @@ import Image from "next/image";
 import { CaretLeftOutlined, ShoppingOutlined } from "@ant-design/icons";
 
 import { IProduct } from "@/types";
+import { uIdMaker } from "@/utils/global";
 
 const Title = () => {
 	const TitleItem = () => (
@@ -23,10 +24,10 @@ const Title = () => {
 					</small>
 				</div>
 				<ul className="list-outside text-xl grid gap-3">
-					<TitleItem />
-					<TitleItem />
-					<TitleItem />
-					<TitleItem />
+					<TitleItem key={uIdMaker()} />
+					<TitleItem key={uIdMaker()} />
+					<TitleItem key={uIdMaker()} />
+					<TitleItem key={uIdMaker()} />
 				</ul>
 				<button className="text-appOrange border border-appOrange rounded-lg cursor-pointer hover:bg-appOrangeLight hover:border-white hover:text-white w-full mt-3 md:mt-1 md:w-1/2 pt-1 ">
 					<ShoppingOutlined />
@@ -54,19 +55,21 @@ const Description = () => (
 
 export default function ProductCard({ product }: { product: Partial<IProduct> }) {
 	return (
-		<div className="single-card">
+		<div className="single-card-layout">
 			<section className="flex flex-col-reverse gap-3 md:flex-row-reverse">
 				<Title />
-				<Description />
+				<Description />z
 				<Image
-					className="rounded-xl object-fill"
-					sizes="300px"
-					fill
-					style={{
-						objectFit: "contain",
-					}}
+					className="rounded-xl"
+					// sizes="300px"
+					// fill
+					// style={{
+					// 	objectFit: "contain",
+					// }}
+					height={200}
+					width={500}
 					src={"/assets/images/test.jpg"}
-					alt="new-img"
+					alt="test-new-img"
 					loading="lazy"
 				/>
 			</section>

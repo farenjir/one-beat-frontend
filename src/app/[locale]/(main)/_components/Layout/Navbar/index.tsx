@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -46,9 +45,7 @@ export default async function MainNavbar({ locale }: PropsWithLocale) {
 					</div>
 					{/* LogoSection */}
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
-						<Suspense fallback={null}>
-							<AuthLink dict={dict} />
-						</Suspense>
+						<AuthLink dict={dict} />
 						<div className="flex flex-shrink-0 items-center">
 							<Image
 								width={100}

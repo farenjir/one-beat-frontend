@@ -22,10 +22,10 @@ export default function TopProduct({ dict, topProduct = [] }: PropsWithDict & { 
 				waitForAnimate
 				className="pb-10 px-2"
 			>
-				{[{ id: 1 }, { id: 2 }].map((product, idx) => (
+				{[{ id: 1 }, { id: 2 }].map((product) => (
 					<>
-						<ProductCard key={uIdMaker(idx + 2)} product={product} />
-						<ProductCard key={uIdMaker(idx + 3)} product={product} />
+						<ProductCard key={uIdMaker(10)} product={product} />
+						<ProductCard key={uIdMaker(15)} product={product} />
 					</>
 				))}
 			</Carousel>
