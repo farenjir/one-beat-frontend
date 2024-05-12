@@ -1,3 +1,5 @@
+export const themeColorView = "#151515";
+
 const colorTokens = {
 	default: {
 		borderRadius: 8,

@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { IUser } from "@/types";
+import { ACCESS_TOKEN_ID } from "@/types/constance";
 
 import { clearCurrentUser, getCurrentUser } from "./action";
+import { getFromCookie } from "@/utils/storage";
 
 export interface IAuthState {
 	user: IUser | null;
@@ -11,7 +13,7 @@ export interface IAuthState {
 
 const initialState: IAuthState = {
 	user: null,
-	loading: false,
+	loading: !!getFromCookie(ACCESS_TOKEN_ID),
 };
 
 const authSlice = createSlice<IAuthState, {}, "auth", {}>({

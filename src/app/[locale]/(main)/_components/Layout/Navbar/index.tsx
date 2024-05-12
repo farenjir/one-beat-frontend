@@ -1,3 +1,5 @@
+import { Suspense } from "react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { PropsWithLocale } from "@/types";
@@ -5,7 +7,7 @@ import { getDictionary } from "@/assets/langs";
 
 import NavbarMobileMenu from "./components/MobileMenu";
 import User from "./components/User";
-import LogoSection from "./components/Logo";
+import AuthLink from "./components/AuthLink";
 
 export default async function MainNavbar({ locale }: PropsWithLocale) {
 	const dict = await getDictionary(locale);
@@ -44,7 +46,18 @@ export default async function MainNavbar({ locale }: PropsWithLocale) {
 					</div>
 					{/* LogoSection */}
 					<div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-end">
-						<LogoSection dict={dict} />
+						<Suspense fallback={null}>
+							<AuthLink dict={dict} />
+						</Suspense>
+						<div className="flex flex-shrink-0 items-center">
+							<Image
+								width={100}
+								height={50}
+								className="h-7 w-auto text-white"
+								src={"/assets/images/header-logo.png"}
+								alt="1Beat-logo"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>

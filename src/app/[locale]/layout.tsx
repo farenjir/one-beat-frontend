@@ -1,13 +1,14 @@
 import localFont from "next/font/local";
-import type { Metadata, ResolvingMetadata } from "next";
-
-import { rootLayoutMetadata } from "@/app/lib/meta/RootLayout";
+import type { Metadata, ResolvingMetadata, Viewport } from "next";
 
 import "@/assets/styles/global.css";
+
+import { rootLayoutMetadata } from "@/app/lib/meta/RootLayout";
 
 import { GenerateMetaProps, PropsWithParams } from "@/types";
 import { getLocaleConfigs } from "@/utils/global";
 import { locales } from "@/assets/langs";
+import { themeColorView } from "@/assets/theme";
 
 import Globals from "@/app/lib/context";
 
@@ -27,6 +28,10 @@ const yekan = localFont({
 		},
 	],
 });
+
+export const viewport: Viewport = {
+	themeColor: themeColorView,
+};
 
 export async function generateStaticParams() {
 	return locales.map((locale) => ({ locale }));

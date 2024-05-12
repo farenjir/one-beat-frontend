@@ -3,11 +3,11 @@
 const { NEXT_APP_BASE_URL, NEXT_APP_BACKEND_SERVER, NODE_ENV } = process.env;
 const env = { NEXT_APP_BASE_URL, NEXT_APP_BACKEND_SERVER };
 
-const withPWA = require("next-pwa")({
+const withPWA = require("@ducanh2912/next-pwa").default({
 	dest: "public/pwa",
 	register: true,
 	skipWaiting: true,
-	disable: NODE_ENV === "development",
+	// disable: NODE_ENV !== "production",
 });
 
 module.exports = withPWA({
