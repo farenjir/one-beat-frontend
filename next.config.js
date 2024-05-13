@@ -7,7 +7,7 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 	dest: "public/pwa",
 	register: true,
 	skipWaiting: true,
-	// disable: NODE_ENV !== "production",
+	disable: NODE_ENV !== "production",
 });
 
 module.exports = withPWA({

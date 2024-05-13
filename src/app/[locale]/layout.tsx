@@ -33,12 +33,12 @@ export const viewport: Viewport = {
 	themeColor: themeColorView,
 };
 
-export async function generateStaticParams() {
-	return locales.map((locale) => ({ locale }));
-}
-
 export async function generateMetadata(params: GenerateMetaProps, parent: ResolvingMetadata): Promise<Metadata> {
 	return await rootLayoutMetadata(params, parent);
+}
+
+export function generateStaticParams() {
+	return locales.map((locale) => ({ locale }));
 }
 
 export default function RootLayout({ children, params: { locale } }: PropsWithParams) {
