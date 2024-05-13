@@ -19,7 +19,7 @@ type ErrorsType = {
 	};
 };
 
-const exceptionPathMessages = [401];
+const exceptionPathMessages = [200];
 
 export const errorCodeMessage = async (
 	appCode: string,
