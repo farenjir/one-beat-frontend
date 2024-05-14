@@ -21,7 +21,7 @@ export default function VipSection({
 					/>
 				</div>
 				<h3 className="text-2xl lg:text-5xl font-extrabold">{Vip.title}</h3>
-				<p className="my-3 text-sm lg:text-lg text-slate-400">{Vip.description}</p>
+				<p className="my-3 text-sm lg:text-lg text-appGrey">{Vip.description}</p>
 				<button className="px-5 pt-1 text-appOrange border border-appOrange rounded-lg cursor-pointer hover:bg-appOrangeLight hover:border-white hover:text-white">
 					{Vip.btnTitle}
 				</button>

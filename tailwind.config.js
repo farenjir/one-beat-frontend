@@ -15,7 +15,7 @@ module.exports = {
 				appGrey: "#808080",
 				appGreyLighter: "#bdb9b9",
 				appLightGrey: "#222325",
-				appOrange: "#fa9600cc",
+				appOrange: "#FFA800",
 				appOrangeLight: "#ffa50050",
 				appGreen: "#52c41a",
 				appGreenLight: "#52c41a",

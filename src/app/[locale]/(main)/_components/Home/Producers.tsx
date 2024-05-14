@@ -8,9 +8,10 @@ export default function Producers({ dict, producers = [] }: PropsWithDict & { pr
 	const [p1, p2, p3, p4, p5, p6, p7, p8, p9] = producers;
 	return (
 		<section className="producer-sections mx-auto max-w-7xl px-5 pt-8 lg:p-10">
+				<ProducerCard key="producer-1" producer={p1} />
 			<div className="producer-title text-white mb-10 text-center">
 				<h2 className="text-5xl font-extrabold">برترین آهنگسازان</h2>
-				<p className="my-3 text-slate-400">
+				<p className="my-3 text-appGrey">
 					تمام دوره ها پشتیبانی ۲۴ ساعته و مادام العمر و همچنین گروه پرسش و پاسخ تلگرامی توسط اساتید مربوطه دارن پس
 					با خیال راحت خریــــد کن ...
 				</p>

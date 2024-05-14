@@ -18,7 +18,7 @@ export default async function MainFooter({ locale }: PropsWithLocale) {
 						height={100}
 						loading="lazy"
 					/>
-					<p className="text-xs text-slate-500 px-5">
+					<p className="text-xs text-appGrey px-5">
 						توضیح مختصر از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت توضیح مختصر
 						از یک بیت توضیح مختصر از یک بیت توضیح مختصر از یک بیت از یک بیت توضیح مختصر از یک بیت توضیح مختصر از
 						یک بیت ...
@@ -26,7 +26,7 @@ export default async function MainFooter({ locale }: PropsWithLocale) {
 				</Col>
 				<Col xs={24} lg={3}>
 					<h5 className="text-xl m-2 text-white">دسترسی سریع</h5>
-					<ul className="list-disc text-slate-500">
+					<ul className="list-disc text-appGrey">
 						<li className="cursor-pointer">صفحه اصلی</li>
 						<li className="cursor-pointer">راهنمای مشتریان</li>
 						<li className="cursor-pointer">ورود و ثبت نام</li>
@@ -36,7 +36,7 @@ export default async function MainFooter({ locale }: PropsWithLocale) {
 				</Col>
 				<Col xs={24} lg={3}>
 					<h5 className="text-xl m-2 text-white">دسترسی سریع</h5>
-					<ul className="list-disc text-slate-500">
+					<ul className="list-disc text-appGrey">
 						<li className="cursor-pointer">صفحه اصلی</li>
 						<li className="cursor-pointer">راهنمای مشتریان</li>
 						<li className="cursor-pointer">ورود و ثبت نام</li>
@@ -46,7 +46,7 @@ export default async function MainFooter({ locale }: PropsWithLocale) {
 				</Col>
 				<Col xs={24} lg={3}>
 					<h5 className="text-xl m-2 text-white">خدمات ما</h5>
-					<ul className="list-disc text-slate-500">
+					<ul className="list-disc text-appGrey">
 						<li className="cursor-pointer">صفحه اصلی</li>
 						<li className="cursor-pointer">راهنمای مشتریان</li>
 						<li className="cursor-pointer">ورود و ثبت نام</li>

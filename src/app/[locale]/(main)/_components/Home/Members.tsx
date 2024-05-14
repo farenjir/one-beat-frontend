@@ -6,7 +6,7 @@ const Description = () => {
 	return (
 		<div>
 			<p className="text-base lg:text-xl">۱۳۵۹ هنرآموز</p>
-			<b className="text-slate-400 hidden md:block text-xs">دوره جامع فتوشاپ</b>
+			<b className="text-appGrey hidden md:block text-xs">دوره جامع فتوشاپ</b>
 		</div>
 	);
 };
@@ -29,7 +29,7 @@ export default function Members({
 					/>
 				</div>
 				<h3 className="text-2xl lg:text-5xl font-extrabold">{Members.title}</h3>
-				<p className="my-3 text-sm lg:text-lg text-slate-400">{Members.description}</p>
+				<p className="my-3 text-sm lg:text-lg text-appGrey">{Members.description}</p>
 				<div className={`flex justify-around align-middle py-4 lg:py-7 rounded-3xl bg-appLightGrey text-white`}>
 					<Description key={"Description-1"} />
 					<Description key={"Description-2"} />

@@ -40,7 +40,7 @@ const Title = () => {
 
 const Description = () => (
 	<div className="w-3/4 text-white hidden md:block">
-		<p className="font-normal text-justify text-slate-400 hover:text-white">
+		<p className="font-normal text-justify text-appGrey hover:text-white">
 			لورم ایپسوم یا طرح‌نما به متنی آزمایشی و بی‌معنی در صنعت چاپ، صفحه‌آرایی و طراحی گرافیک گفته می‌شود. طراح گرافیک
 			از این متن به عنوان عنصری از ترکیب بندی برای پر کردن صفحه و ارایه اولیه شکل ظاهری و کلی طرح سفارش گرفته شده
 			استفاده می نماید، تا از نظر گرافیکی نشانگر چگونگی نوع و اندازه فونت و ظاهر متن باشد. معمولا طراحان گرافیک برای

@@ -17,7 +17,7 @@ export default function MusicPlayer() {
 						<p className="text-cyan-500 dark:text-cyan-400 text-sm leading-6">
 							<abbr title="Episode">Ep.</abbr> 128
 						</p>
-						<h2 className="text-slate-500 dark:text-slate-400 text-sm leading-6 truncate">
+						<h2 className="text-appGrey dark:text-appGrey text-sm leading-6 truncate">
 							Scaling CSS at Heroku with Utility Classes
 						</h2>
 						<p className="text-slate-900 dark:text-slate-50 text-lg">Full Stack Radio</p>
@@ -41,11 +41,11 @@ export default function MusicPlayer() {
 					</div>
 					<div className="flex justify-between text-sm leading-6 font-medium tabular-nums">
 						<div className="text-cyan-500 dark:text-slate-100">24:16</div>
-						<div className="text-slate-500 dark:text-slate-400">75:50</div>
+						<div className="text-appGrey dark:text-appGrey">75:50</div>
 					</div>
 				</div>
 			</div>
-			<div className="bg-slate-50 text-slate-500 dark:bg-slate-600 dark:text-slate-200 rounded-b-xl flex items-center">
+			<div className="bg-slate-50 text-appGrey dark:bg-slate-600 dark:text-slate-200 rounded-b-xl flex items-center">
 				<div className="flex-auto flex items-center justify-evenly">
 					<button type="button" aria-label="Add to favorites">
 						<svg width="24" height="24">
@@ -147,7 +147,7 @@ export default function MusicPlayer() {
 					</button>
 					<button
 						type="button"
-						className="rounded-lg text-xs leading-6 font-semibold px-2 ring-2 ring-inset ring-slate-500 text-slate-500 dark:text-slate-100 dark:ring-0 dark:bg-slate-500"
+						className="rounded-lg text-xs leading-6 font-semibold px-2 ring-2 ring-inset ring-slate-500 text-appGrey dark:text-slate-100 dark:ring-0 dark:bg-slate-500"
 					>
 						1x
 					</button>
