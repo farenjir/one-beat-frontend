@@ -11,7 +11,6 @@ import TopProduct from "./_components/Home/TopProduct";
 import Producers from "./_components/Home/Producers";
 import Product from "./_components/Home/Product";
 import VipSection from "./_components/Home/VipSection";
-import Members from "./_components/Home/Members";
 
 export default async function MainPage({ params: { locale } }: IParams) {
 	const dict = await getDictionary(locale);
@@ -22,16 +21,11 @@ export default async function MainPage({ params: { locale } }: IParams) {
 		<>
 			<MainHeader dict={dict} />
 			<TopProduct dict={dict} topProduct={topProduct} />
-			<Suspense fallback={<Spin spinning className="w-full h-96 grid place-items-center" size="large" />}>
-				<Producers dict={dict} producers={producers} />
-			</Suspense>
+			<Producers dict={dict} producers={producers} />
 			<Suspense fallback={<Spin spinning className="w-full h-96 grid place-items-center" size="large" />}>
 				<Product dict={dict} />
 			</Suspense>
-			<Suspense fallback={<Spin spinning className="w-full h-96 grid place-items-center" size="large" />}>
-				<VipSection dict={dict} />
-				<Members dict={dict} />
-			</Suspense>
+			<VipSection dict={dict} />
 		</>
 	);
 }

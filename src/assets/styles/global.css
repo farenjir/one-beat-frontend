@@ -38,3 +38,10 @@ body {
 	background-color: #ffa50050;
 	border: 3px solid #0000000d;
 }
+
+/* ******** antd.overload.css */
+
+/* loading spin*/
+.ant-spin .ant-spin-dot-item {
+	background-color: #ffa600 !important;
+}

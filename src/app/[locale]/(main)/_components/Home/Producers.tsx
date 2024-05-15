@@ -7,7 +7,7 @@ import { ProducerCard } from "@/app/components";
 export default function Producers({ dict, producers = [] }: PropsWithDict & { producers: IUser[] }) {
 	const [p1, p2, p3, p4, p5, p6, p7, p8, p9] = producers;
 	return (
-		<section className="producer-sections mx-auto max-w-7xl px-5 pt-8 lg:p-10">
+		<section className="producer-sections mx-auto max-w-7xl px-5 pt-8 lg:p-10 my-10">
 			<div className="producer-title text-white mb-10 text-center">
 				<h2 className="text-5xl font-extrabold">برترین آهنگسازان</h2>
 				<p className="my-3 text-appGrey">

@@ -11,6 +11,7 @@ interface ITabs {
 	size?: "large" | "middle" | "small";
 	tabPosition?: "top" | "right" | "bottom" | "left";
 	type?: "line" | "card" | "editable-card";
+	classes?: string;
 	tabClasses?: string;
 	defaultActiveKey?: string;
 	centered?: boolean;
@@ -29,10 +30,12 @@ const TabMenu = ({
 	onChange = (_activeKey: string): void => {},
 	// tabs
 	tabClasses = "",
+	classes = "",
 }: ITabs) => {
 	return (
 		<Tabs
 			{...{ defaultActiveKey, centered, type, size, tabBarGutter, tabPosition, onChange }}
+			className={classes}
 			items={items.map(({ key, content, label }) => ({
 				key,
 				id: key,

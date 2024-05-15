@@ -26,7 +26,7 @@ export default function ProducerCard({ producer }: { producer: IUser }) {
 	// return
 	return (
 		<div
-			className="producer-card relative flex flex-col justify-between p-5 pt-[100px] bg-appLightGrey max-w-[400px] lg:w-[400px] rounded-xl shadow-xl"
+			className="producer-card relative flex flex-col justify-between p-5 pt-[100px] bg-appLightGrey max-w-[400px] lg:w-[400px] rounded-xl"
 			dir="rtl"
 		>
 			<span className="absolute top-0 right-0 bg-black p-6 [clip-path:polygon(0%_0%,100%_100%,100%_0%)]">
