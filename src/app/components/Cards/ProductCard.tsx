@@ -58,7 +58,7 @@ export default function ProductCard({ product }: { product: Partial<IProduct> })
 		<div className="single-card-layout">
 			<section className="flex flex-col-reverse gap-3 md:flex-row-reverse">
 				<Title />
-				<Description />z
+				<Description />
 				<Image
 					className="rounded-xl"
 					// sizes="300px"

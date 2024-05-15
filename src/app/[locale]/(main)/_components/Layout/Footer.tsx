@@ -7,13 +7,13 @@ import { PropsWithLocale } from "@/types";
 export default async function MainFooter({ locale }: PropsWithLocale) {
 	const dict = await getDictionary(locale);
 	return (
-		<footer className="bg-black bg-gradient-to-t from-[black] footer p-10 pt-20">
+		<footer className="bg-black bg-gradient-to-t from-[black] footer p-10">
 			<Row gutter={[16, 16]}>
 				<Col xs={24} lg={10}>
 					<Image
 						src={"/assets/images/header-logo.png"}
 						alt="guaranty-u-img"
-						className="rounded-full m-5"
+						className="rounded-full my-5 lg:mx-5"
 						width={100}
 						height={100}
 						loading="lazy"

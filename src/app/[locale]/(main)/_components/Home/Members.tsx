@@ -16,7 +16,7 @@ export default function Members({
 	},
 }: PropsWithDict) {
 	return (
-		<section className="member-sections mx-auto max-w-7xl px-5 pt-10 lg:p-10">
+		<section className="member-sections mx-auto max-w-7xl px-5 pt-5 lg:p-10 lg:pb-20">
 			<div className={`w-full rounded-3xl text-white text-center`}>
 				<div className="relative h-10 hidden lg:block">
 					<Image
