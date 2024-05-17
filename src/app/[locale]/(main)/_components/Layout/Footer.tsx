@@ -1,13 +1,13 @@
 import Image from "next/image";
 import { Col, Row } from "antd";
 
-import { getDictionary } from "@/assets/langs";
 import { PropsWithLocale } from "@/types";
+import { getDictionary } from "@/assets/langs";
 
 export default async function MainFooter({ locale }: PropsWithLocale) {
 	const dict = await getDictionary(locale);
 	return (
-		<footer className="bg-black bg-gradient-to-t from-[black] footer p-10">
+		<footer className="bg-black bg-gradient-to-t from-[black] footer px-14 py-8">
 			<Row gutter={[16, 16]}>
 				<Col xs={24} lg={10}>
 					<Image
@@ -54,7 +54,7 @@ export default async function MainFooter({ locale }: PropsWithLocale) {
 						<li className="cursor-pointer">فروشگاه</li>
 					</ul>
 				</Col>
-				<Col xs={24} lg={5}>
+				<Col xs={24} lg={4}>
 					<Row gutter={[2, 2]}>
 						<Col span={12} className="img-fill">
 							<Image
@@ -77,6 +77,20 @@ export default async function MainFooter({ locale }: PropsWithLocale) {
 							/>
 						</Col>
 					</Row>
+				</Col>
+				<Col xs={24} className="mt-5">
+					<div className="flex flex-col justify-center items-center border-t-[1px] border-appGrey rounded-2xl">
+						<Image
+							src={"/assets/images/logo-dark.svg"}
+							alt="logo-mini-img"
+							className="rounded-full mt-6 mb-3"
+							width={50}
+							height={50}
+							loading="lazy"
+						/>
+						<small className="text-appGrey">Copyright © 2024 1Beat, Inc</small>
+						<small className="text-appGrey">Design By : ENDLESS PLUS</small>
+					</div>
 				</Col>
 			</Row>
 		</footer>
