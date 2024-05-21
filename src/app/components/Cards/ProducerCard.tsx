@@ -1,28 +1,21 @@
 import Image from "next/image";
 import { UserOutlined } from "@ant-design/icons";
 
+import { cng } from "@/utils/global";
 import { IUser } from "@/types";
-// import { ProducerStatus } from "@/types/enums";
-
-// type Colors = "Grey" | "Blue" | "Orange";
-
-// interface ICard {
-// 	id: string;
-// 	color: Colors;
-// }
+import { ProducerStatus } from "@/types/enums";
 
 export default function ProducerCard({ producer }: { producer: IUser }) {
-	// const color: Colors = () => {
-	// 	switch (producer?.kyc?.producerKyc) {
-	// 		case ProducerStatus.Accepted:
-	// 			return "Orange";
-	// 		case ProducerStatus.TopProducer:
-	// 			return "Blue";
-	// 		default:
-	// 			return "Grey";
-	// 	}
-	// };
-
+	const color = (producer: IUser) => {
+		switch (producer?.kyc?.producerKyc) {
+			case ProducerStatus.Accepted:
+				return { "bg-appOrange": true };
+			case ProducerStatus.TopProducer:
+				return { "bg-appBlue": true };
+			default:
+				return { "bg-appBlue": true };
+		}
+	};
 	// return
 	return (
 		<div
@@ -30,7 +23,7 @@ export default function ProducerCard({ producer }: { producer: IUser }) {
 			dir="rtl"
 		>
 			<span className="absolute top-0 right-0 bg-black p-6 [clip-path:polygon(0%_0%,100%_100%,100%_0%)]">
-				<span className="absolute top-2 right-2 bg-appOrange p-4 rounded-tr-lg"></span>
+				<span className={cng("absolute top-2 right-2 p-4 rounded-tr-lg", [color(producer)])}></span>
 			</span>
 			<Image
 				className={`absolute top-0 left-0 rounded-full h-36 w-36 -mt-[66px]`}

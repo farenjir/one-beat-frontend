@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import en from "antd/locale/en_US";
 import fa from "antd/locale/fa_IR";
 
@@ -16,6 +17,10 @@ export const getLocaleConfigs = (locale?: ILocale | undefined) => {
 	return localeOptions[currentLang];
 };
 
+// *** class name generator
+export const cng = (baseClass: string = "", functionality: Array<any | null> = []) => {
+	return clsx(baseClass, ...functionality);
+};
 // ***
 export const uIdMaker = (uIdLength = 20) => {
 	let codePattern = "1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik9ol0p1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik9ol0p";
