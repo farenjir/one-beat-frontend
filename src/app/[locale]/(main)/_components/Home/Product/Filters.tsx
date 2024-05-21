@@ -4,7 +4,7 @@ import { basesSelector, useAppSelector } from "@/store/selector";
 import { DropdownSelectable } from "@/components";
 
 const commonStyles = {
-	classes: "col-span-1",
+	classes: "col-span-2 lg:col-span-1",
 	titleClasses: "px-3 text-lg border-b border-appGrey text-appGrey rounded-lg",
 };
 

@@ -7,7 +7,7 @@ import { getDictionary } from "@/assets/langs";
 export default async function MainFooter({ locale }: PropsWithLocale) {
 	const dict = await getDictionary(locale);
 	return (
-		<footer className="bg-black bg-gradient-to-t from-[black] footer px-14 py-8">
+		<footer className="bg-black bg-gradient-to-t from-[black] footer px-8 lg:px-14 py-8">
 			<Row gutter={[16, 16]}>
 				<Col xs={24} lg={10}>
 					<Image
