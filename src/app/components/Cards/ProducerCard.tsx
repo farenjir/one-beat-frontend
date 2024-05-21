@@ -1,21 +1,32 @@
 import Image from "next/image";
 import { UserOutlined } from "@ant-design/icons";
+import { twJoin } from "tailwind-merge";
 
-import { cng } from "@/utils/global";
 import { IUser } from "@/types";
 import { ProducerStatus } from "@/types/enums";
 
+const color = (producer: IUser): string => {
+	switch (producer?.kyc?.producerKyc) {
+		case ProducerStatus.Accepted:
+			return "bg-appOrange";
+		case ProducerStatus.TopProducer:
+			return "bg-appBlue";
+		default:
+			return "bg-appOrange";
+	}
+};
+const colorChecked = (producer: IUser): string => {
+	switch (producer?.kyc?.producerKyc) {
+		case ProducerStatus.Accepted:
+			return "#FFA800";
+		case ProducerStatus.TopProducer:
+			return "#FFA800";
+		default:
+			return "#FFA800";
+	}
+};
+
 export default function ProducerCard({ producer }: { producer: IUser }) {
-	const color = (producer: IUser) => {
-		switch (producer?.kyc?.producerKyc) {
-			case ProducerStatus.Accepted:
-				return { "bg-appOrange": true };
-			case ProducerStatus.TopProducer:
-				return { "bg-appBlue": true };
-			default:
-				return { "bg-appBlue": true };
-		}
-	};
 	// return
 	return (
 		<div
@@ -23,7 +34,7 @@ export default function ProducerCard({ producer }: { producer: IUser }) {
 			dir="rtl"
 		>
 			<span className="absolute top-0 right-0 bg-black p-6 [clip-path:polygon(0%_0%,100%_100%,100%_0%)]">
-				<span className={cng("absolute top-2 right-2 p-4 rounded-tr-lg", [color(producer)])}></span>
+				<span className={twJoin("absolute top-2 right-2 p-4 rounded-tr-lg", color(producer))}></span>
 			</span>
 			<Image
 				className={`absolute top-0 left-0 rounded-full h-36 w-36 -mt-[66px]`}
@@ -41,7 +52,7 @@ export default function ProducerCard({ producer }: { producer: IUser }) {
 								fillRule="evenodd"
 								clipRule="evenodd"
 								d="M8.56105 0.249476C8.22842 -0.0831586 7.68911 -0.0831587 7.35648 0.249476L5.73364 1.87231C5.59963 2.00632 5.41787 2.08161 5.22835 2.08161L2.93341 2.08161C2.463 2.08161 2.08165 2.46296 2.08165 2.93337L2.08165 5.22831C2.08165 5.41783 2.00636 5.59959 1.87235 5.7336L0.249476 7.35648C-0.0831586 7.68911 -0.0831587 8.22842 0.249476 8.56105L1.87235 10.1839C2.00636 10.3179 2.08165 10.4997 2.08165 10.6892V12.9842C2.08165 13.4546 2.46299 13.836 2.93341 13.836H5.22839C5.41791 13.836 5.59967 13.9112 5.73368 14.0453L7.35648 15.6681C7.68911 16.0007 8.22842 16.0007 8.56105 15.6681L10.1839 14.0453C10.3179 13.9112 10.4996 13.836 10.6891 13.836H12.9842C13.4546 13.836 13.836 13.4546 13.836 12.9842V10.6891C13.836 10.4996 13.9113 10.3178 14.0453 10.1838L15.6681 8.56105C16.0007 8.22842 16.0007 7.68911 15.6681 7.35648L14.0453 5.73371C13.9113 5.5997 13.836 5.41794 13.836 5.22842V2.93337C13.836 2.46296 13.4546 2.08161 12.9842 2.08161H10.6892C10.4997 2.08161 10.3179 2.00632 10.1839 1.87231L8.56105 0.249476Z"
-								fill="#FFA800"
+								fill={colorChecked(producer)}
 							/>
 							<path
 								fillRule="evenodd"

@@ -1,26 +1,17 @@
-import clsx from "clsx";
-import en from "antd/locale/en_US";
-import fa from "antd/locale/fa_IR";
-
 import { defaultLocale } from "@/assets/langs";
 import { ILocale, ILocaleOptions } from "@/types";
 
 import { getFromCookie } from "./storage";
 
 export const localeOptions: { [key: string]: ILocaleOptions } = {
-	fa: { lang: "fa", dir: "rtl", rtl: true, ltr: false, fontType: "yekan", locale: fa },
-	en: { lang: "en", dir: "ltr", rtl: false, ltr: true, fontType: "roboto", locale: en },
+	fa: { lang: "fa", dir: "rtl", dirRevert: "ltr", rtl: true, ltr: false, fontType: "yekan" },
+	en: { lang: "en", dir: "ltr", dirRevert: "rtl", rtl: false, ltr: true, fontType: "roboto" },
 };
-
 export const getLocaleConfigs = (locale?: ILocale | undefined) => {
 	const currentLang: ILocale = locale ?? getFromCookie("locale") ?? defaultLocale;
 	return localeOptions[currentLang];
 };
 
-// *** class name generator
-export const cng = (baseClass: string = "", functionality: Array<any | null> = []) => {
-	return clsx(baseClass, ...functionality);
-};
 // ***
 export const uIdMaker = (uIdLength = 20) => {
 	let codePattern = "1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik9ol0p1qaz2wsx3edc4rfv5tgb6yhn7ujm8ik9ol0p";

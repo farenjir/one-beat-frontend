@@ -14,10 +14,10 @@ export type IDir = "rtl" | "ltr";
 export interface ILocaleOptions {
 	lang: ILocale;
 	dir: IDir;
+	dirRevert: IDir;
 	fontType: "yekan" | "roboto";
 	rtl: boolean;
 	ltr: boolean;
-	locale: any; // antDictionaries
 }
 export interface GenerateMetaProps {
 	params: { locale: ILocale };
@@ -28,6 +28,10 @@ export interface IParams {
 }
 export type PropsWithDict = {
 	dict: any;
+};
+export type LocaleDict = {
+	dict: any;
+	locale: ILocale;
 };
 export type PropsWithLocale = { locale: ILocale };
 export type PropsWithParams = IParams & {

@@ -7,6 +7,12 @@
 		font-family: var(--font-yekan) !important;
 		font-weight: 600;
 	}
+	.ltr {
+		direction: ltr !important;
+	}
+	.rtl {
+		direction: rtl;
+	}
 }
 
 /* document style */

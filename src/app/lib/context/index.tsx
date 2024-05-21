@@ -3,10 +3,15 @@
 import { ReactNode, createContext, useContext, useEffect, useRef } from "react";
 import { Provider } from "react-redux";
 
-import { getDictionary } from "@/assets/langs";
+import en from "antd/locale/en_US";
+import fa from "antd/locale/fa_IR";
+import { ConfigProvider } from "antd";
+
+import { defaultLocale, getDictionary } from "@/assets/langs";
 import { ILocale, ILocaleOptions } from "@/types";
-import { ACCESS_TOKEN_ID } from "@/types/constance";
+import { ACCESS_TOKEN_ID, LOCALE_NAME } from "@/types/constance";
 import { getFromCookie } from "@/utils/storage";
+import { localeOptions } from "@/utils/global";
 
 import { AppStore, makeStore } from "@/store/store";
 import { useAppDispatch } from "@/store/selector";
@@ -20,22 +25,24 @@ import StyledComponentsRegistry from "@/components/Registry";
 
 interface IContext {
 	callApi: typeof callApi;
-	localeConfigs: {
-		dict?: typeof getDictionary.arguments;
-		locale?: ILocaleOptions;
-	};
+	dict?: typeof getDictionary.arguments;
+	localeConfigs?: ILocaleOptions;
 }
+
+const locale: string = getFromCookie(LOCALE_NAME) || defaultLocale;
+const locales = (isEn: boolean | undefined) => (isEn ? en : fa);
 
 const AppContext = createContext<IContext>({
 	callApi,
-	localeConfigs: {},
+	dict: {},
+	localeConfigs: localeOptions[locale],
 });
 
 const checkUserAuth = getFromCookie(ACCESS_TOKEN_ID);
 
 const ApplicationContext = ({ children, locale }: { children: ReactNode; locale: ILocale }) => {
 	// hooks
-	const localeConfigs = useLocaleConfigs(locale);
+	const { dict, localeConfigs } = useLocaleConfigs(locale);
 	const dispatch = useAppDispatch();
 	// initialize context
 	useEffect(() => {
@@ -53,10 +60,13 @@ const ApplicationContext = ({ children, locale }: { children: ReactNode; locale:
 		<AppContext.Provider
 			value={{
 				callApi,
+				dict,
 				localeConfigs,
 			}}
 		>
-			{children}
+			<ConfigProvider direction={localeConfigs?.dir} locale={locales(localeConfigs?.ltr)}>
+				{children}
+			</ConfigProvider>
 		</AppContext.Provider>
 	);
 };
