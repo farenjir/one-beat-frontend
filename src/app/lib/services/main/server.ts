@@ -14,7 +14,7 @@ export const getTopProducts = cache(async (): Promise<IProduct[]> => {
 		url: "product/all",
 		queries: { page: 1, take: 3, status: ProductStatus.TopProduct },
 	})
-		.then(({ data }) => data)
+		.then((response) => response?.data || [])
 		.catch((_error) => []);
 });
 
@@ -23,6 +23,6 @@ export const getProducers = cache(async (): Promise<IUser[]> => {
 		url: "user/producers",
 		queries: { page: 1, take: 9, producerKyc: ProducerStatus.TopProducer },
 	})
-		.then(({ data }) => data)
+		.then((response) => response?.data || [])
 		.catch((_error) => []);
 });
