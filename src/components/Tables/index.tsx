@@ -1,17 +1,14 @@
 import { ConfigProvider, Table, theme } from "antd";
 import type { TableProps } from "antd/es/table";
 
-import colorTokens from "@/assets/theme";
-
 import { ILocale } from "@/types";
-import { useLocaleConfigs } from "@/app/lib/hooks";
+import { uIdMaker } from "@/utils/global";
 
 interface IExtraProps {
 	classes?: string;
 	appLocale?: ILocale;
 	themeMode?: {
 		algorithm: "defaultAlgorithm" | "darkAlgorithm";
-		token: "default" | "black" | "orange" | "red" | "green";
 	};
 }
 const Tables = ({
@@ -26,7 +23,6 @@ const Tables = ({
 	// classes
 	classes = "",
 	rowClassName = "",
-	className = "",
 	// pagination
 	pagination = false,
 	// components
@@ -36,21 +32,15 @@ const Tables = ({
 	columns = [],
 	dataSource = [],
 	// locale
-	appLocale,
-	themeMode = { algorithm: "defaultAlgorithm", token: "default" },
+	themeMode = { algorithm: "defaultAlgorithm" },
 }: TableProps<any> & IExtraProps) => {
-	const { localeConfigs } = useLocaleConfigs(appLocale);
 	// handles
 	const onChange = () => {};
 	// return
 	return (
 		<ConfigProvider
-			table={{ className: classes }}
-			direction={localeConfigs?.dir}
-			locale={localeConfigs?.locale}
 			theme={{
 				algorithm: theme[themeMode.algorithm],
-				token: colorTokens[themeMode.token],
 			}}
 		>
 			<Table
@@ -58,7 +48,7 @@ const Tables = ({
 				dataSource={dataSource}
 				{...{
 					onChange,
-					className,
+					className: classes,
 					rowClassName,
 					bordered,
 					loading,
@@ -72,7 +62,7 @@ const Tables = ({
 					title,
 					footer,
 				}}
-				rowKey={(record: { [key: string]: string | number }) => record?.id || record?.key}
+				rowKey={(record: { [key: string]: string | number }) => record?.id || record?.key || uIdMaker()}
 				pagination={pagination}
 			/>
 		</ConfigProvider>

@@ -4,14 +4,16 @@ import { useEffect, useState } from "react";
 
 import { ILocale, ILocaleOptions } from "@/types";
 
-import { getDictionary } from "@/assets/langs";
-import { getLocaleConfigs } from "@/utils/global";
+import { defaultLocale, getDictionary } from "@/assets/langs";
+import { getLocaleConfigs, localeOptions as locales } from "@/utils/global";
 
 export const useLocaleConfigs = (currentLocale?: ILocale | undefined) => {
 	const [locale, setLocale] = useState<{
 		dict?: typeof getDictionary.arguments;
-		localeConfigs?: ILocaleOptions;
-	}>({});
+		localeConfigs: ILocaleOptions;
+	}>({
+		localeConfigs: locales[currentLocale || defaultLocale],
+	});
 	// init
 	useEffect(() => {
 		const getDict = async () => {

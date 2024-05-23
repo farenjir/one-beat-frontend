@@ -3,7 +3,7 @@ import { cache } from "react";
 import callApi from "@/service";
 
 import { IProduct, IUser } from "@/types";
-import { ProductStatus } from "@/types/enums";
+import { ProducerStatus, ProductStatus } from "@/types/enums";
 
 import "server-only";
 
@@ -20,8 +20,8 @@ export const getTopProducts = cache(async (): Promise<IProduct[]> => {
 
 export const getProducers = cache(async (): Promise<IUser[]> => {
 	return await callApi<{ data: IUser[] }>({
-		url: "user/topProducers",
-		queries: { page: 1, take: 9 },
+		url: "user/producers",
+		queries: { page: 1, take: 9, producerKyc: ProducerStatus.TopProducer },
 	})
 		.then(({ data }) => data)
 		.catch((_error) => []);

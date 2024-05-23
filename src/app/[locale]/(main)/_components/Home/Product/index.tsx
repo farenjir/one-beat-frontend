@@ -84,12 +84,7 @@ export default function Product({ dict }: PropsWithDict) {
 	return (
 		<section className="product-section mx-auto max-w-7xl px-2 sm:px-6 md:mb-10 md:mt-5 lg:px-8">
 			<ProductFilters dict={dict} />
-			<Tables
-				dataSource={fakeData}
-				columns={columns}
-				className="pb-10"
-				themeMode={{ token: "default", algorithm: "darkAlgorithm" }}
-			/>
+			<Tables dataSource={fakeData} columns={columns} className="pb-10" themeMode={{ algorithm: "darkAlgorithm" }} />
 		</section>
 	);
 }

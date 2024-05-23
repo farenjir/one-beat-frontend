@@ -64,7 +64,7 @@ const ApplicationContext = ({ children, locale }: { children: ReactNode; locale:
 				localeConfigs,
 			}}
 		>
-			<ConfigProvider direction={localeConfigs?.dir} locale={locales(localeConfigs?.ltr)}>
+			<ConfigProvider direction={localeConfigs.dir} locale={locales(localeConfigs.ltr)}>
 				{children}
 			</ConfigProvider>
 		</AppContext.Provider>

@@ -20,7 +20,7 @@ interface IRegisterForm {
 const RegisterForm = ({ dict: { Auth } }: PropsWithDict) => {
 	// hooks
 	const router = useRouter();
-	const { callApi } = useAppContext();
+	const { callApi, localeConfigs } = useAppContext();
 	// handles
 	const onFinish = async ({ username, email, password, repeatPassword }: IRegisterForm) => {
 		if (password !== repeatPassword) {
@@ -40,24 +40,28 @@ const RegisterForm = ({ dict: { Auth } }: PropsWithDict) => {
 				type="text"
 				placeholder={Auth.username}
 				prefix={<UserOutlined className="site-form-item-icon" />}
+				inputClasses={localeConfigs?.dirRevert}
 			/>
 			<Inputs
 				name="email"
 				type="email"
 				placeholder={Auth.email}
 				prefix={<MailOutlined className="site-form-item-icon" />}
+				inputClasses={localeConfigs?.dirRevert}
 			/>
 			<Inputs
 				name="password"
 				type="password"
 				placeholder={Auth.password}
 				prefix={<LockOutlined className="site-form-item-icon" />}
+				inputClasses={localeConfigs?.dirRevert}
 			/>
 			<Inputs
 				name="repeatPassword"
 				type="password"
 				placeholder={Auth.repeatPassword}
 				prefix={<LockOutlined className="site-form-item-icon" />}
+				inputClasses={localeConfigs?.dirRevert}
 			/>
 			<Buttons name={Auth.registerAccount} color="success" htmlType="submit" classes="register-form-button mt-5" />
 		</Forms>
