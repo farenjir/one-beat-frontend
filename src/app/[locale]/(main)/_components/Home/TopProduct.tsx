@@ -22,7 +22,7 @@ export default function TopProduct({
 				effect="fade"
 				className="pb-10 px-2"
 			>
-				{[{ id: 1 }, { id: 2 }, { id: 3 }].map((product) => (
+				{topProduct.map((product) => (
 					<ProductCard key={product.id.toString()} product={product} />
 				))}
 			</Carousel>

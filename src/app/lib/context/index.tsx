@@ -25,8 +25,8 @@ import StyledComponentsRegistry from "@/components/Registry";
 
 interface IContext {
 	callApi: typeof callApi;
-	dict?: typeof getDictionary.arguments;
-	localeConfigs?: ILocaleOptions;
+	dict: typeof getDictionary.arguments;
+	localeConfigs: ILocaleOptions;
 }
 
 const locale: string = getFromCookie(LOCALE_NAME) || defaultLocale;
