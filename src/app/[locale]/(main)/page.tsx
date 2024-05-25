@@ -20,7 +20,7 @@ export default async function MainPage({ params: { locale } }: IParams) {
 	return (
 		<>
 			<MainHeader dict={dict} />
-			<TopProduct dict={dict} topProduct={topProduct} />
+			<TopProduct dict={dict} topProduct={topProduct} locale={locale} />
 			<Producers dict={dict} producers={producers} />
 			<Suspense fallback={<Spin spinning className="w-full h-96 grid place-items-center" size="large" />}>
 				<Product dict={dict} />

@@ -2,20 +2,39 @@ import Cookies from "universal-cookie";
 
 const cookie = new Cookies();
 
-export const getFromCookie = <T>(key: string): T => {
-	return cookie.get(key);
+export const getFromCookie = (key: string) => {
+	if (typeof window !== "undefined") {
+		return cookie.get(key);
+	} else {
+		const { cookies } = require("next/headers");
+		return cookies().get(key)?.value;
+	}
 };
 
 export const removeFromCookie = (key: string): void => {
-	cookie.remove(key);
+	if (typeof window !== "undefined") {
+		return cookie.remove(key);
+	} else {
+		const { cookies } = require("next/headers");
+		return cookies().remove(key);
+	}
 };
 
 export const storeInCookie = (key: string, value: unknown, maxAge?: number): void => {
-	cookie.set(key, value, {
-		path: "/",
-		maxAge,
-		// maxAge: 24 * 24 * 3600,
-	});
+	if (typeof window !== "undefined") {
+		cookie.set(key, value, {
+			path: "/",
+			maxAge,
+			// maxAge: 24 * 24 * 3600,
+		});
+	} else {
+		const { cookies } = require("next/headers");
+		return cookies().set(key, value, {
+			path: "/",
+			maxAge,
+			// maxAge: 24 * 24 * 3600,
+		});
+	}
 };
 
 export const setToStorage = (key = "", value: unknown, sessionStorage?: boolean) => {

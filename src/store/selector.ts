@@ -11,5 +11,6 @@ export const useAppStore: () => AppStore = useStore;
 export const authSelector = (state: RootState) => state.auth;
 export const userSelector = (state: RootState) => state.auth.user;
 
-export const versionSelector = ({ app: { description, appVersion } }: RootState) => ({ appVersion, description });
+export const appSelector = (state: RootState): any => state.app
 export const basesSelector = (state: RootState): any => state.app.bases;
+export const versionSelector = ({ app: { description, appVersion } }: RootState) => ({ appVersion, description });

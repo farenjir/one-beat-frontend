@@ -47,7 +47,12 @@ body {
 
 /* ******** antd.overload.css */
 
-/* loading spin*/
 .ant-spin .ant-spin-dot-item {
+	/* loading spin*/
 	background-color: #ffa600 !important;
+}
+
+.ant-skeleton-content .ant-skeleton-title {
+	/* skelton action loading */
+	background-image: linear-gradient(90deg, #ffffff0f 25%, #00000026 37%, #adacac0f 63%) !important;
 }
