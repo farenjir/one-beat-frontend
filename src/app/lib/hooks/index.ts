@@ -4,8 +4,7 @@ import { useEffect, useState } from "react";
 
 import { Locales, ILocaleOptions } from "@/types";
 
-import { defaultLocale, getDictionary } from "@/assets/langs";
-import { getLocaleConfigs, localeOptions as locales } from "@/utils/global";
+import { defaultLocale, getDictionary, getLocaleConfigs, localeOptions as locales } from "@/assets/langs";
 
 export const useLocaleConfigs = (currentLocale?: Locales | undefined) => {
 	const [locale, setLocale] = useState<{

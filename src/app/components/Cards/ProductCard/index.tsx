@@ -6,7 +6,7 @@ import { Skeleton } from "antd";
 import { ShoppingOutlined } from "@ant-design/icons";
 
 import { IProduct, GlobalProps } from "@/types";
-import { getLocaleConfigs } from "@/utils/global";
+import { getLocaleConfigs } from "@/assets/langs";
 
 import DetailItem from "./components/DetailItem";
 
@@ -16,7 +16,11 @@ interface IDetailItem {
 	baseName: string;
 }
 
-export default function ProductCard({ product, locale, dict }: { product: IProduct } & Pick<GlobalProps, "locale" | "dict">) {
+export default function ProductCard({
+	product,
+	locale,
+	dict,
+}: { product: IProduct } & Pick<GlobalProps, "locale" | "dict">) {
 	const { dirRevert, dir, lang } = getLocaleConfigs(locale);
 	// details
 	const details: IDetailItem[] = [

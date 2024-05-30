@@ -5,9 +5,8 @@ import "@/assets/styles/global.css";
 
 import { rootLayoutMetadata } from "@/app/lib/meta/RootLayout";
 
-import {  GlobalProps } from "@/types";
-import { getLocaleConfigs } from "@/utils/global";
-import { locales } from "@/assets/langs";
+import { GlobalProps } from "@/types";
+import { locales, getLocaleConfigs } from "@/assets/langs";
 import { themeColorView } from "@/assets/theme";
 
 import Globals from "@/app/lib/context";
@@ -33,7 +32,10 @@ export const viewport: Viewport = {
 	themeColor: themeColorView,
 };
 
-export async function generateMetadata(params: Pick<GlobalProps, "params" | "searchParams">, parent: ResolvingMetadata): Promise<Metadata> {
+export async function generateMetadata(
+	params: Pick<GlobalProps, "params" | "searchParams">,
+	parent: ResolvingMetadata,
+): Promise<Metadata> {
 	return await rootLayoutMetadata(params, parent);
 }
 

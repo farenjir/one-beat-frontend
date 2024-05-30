@@ -1,5 +1,5 @@
 import { notification } from "antd";
-import { getLocaleConfigs } from "./global";
+import { getLocaleConfigs } from "@/assets/langs";
 
 interface INotifications {
 	message: string;

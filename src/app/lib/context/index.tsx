@@ -7,11 +7,10 @@ import en from "antd/locale/en_US";
 import fa from "antd/locale/fa_IR";
 import { ConfigProvider } from "antd";
 
-import { defaultLocale, getDictionary } from "@/assets/langs";
+import { defaultLocale, getDictionary, localeOptions } from "@/assets/langs";
 import { Locales, ILocaleOptions } from "@/types";
 import { ACCESS_TOKEN_ID, LOCALE_NAME } from "@/types/constance";
 import { getFromCookie } from "@/utils/storage";
-import { localeOptions } from "@/utils/global";
 
 import { AppStore, makeStore } from "@/store/store";
 import { useAppDispatch } from "@/store/selector";
