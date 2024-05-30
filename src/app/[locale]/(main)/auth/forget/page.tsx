@@ -21,7 +21,7 @@ interface IState {
 	btn?: boolean;
 }
 
-export default function Auth() {
+export default function ForgetPassword() {
 	const [{ username, email, btn }, setDisableOtherField] = useState<IState>({
 		username: false,
 		email: false,
