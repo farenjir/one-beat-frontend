@@ -28,11 +28,12 @@ const Buttons = ({
 	prefix = "",
 	disabled = false,
 	loading = false,
+	...props
 }: IButtons) => {
 	return (
 		<Form.Item>
 			<Button
-				{...{ onClick, htmlType, size, shape, type: typeColor, disabled, loading }}
+				{...{ onClick, htmlType, size, shape, type: typeColor, disabled, loading, ...props }}
 				className={`${styles["btn-public"]}  ${styles[`btn-public__${color}`]} ${classes}`}
 			>
 				<div className="flex justify-center items-center">

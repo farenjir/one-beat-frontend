@@ -19,9 +19,7 @@ interface ILoginForm {
 	password: string;
 }
 
-type Mode = { mode: "email" | "username" };
-
-const LoginForm = ({ children, dict: { Auth }, mode }: Pick<GlobalProps, "children" | "dict"> & Mode) => {
+const LoginForm = ({ dict: { Auth }, mode }: Pick<GlobalProps, "dict"> & { mode: "email" | "username" }) => {
 	// hooks
 	const router = useRouter();
 	const dispatch = useAppDispatch();
@@ -66,7 +64,6 @@ const LoginForm = ({ children, dict: { Auth }, mode }: Pick<GlobalProps, "childr
 			/>
 			<Checkboxes label={Auth.remember} name="remember" />
 			<Buttons name={Auth.loginAccount} color="secondary" htmlType="submit" classes="login-form-button mt-5" />
-			{children}
 		</Forms>
 	);
 };

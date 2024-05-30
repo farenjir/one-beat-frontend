@@ -2,15 +2,13 @@
 
 import { Form, Input, InputNumber } from "antd";
 
-import { Locales } from "@/types";
-import { useLocaleConfigs } from "@/app/lib/hooks";
+import { useAppContext } from "@/app/lib/context";
 
 const { TextArea } = Input;
 interface IInputs {
 	type: "text" | "password" | "number" | "textArea" | "email";
 	name: string;
 	label?: string;
-	locale?: Locales | undefined;
 	placeholder?: string;
 	onChange?: () => void;
 	initializeValue?: any;
@@ -35,7 +33,6 @@ const Inputs = ({
 	type = "text",
 	label = "",
 	name = "",
-	locale = undefined,
 	placeholder = "",
 	onChange = () => {},
 	initializeValue = undefined,
@@ -55,7 +52,7 @@ const Inputs = ({
 	// textArea
 	autoSize = false,
 }: IInputs) => {
-	const { dict } = useLocaleConfigs(locale);
+	const { dict } = useAppContext();
 	// InputSelected
 	const inputSelected = ({ type = "text" }) => {
 		switch (type) {

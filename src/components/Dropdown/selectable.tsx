@@ -3,8 +3,7 @@
 import { Dropdown, MenuProps } from "antd";
 import { DownOutlined, RedoOutlined } from "@ant-design/icons";
 
-import { Locales } from "@/types";
-import { useLocaleConfigs } from "@/app/lib/hooks";
+import { useAppContext } from "@/app/lib/context";
 
 interface IDropDown {
 	title: string;
@@ -14,7 +13,6 @@ interface IDropDown {
 	disabled?: boolean;
 	selectable?: boolean;
 	arrow?: boolean;
-	locale?: Locales;
 	classes?: string;
 	titleClasses?: string;
 	onClick?: MenuProps["onClick"];
@@ -31,10 +29,9 @@ const DropdownSelectable = ({
 	onClick = (_event) => {},
 	classes = "",
 	titleClasses = "",
-	locale,
 }: IDropDown) => {
 	// hooks
-	const { dict } = useLocaleConfigs(locale);
+	const { dict } = useAppContext();
 	const items = [
 		...menuItems,
 		{

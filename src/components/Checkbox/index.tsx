@@ -2,13 +2,11 @@
 
 import { Checkbox, Form } from "antd";
 
-import { Locales } from "@/types";
-import { useLocaleConfigs } from "@/app/lib/hooks";
+import { useAppContext } from "@/app/lib/context";
 
 interface ICheckbox {
 	name: string;
 	label?: string;
-	locale?: Locales | undefined;
 	initializeValue?: any;
 	checked?: boolean | undefined;
 	classes?: string;
@@ -25,9 +23,8 @@ const Checkboxes = ({
 	classes = "",
 	inputClasses = "",
 	checked = undefined,
-	locale = undefined,
 }: ICheckbox) => {
-	const { dict } = useLocaleConfigs(locale);
+	const { dict } = useAppContext();
 	// rules
 	const rules = [
 		{

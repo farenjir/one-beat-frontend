@@ -13,20 +13,12 @@ export default async function Auth({ params: { locale } }: Pick<GlobalProps, "pa
 		{
 			key: "login",
 			label: <span className="font-bold text-appOrange">{dict.Auth.login}</span>,
-			content: (
-				<LoginForm dict={dict} mode="username">
-					<h1></h1>
-				</LoginForm>
-			),
+			content: <LoginForm dict={dict} mode="username" />,
 		},
 		{
 			key: "loginWithEmail",
 			label: <span className="font-bold text-appOrange">{dict.Auth.loginEmail}</span>,
-			content: (
-				<LoginForm dict={dict} mode="email">
-					<h1></h1>
-				</LoginForm>
-			),
+			content: <LoginForm dict={dict} mode="email" />,
 		},
 		{
 			key: "register",
