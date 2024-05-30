@@ -35,7 +35,7 @@ export default async function Auth({ params: { locale } }: Pick<GlobalProps, "pa
 					</Link>
 				</strong>
 				<span className="text-xs">
-					<Link href={"/auth/register"} prefetch={false}>
+					<Link href={"/auth/forget"} prefetch={false}>
 						{Auth.forget}
 					</Link>
 				</span>

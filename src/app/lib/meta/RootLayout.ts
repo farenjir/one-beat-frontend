@@ -1,9 +1,12 @@
 import type { Metadata, ResolvingMetadata } from "next";
 
 import { getDictionary } from "@/assets/langs";
-import { GenerateMetaProps } from "@/types";
+import { GlobalProps } from "@/types";
 
-export async function rootLayoutMetadata(parameters: GenerateMetaProps, parent: ResolvingMetadata): Promise<Metadata> {
+export async function rootLayoutMetadata(
+	parameters: Pick<GlobalProps, "params" | "searchParams">,
+	parent: ResolvingMetadata,
+): Promise<Metadata> {
 	const {
 		searchParams,
 		params: { locale },
