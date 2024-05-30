@@ -14,10 +14,10 @@ import {
 	CommentOutlined,
 } from "@ant-design/icons";
 
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 import { useAppSelector, userSelector } from "@/store/selector";
 
-export default function NavbarMobileMenu({ dict }: PropsWithDict) {
+export default function NavbarMobileMenu({ dict }: Pick<GlobalProps, "dict">) {
 	const user = useAppSelector(userSelector);
 	// MenuProps
 	const items: MenuProps["items"] = [

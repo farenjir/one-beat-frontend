@@ -1,6 +1,8 @@
+"use client";
+
 import { Form, Input, InputNumber } from "antd";
 
-import { ILocale } from "@/types";
+import { Locales } from "@/types";
 import { useLocaleConfigs } from "@/app/lib/hooks";
 
 const { TextArea } = Input;
@@ -8,7 +10,7 @@ interface IInputs {
 	type: "text" | "password" | "number" | "textArea" | "email";
 	name: string;
 	label?: string;
-	locale?: ILocale | undefined;
+	locale?: Locales | undefined;
 	placeholder?: string;
 	onChange?: () => void;
 	initializeValue?: any;

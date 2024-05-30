@@ -1,7 +1,7 @@
 "use client";
 
 import { ShoppingOutlined } from "@ant-design/icons";
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 import { basesSelector, useAppSelector } from "@/store/selector";
 
 import { Tables } from "@/components";
@@ -19,7 +19,7 @@ const fakeData = Array(8)
 		buy: "اشکان کاگان",
 	}));
 
-export default function Product({ dict }: PropsWithDict) {
+export default function Product({ dict }: Pick<GlobalProps, "dict">) {
 	const {
 		Main: { Product },
 	} = dict;

@@ -1,10 +1,10 @@
 import type { NextRequest } from "next/server";
 
 import { defaultLocale, locales } from "@/assets/langs";
-import { ILocale } from "./types";
+import { Locales } from "./types";
 import { ACCESS_TOKEN } from "./types/constance";
 
-function getLocale(request: NextRequest): ILocale {
+function getLocale(request: NextRequest): Locales {
 	const { value: customerLocale }: any = request.cookies.get("locale") || {};
 	if (locales.includes(customerLocale)) {
 		return customerLocale;
@@ -17,7 +17,7 @@ function pathnameHsaLocale(request: NextRequest) {
 	const hasLocale = locales.some((locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`);
 	if (hasLocale) return "pathname-is-ok";
 	// Redirect if there is no locale
-	const locale: ILocale = getLocale(request);
+	const locale: Locales = getLocale(request);
 	request.nextUrl.pathname = `/${locale}${pathname}`;
 }
 

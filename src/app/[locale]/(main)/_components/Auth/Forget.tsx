@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import { InfoCircleOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 import { useAppContext } from "@/app/lib/context";
 
 import { userForgatPassword } from "@/app/lib/services/main/client";
@@ -22,7 +22,7 @@ interface IState {
 	btn?: boolean;
 }
 
-const ForgetPassword = ({ dict: { Auth } }: PropsWithDict) => {
+const ForgetPassword = ({ dict: { Auth } }: Pick<GlobalProps, "dict">) => {
 	const [{ username, email, btn }, setDisableOtherField] = useState<IState>({
 		username: false,
 		email: false,

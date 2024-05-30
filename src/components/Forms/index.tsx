@@ -1,3 +1,5 @@
+"use client";
+
 import { Form, FormInstance } from "antd";
 import { ReactNode, forwardRef, useImperativeHandle } from "react";
 

@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { PropsWithLocale } from "@/types";
+import { GlobalProps } from "@/types";
 import { getDictionary } from "@/assets/langs";
 
 import NavbarMobileMenu from "./components/MobileMenu";
 import User from "./components/User";
 import AuthLink from "./components/AuthLink";
 
-export default async function MainNavbar({ locale }: PropsWithLocale) {
+export default async function MainNavbar({ locale }: Pick<GlobalProps, "locale">) {
 	const dict = await getDictionary(locale);
 	const links = [
 		{ href: "/", title: dict.Layout.home, prefetch: true },

@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { Col, Row } from "antd";
 
-import { PropsWithLocale } from "@/types";
+import { GlobalProps } from "@/types";
 import { getDictionary } from "@/assets/langs";
 
-export default async function MainFooter({ locale }: PropsWithLocale) {
+export default async function MainFooter({ locale }: Pick<GlobalProps, "locale">) {
 	const dict = await getDictionary(locale);
 	return (
 		<footer className="bg-black bg-gradient-to-t from-[black] footer px-8 lg:px-14 py-8">

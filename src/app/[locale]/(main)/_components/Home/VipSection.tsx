@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 
 export default function VipSection({
 	dict: {
 		Main: { Vip, Members },
 	},
-}: PropsWithDict) {
+}: Pick<GlobalProps, "dict">) {
 	return (
 		<section className="vip-sections mx-auto max-w-7xl mt-20 pb-20 lg:mt-5 px-5 pt-10 lg:p-10 lg:pb-20">
 			<div className={`vip-card w-full pb-8 px-10 rounded-3xl bg-appLightGrey text-white text-center`}>

@@ -9,32 +9,23 @@ import type { IProduct } from "./app/product";
 export type { AppBases, AppTransformBases, UserChildBase, IVersion, IUser, IProduct };
 
 // configs
-export type ILocale = "fa" | "en";
-export type IDir = "rtl" | "ltr";
+export type Dir = "rtl" | "ltr";
+export type Locales = "fa" | "en";
+export type TypeApi = typeof callApi;
+
+export interface GlobalProps {
+	dict: any;
+	params: { locale: Locales };
+	locale: Locales;
+	children: React.ReactNode;
+	searchParams: { [key: string]: string | string[] | undefined };
+}
+
 export interface ILocaleOptions {
-	lang: ILocale;
-	dir: IDir;
-	dirRevert: IDir;
+	lang: Locales;
+	dir: Dir;
+	dirRevert: Dir;
 	fontType: "yekan" | "roboto";
 	rtl: boolean;
 	ltr: boolean;
 }
-export interface GenerateMetaProps {
-	params: { locale: ILocale };
-	searchParams: { [key: string]: string | string[] | undefined };
-}
-export interface IParams {
-	params: { locale: ILocale };
-}
-export type PropsWithDict = {
-	dict: any;
-};
-export type LocaleDict = {
-	dict: any;
-	locale: ILocale;
-};
-export type PropsWithLocale = { locale: ILocale };
-export type PropsWithParams = IParams & {
-	children: React.ReactNode;
-};
-export type TypeApi = typeof callApi;

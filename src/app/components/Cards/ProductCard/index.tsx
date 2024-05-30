@@ -5,7 +5,7 @@ import { twJoin } from "tailwind-merge";
 import { Skeleton } from "antd";
 import { ShoppingOutlined } from "@ant-design/icons";
 
-import { IProduct, LocaleDict } from "@/types";
+import { IProduct, GlobalProps } from "@/types";
 import { getLocaleConfigs } from "@/utils/global";
 
 import DetailItem from "./components/DetailItem";
@@ -16,7 +16,7 @@ interface IDetailItem {
 	baseName: string;
 }
 
-export default function ProductCard({ product, locale, dict }: { product: IProduct } & LocaleDict) {
+export default function ProductCard({ product, locale, dict }: { product: IProduct } & Pick<GlobalProps, "locale" | "dict">) {
 	const { dirRevert, dir, lang } = getLocaleConfigs(locale);
 	// details
 	const details: IDetailItem[] = [

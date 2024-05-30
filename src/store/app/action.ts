@@ -1,17 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-import { AppBases, AppTransformBases, ILocale, IVersion, TypeApi } from "@/types";
+import { AppBases, AppTransformBases, Locales, IVersion, TypeApi } from "@/types";
 
 import { getFromStorage, setToStorage, getFromCookie, storeInCookie } from "@/utils/storage";
 
-type IProps = {
-	locale: ILocale;
+type GlobalProps = {
+	locale: Locales;
 	callApi: TypeApi;
 };
 
 type Bases = Record<string, AppTransformBases>;
 
-export const initializeAppDep = createAsyncThunk("app/initialize", async ({ callApi, locale }: IProps, _thunkAPI) => {
+export const initializeAppDep = createAsyncThunk("app/initialize", async ({ callApi, locale }: GlobalProps, _thunkAPI) => {
 	const { currentAppVersion, currentBaseVersion, currentBases, localeChanged } = initializeHandles.currentAppDep(locale);
 	// return
 	return await callApi<IVersion>({ url: "version/latest" })
@@ -44,7 +44,7 @@ export const initializeAppDep = createAsyncThunk("app/initialize", async ({ call
 });
 
 export const initializeHandles = {
-	currentAppDep: (locale: ILocale) => {
+	currentAppDep: (locale: Locales) => {
 		const currentLocale = getFromCookie("locale");
 		if (currentLocale !== locale) {
 			storeInCookie("locale", locale);
@@ -57,7 +57,7 @@ export const initializeHandles = {
 		};
 	},
 	updateAppDep: async (
-		{ callApi, locale }: IProps,
+		{ callApi, locale }: GlobalProps,
 		appVersion: number,
 		currentAppVersion: number,
 		baseVersion: number,
@@ -90,7 +90,7 @@ export const initializeHandles = {
 		// return
 		return bases;
 	},
-	baseTransformer: (bases: AppBases[], locale: ILocale): Bases => {
+	baseTransformer: (bases: AppBases[], locale: Locales): Bases => {
 		const basesObject: Bases = {};
 		bases.forEach(({ id: pId, type = "", children = [], ...name }) => {
 			basesObject[type] = {

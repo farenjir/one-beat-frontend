@@ -1,4 +1,4 @@
-import { IParams } from "@/types";
+import { GlobalProps } from "@/types";
 import { getDictionary } from "@/assets/langs";
 
 import { TabMenu } from "@/components";
@@ -6,19 +6,27 @@ import LoginForm from "../_components/Auth/Login";
 import RegisterForm from "../_components/Auth/Register";
 import ForgetPassword from "../_components/Auth/Forget";
 
-export default async function Auth({ params: { locale } }: IParams) {
+export default async function Auth({ params: { locale } }: Pick<GlobalProps, "params">) {
 	const dict = await getDictionary(locale);
 	// tabItems
 	const tabItems = [
 		{
 			key: "login",
 			label: <span className="font-bold text-appOrange">{dict.Auth.login}</span>,
-			content: <LoginForm dict={dict} mode="username" />,
+			content: (
+				<LoginForm dict={dict} mode="username">
+					<h1></h1>
+				</LoginForm>
+			),
 		},
 		{
 			key: "loginWithEmail",
 			label: <span className="font-bold text-appOrange">{dict.Auth.loginEmail}</span>,
-			content: <LoginForm dict={dict} mode="email" />,
+			content: (
+				<LoginForm dict={dict} mode="email">
+					<h1></h1>
+				</LoginForm>
+			),
 		},
 		{
 			key: "register",

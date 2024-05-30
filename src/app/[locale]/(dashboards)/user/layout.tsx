@@ -1,5 +1,5 @@
-import { PropsWithParams } from "@/types";
+import { GlobalProps } from "@/types";
 
-export default function UserLayout({ children, params: { locale } }: PropsWithParams) {
+export default function UserLayout({ children, params: { locale } }: Pick<GlobalProps, "children" | "params">) {
 	return <main className="container">{children}</main>;
 }

@@ -1,12 +1,12 @@
 import { ConfigProvider, Table, theme } from "antd";
 import type { TableProps } from "antd/es/table";
 
-import { ILocale } from "@/types";
+import { Locales } from "@/types";
 import { uIdMaker } from "@/utils/global";
 
 interface IExtraProps {
 	classes?: string;
-	appLocale?: ILocale;
+	appLocale?: Locales;
 	themeMode?: {
 		algorithm: "defaultAlgorithm" | "darkAlgorithm";
 	};

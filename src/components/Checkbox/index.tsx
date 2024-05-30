@@ -1,12 +1,14 @@
+"use client";
+
 import { Checkbox, Form } from "antd";
 
-import { ILocale } from "@/types";
+import { Locales } from "@/types";
 import { useLocaleConfigs } from "@/app/lib/hooks";
 
 interface ICheckbox {
 	name: string;
 	label?: string;
-	locale?: ILocale | undefined;
+	locale?: Locales | undefined;
 	initializeValue?: any;
 	checked?: boolean | undefined;
 	classes?: string;

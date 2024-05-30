@@ -1,5 +1,5 @@
 import { defaultLocale } from "@/assets/langs";
-import { ILocale, ILocaleOptions } from "@/types";
+import { Locales, ILocaleOptions } from "@/types";
 
 import { getFromCookie } from "./storage";
 
@@ -7,8 +7,8 @@ export const localeOptions: { [key: string]: ILocaleOptions } = {
 	fa: { lang: "fa", dir: "rtl", dirRevert: "ltr", rtl: true, ltr: false, fontType: "yekan" },
 	en: { lang: "en", dir: "ltr", dirRevert: "rtl", rtl: false, ltr: true, fontType: "roboto" },
 };
-export const getLocaleConfigs = (locale?: ILocale | undefined) => {
-	const currentLang: ILocale = locale ?? getFromCookie("locale") ?? defaultLocale;
+export const getLocaleConfigs = (locale?: Locales | undefined) => {
+	const currentLang: Locales = locale ?? getFromCookie("locale") ?? defaultLocale;
 	return localeOptions[currentLang];
 };
 

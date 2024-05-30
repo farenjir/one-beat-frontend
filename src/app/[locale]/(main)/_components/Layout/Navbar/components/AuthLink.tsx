@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 import { useAppSelector, authSelector } from "@/store/selector";
 
-export default function AuthLink({ dict }: PropsWithDict) {
+export default function AuthLink({ dict }: Pick<GlobalProps, "dict">) {
 	const { user, loading } = useAppSelector(authSelector);
 	return (
 		<>

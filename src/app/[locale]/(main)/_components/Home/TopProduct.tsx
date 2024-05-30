@@ -1,10 +1,14 @@
 import { Carousel } from "antd";
 
-import { IProduct, LocaleDict } from "@/types";
+import { IProduct, GlobalProps } from "@/types";
 
 import { ProductCard } from "@/app/components";
 
-export default function TopProduct({ dict, topProduct = [], locale }: LocaleDict & { topProduct: IProduct[] }) {
+export default function TopProduct({
+	dict,
+	locale,
+	topProduct = [],
+}: Pick<GlobalProps, "locale" | "dict"> & { topProduct: IProduct[] }) {
 	// return
 	return (
 		<section className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 md:my-10 pt-8 bg-black/20 rounded-2xl">

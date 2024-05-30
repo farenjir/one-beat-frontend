@@ -1,4 +1,4 @@
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 import { basesSelector, useAppSelector } from "@/store/selector";
 
 import { DropdownSelectable } from "@/components";
@@ -12,7 +12,7 @@ const ProductFilters = ({
 	dict: {
 		Main: { Product },
 	},
-}: PropsWithDict) => {
+}: Pick<GlobalProps, "dict">) => {
 	// hooks
 	const bases = useAppSelector(basesSelector);
 	// filters

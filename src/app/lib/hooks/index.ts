@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-import { ILocale, ILocaleOptions } from "@/types";
+import { Locales, ILocaleOptions } from "@/types";
 
 import { defaultLocale, getDictionary } from "@/assets/langs";
 import { getLocaleConfigs, localeOptions as locales } from "@/utils/global";
 
-export const useLocaleConfigs = (currentLocale?: ILocale | undefined) => {
+export const useLocaleConfigs = (currentLocale?: Locales | undefined) => {
 	const [locale, setLocale] = useState<{
 		dict?: typeof getDictionary.arguments;
 		localeConfigs: ILocaleOptions;

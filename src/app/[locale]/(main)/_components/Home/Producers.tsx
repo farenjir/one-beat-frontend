@@ -1,10 +1,10 @@
 import { Carousel } from "antd";
 
-import { IUser, PropsWithDict } from "@/types";
+import { IUser, GlobalProps } from "@/types";
 
 import { ProducerCard } from "@/app/components";
 
-export default function Producers({ dict, producers = [] }: PropsWithDict & { producers: IUser[] }) {
+export default function Producers({ dict, producers = [] }: Pick<GlobalProps, "dict"> & { producers: IUser[] }) {
 	const [p1, p2, p3, p4, p5, p6, p7, p8, p9] = producers;
 	return (
 		<section className="producer-sections mx-auto max-w-7xl px-5 pt-8 lg:p-10 my-10">

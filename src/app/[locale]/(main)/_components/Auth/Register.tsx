@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 import { createNotification } from "@/utils/notification";
 import { useAppContext } from "@/app/lib/context";
 
@@ -17,7 +17,7 @@ interface IRegisterForm {
 	repeatPassword?: string;
 }
 
-const RegisterForm = ({ dict: { Auth } }: PropsWithDict) => {
+const RegisterForm = ({ dict: { Auth } }: Pick<GlobalProps, "dict">) => {
 	// hooks
 	const router = useRouter();
 	const { callApi, localeConfigs } = useAppContext();

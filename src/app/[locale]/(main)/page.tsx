@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { Spin } from "antd";
 
-import { IParams } from "@/types";
+import { GlobalProps } from "@/types";
 import { getDictionary } from "@/assets/langs";
 
 import { getProducers, getTopProducts } from "@/app/lib/services/main/server";
@@ -12,7 +12,7 @@ import Producers from "./_components/Home/Producers";
 import Product from "./_components/Home/Product";
 import VipSection from "./_components/Home/VipSection";
 
-export default async function MainPage({ params: { locale } }: IParams) {
+export default async function MainPage({ params: { locale } }: Pick<GlobalProps, "params">) {
 	const dict = await getDictionary(locale);
 	// initialize
 	const [topProduct, producers] = [await getTopProducts(), await getProducers()];

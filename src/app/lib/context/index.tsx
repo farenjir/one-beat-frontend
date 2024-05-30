@@ -8,7 +8,7 @@ import fa from "antd/locale/fa_IR";
 import { ConfigProvider } from "antd";
 
 import { defaultLocale, getDictionary } from "@/assets/langs";
-import { ILocale, ILocaleOptions } from "@/types";
+import { Locales, ILocaleOptions } from "@/types";
 import { ACCESS_TOKEN_ID, LOCALE_NAME } from "@/types/constance";
 import { getFromCookie } from "@/utils/storage";
 import { localeOptions } from "@/utils/global";
@@ -40,7 +40,7 @@ const AppContext = createContext<IContext>({
 
 const checkUserAuth = getFromCookie(ACCESS_TOKEN_ID);
 
-const ApplicationContext = ({ children, locale }: { children: ReactNode; locale: ILocale }) => {
+const ApplicationContext = ({ children, locale }: { children: ReactNode; locale: Locales }) => {
 	// hooks
 	const { dict, localeConfigs } = useLocaleConfigs(locale);
 	const dispatch = useAppDispatch();
@@ -75,7 +75,7 @@ const ApplicationContext = ({ children, locale }: { children: ReactNode; locale:
 export const useAppContext = () => useContext(AppContext);
 
 // state management of the application
-export default function Globals({ children, locale }: { children: ReactNode; locale: ILocale }) {
+export default function Globals({ children, locale }: { children: ReactNode; locale: Locales }) {
 	const storeRef = useRef<AppStore>();
 	if (!storeRef.current) {
 		storeRef.current = makeStore();

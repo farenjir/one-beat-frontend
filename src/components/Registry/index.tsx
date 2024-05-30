@@ -1,4 +1,6 @@
-import React, { FC, ReactNode, useRef, useState } from "react";
+"use client";
+
+import React, { FC, useRef, useState } from "react";
 import { createCache, extractStyle, StyleProvider, StyleProviderProps } from "@ant-design/cssinjs";
 import { useServerInsertedHTML } from "next/navigation";
 

@@ -1,7 +1,9 @@
+"use client";
+
 import { Dropdown, MenuProps } from "antd";
 import { DownOutlined, RedoOutlined } from "@ant-design/icons";
 
-import { ILocale } from "@/types";
+import { Locales } from "@/types";
 import { useLocaleConfigs } from "@/app/lib/hooks";
 
 interface IDropDown {
@@ -12,7 +14,7 @@ interface IDropDown {
 	disabled?: boolean;
 	selectable?: boolean;
 	arrow?: boolean;
-	locale?: ILocale;
+	locale?: Locales;
 	classes?: string;
 	titleClasses?: string;
 	onClick?: MenuProps["onClick"];

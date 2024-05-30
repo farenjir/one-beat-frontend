@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 
 import { useAppContext } from "@/app/lib/context";
 import { useAppDispatch } from "@/store/selector";
@@ -19,7 +19,9 @@ interface ILoginForm {
 	password: string;
 }
 
-const LoginForm = ({ dict: { Auth }, mode }: PropsWithDict & { mode: "email" | "username" }) => {
+type Mode = { mode: "email" | "username" };
+
+const LoginForm = ({ children, dict: { Auth }, mode }: Pick<GlobalProps, "children" | "dict"> & Mode) => {
 	// hooks
 	const router = useRouter();
 	const dispatch = useAppDispatch();
@@ -64,6 +66,7 @@ const LoginForm = ({ dict: { Auth }, mode }: PropsWithDict & { mode: "email" | "
 			/>
 			<Checkboxes label={Auth.remember} name="remember" />
 			<Buttons name={Auth.loginAccount} color="secondary" htmlType="submit" classes="login-form-button mt-5" />
+			{children}
 		</Forms>
 	);
 };

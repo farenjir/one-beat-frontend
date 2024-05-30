@@ -3,13 +3,13 @@
 import { Badge, Avatar } from "antd";
 import { UserOutlined, ShoppingCartOutlined, BellOutlined } from "@ant-design/icons";
 
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 import { useAppContext } from "@/app/lib/context";
 
 import { useAppDispatch, useAppSelector, userSelector } from "@/store/selector";
 import { clearCurrentUser } from "@/store/auth/action";
 
-export default function User({ dict }: PropsWithDict) {
+export default function User({ dict }: Pick<GlobalProps, "dict">) {
 	const user = useAppSelector(userSelector);
 	// hooks
 	const dispatch = useAppDispatch();

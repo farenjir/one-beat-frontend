@@ -1,6 +1,6 @@
 import { CustomerServiceOutlined, HeartOutlined, ShoppingOutlined, StarOutlined } from "@ant-design/icons";
 
-import { PropsWithDict } from "@/types";
+import { GlobalProps } from "@/types";
 
 import gStyle from "@/assets/styles/global.module.css";
 
@@ -8,7 +8,7 @@ export default function MainHeader({
 	dict: {
 		Main: { Header },
 	},
-}: PropsWithDict) {
+}: Pick<GlobalProps, "dict">) {
 	// return
 	return (
 		<div className={gStyle["main__home-container"]}>

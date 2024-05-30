@@ -1,8 +1,8 @@
 import gStyle from "@/assets/styles/global.module.css";
 
-import { PropsWithParams } from "@/types";
+import { GlobalProps } from "@/types";
 
-export default function MainLayout({ children }: PropsWithParams) {
+export default function MainLayout({ children }: Pick<GlobalProps, "children" | "params">) {
 	return (
 		<div className={gStyle["main__home-container"]}>
 			<div className="h-screen w-full grid place-content-center">

@@ -1,7 +1,7 @@
-import { IParams } from "@/types";
+import { GlobalProps } from "@/types";
 import { getDictionary } from "@/assets/langs";
 
-export default async function UserPage({ params: { locale } }: IParams) {
+export default async function UserPage({ params: { locale } }: Pick<GlobalProps, "params">) {
 	const dict = await getDictionary(locale);
 	// return
 	return (
