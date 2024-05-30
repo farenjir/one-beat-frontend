@@ -2,7 +2,6 @@
 
 import { useCallback } from "react";
 import { useRouter } from "next/navigation";
-import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 
 import { GlobalProps } from "@/types";
 
@@ -11,7 +10,7 @@ import { useAppDispatch } from "@/store/selector";
 import { getCurrentUser } from "@/store/auth/action";
 
 import { userAuthentication } from "@/app/lib/services/main/client";
-import { Inputs, Buttons, Checkboxes, Forms } from "@/components";
+import { Forms } from "@/components";
 
 interface ILoginForm {
 	username?: string;
@@ -19,11 +18,11 @@ interface ILoginForm {
 	password: string;
 }
 
-const LoginForm = ({ dict: { Auth }, mode }: Pick<GlobalProps, "dict"> & { mode: "email" | "username" }) => {
+const LoginForm = ({ children, mode }: Pick<GlobalProps, "children"> & { mode: "email" | "username" }) => {
 	// hooks
 	const router = useRouter();
 	const dispatch = useAppDispatch();
-	const { callApi, localeConfigs } = useAppContext();
+	const { callApi } = useAppContext();
 	// handles
 	const onFinish = useCallback(
 		async (values: any) => {
@@ -39,31 +38,15 @@ const LoginForm = ({ dict: { Auth }, mode }: Pick<GlobalProps, "dict"> & { mode:
 		},
 		[mode],
 	);
-	// icons switcher
-	const icons = {
-		email: <MailOutlined className="site-form-item-icon" />,
-		username: <UserOutlined className="site-form-item-icon" />,
-	};
 	// return
 	return (
-		<Forms name="login-form" onFinish={onFinish} initialValues={{ remember: true }}>
-			<Inputs
-				// labelOnMode
-				name={mode}
-				type="text"
-				label={Auth[mode]}
-				prefix={icons[mode]}
-				inputClasses={localeConfigs?.dirRevert}
-			/>
-			<Inputs
-				name="password"
-				type="password"
-				label={Auth.password}
-				prefix={<LockOutlined className="site-form-item-icon" />}
-				inputClasses={localeConfigs?.dirRevert}
-			/>
-			<Checkboxes label={Auth.remember} name="remember" />
-			<Buttons name={Auth.loginAccount} color="secondary" htmlType="submit" classes="login-form-button mt-5" />
+		<Forms
+			name="login-form"
+			onFinish={onFinish}
+			initialValues={{ remember: true }}
+			classes="!px-5 mx-auto w-96 md:w-[350px]"
+		>
+			{children}
 		</Forms>
 	);
 };

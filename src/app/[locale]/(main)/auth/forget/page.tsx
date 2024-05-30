@@ -4,12 +4,11 @@ import { useRef, useState } from "react";
 import { InfoCircleOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 
-import { GlobalProps } from "@/types";
 import { useAppContext } from "@/app/lib/context";
 
-import { userForgatPassword } from "@/app/lib/services/main/client";
-
 import { Inputs, Buttons, Forms, formType } from "@/components";
+
+import { userForgatPassword } from "@/app/lib/services/main/client";
 
 type Mode = "username" | "email";
 interface IForgetForm {
@@ -22,14 +21,17 @@ interface IState {
 	btn?: boolean;
 }
 
-const ForgetPassword = ({ dict: { Auth } }: Pick<GlobalProps, "dict">) => {
+export default function Auth() {
 	const [{ username, email, btn }, setDisableOtherField] = useState<IState>({
 		username: false,
 		email: false,
 		btn: true,
 	});
 	// hooks
-	const { callApi } = useAppContext();
+	const {
+		callApi,
+		dict: { Auth },
+	} = useAppContext();
 	const formRef = useRef<formType>();
 	// handles
 	const onFinish = async ({ username: name, email: mail }: IForgetForm) => {
@@ -49,7 +51,7 @@ const ForgetPassword = ({ dict: { Auth } }: Pick<GlobalProps, "dict">) => {
 	};
 	// return
 	return (
-		<Forms name="forget-password-form" onFinish={onFinish} ref={formRef}>
+		<Forms name="forget-password-form" classes="!px-5 mx-auto w-96 md:w-[350px]" onFinish={onFinish} ref={formRef}>
 			<Inputs
 				name="username"
 				type="text"
@@ -80,6 +82,4 @@ const ForgetPassword = ({ dict: { Auth } }: Pick<GlobalProps, "dict">) => {
 			/>
 		</Forms>
 	);
-};
-
-export default ForgetPassword;
+}

@@ -1,12 +1,10 @@
-"use client";
-
-import { Form, Input, InputNumber } from "antd";
-
-import { useAppContext } from "@/app/lib/context";
+import { Input, InputNumber } from "antd";
+import FormItems from "../Forms/FormItem";
 
 const { TextArea } = Input;
+
 interface IInputs {
-	type: "text" | "password" | "number" | "textArea" | "email";
+	type: "text" | "password" | "number" | "textarea" | "email";
 	name: string;
 	label?: string;
 	placeholder?: string;
@@ -34,7 +32,6 @@ const Inputs = ({
 	label = "",
 	name = "",
 	placeholder = "",
-	onChange = () => {},
 	initializeValue = undefined,
 	value = undefined,
 	prefix = undefined,
@@ -42,7 +39,7 @@ const Inputs = ({
 	size = "middle",
 	classes = "",
 	inputClasses = "",
-	required = true,
+	required = false,
 	disabled = false,
 	maxlength = undefined,
 	minLength = undefined,
@@ -51,74 +48,56 @@ const Inputs = ({
 	min = 1,
 	// textArea
 	autoSize = false,
+	...props
 }: IInputs) => {
-	const { dict } = useAppContext();
-	// InputSelected
-	const inputSelected = ({ type = "text" }) => {
-		switch (type) {
-			case "number":
-				return (
-					<InputNumber
-						disabled={disabled}
-						onChange={onChange}
-						className={inputClasses}
-						size={size}
-						min={min}
-						max={max}
-						defaultValue={initializeValue}
-						placeholder={placeholder}
-					/>
-				);
-			case "textarea":
-				return (
-					<TextArea
-						className={classes}
-						placeholder={placeholder}
-						disabled={disabled}
-						autoSize={autoSize}
-						size={size}
-						defaultValue={initializeValue}
-					/>
-				);
-			default:
-				return (
-					<Input
-						prefix={prefix}
-						name={name}
-						type={type}
-						placeholder={placeholder}
-						className={inputClasses}
-						onChange={onChange}
-						size={size}
-						disabled={disabled}
-						defaultValue={initializeValue}
-						maxLength={maxlength}
-						minLength={minLength}
-						value={value}
-					/>
-				);
-		}
-	};
-	// rules
-	const rules = [
-		{
-			required: required,
-			message: dict?.Schemas?.required,
-		},
-	];
 	// return
 	return (
-		<Form.Item
-			labelCol={{ xs: 24 }}
-			wrapperCol={{ xs: 24 }}
-			className={classes}
-			label={label}
-			name={name}
-			initialValue={initializeValue}
-			rules={rules}
+		<FormItems
+			{...{
+				classes,
+				label,
+				name,
+				initializeValue,
+				required,
+			}}
 		>
-			{inputSelected({ type })}
-		</Form.Item>
+			{type === "number" ? (
+				<InputNumber
+					disabled={disabled}
+					className={inputClasses}
+					size={size}
+					min={min}
+					max={max}
+					defaultValue={initializeValue}
+					placeholder={placeholder}
+					{...props}
+				/>
+			) : type === "textarea" ? (
+				<TextArea
+					className={classes}
+					placeholder={placeholder}
+					disabled={disabled}
+					autoSize={autoSize}
+					size={size}
+					defaultValue={initializeValue}
+				/>
+			) : (
+				<Input
+					prefix={prefix}
+					name={name}
+					type={type}
+					placeholder={placeholder}
+					className={inputClasses}
+					size={size}
+					disabled={disabled}
+					defaultValue={initializeValue}
+					maxLength={maxlength}
+					minLength={minLength}
+					value={value}
+					{...props}
+				/>
+			)}
+		</FormItems>
 	);
 };
 

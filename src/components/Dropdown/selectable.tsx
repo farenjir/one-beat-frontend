@@ -1,13 +1,10 @@
-"use client";
-
 import { Dropdown, MenuProps } from "antd";
 import { DownOutlined, RedoOutlined } from "@ant-design/icons";
-
-import { useAppContext } from "@/app/lib/context";
 
 interface IDropDown {
 	title: string;
 	items: MenuProps["items"]; // key , label, icon, danger, disabled
+	resetLabel: string;
 	defaultSelectedKeys?: string[];
 	trigger?: ("click" | "hover" | "contextMenu")[];
 	disabled?: boolean;
@@ -29,14 +26,14 @@ const DropdownSelectable = ({
 	onClick = (_event) => {},
 	classes = "",
 	titleClasses = "",
+	resetLabel = "",
 }: IDropDown) => {
 	// hooks
-	const { dict } = useAppContext();
 	const items = [
 		...menuItems,
 		{
 			key: "reset",
-			label: dict?.Common?.reset,
+			label: resetLabel,
 			icon: <RedoOutlined />,
 			danger: true,
 		},

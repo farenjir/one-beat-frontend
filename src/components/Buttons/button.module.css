@@ -1,5 +1,5 @@
 .btn-public {
-	@apply text-white;
+	@apply text-white !important;
 	@apply bg-white;
 	height: 35px;
 	line-height: 20px;
@@ -15,47 +15,47 @@
 	-o-transition: all 0.3s linear;
 }
 .btn-public__success {
-	@apply bg-appGreen;
-	@apply border-appGreen;
+	@apply bg-appGreen !important;
+	@apply border-appGreen !important;
 }
 .btn-public__success:hover {
 	@apply text-appGreen !important;
 	@apply border-appGreen !important;
-	@apply bg-transparent;
+	@apply bg-transparent !important;
 }
 .btn-public__active {
-	@apply bg-appBlue;
-	@apply border-appBlue;
+	@apply bg-appBlue !important;
+	@apply border-appBlue !important;
 }
 .btn-public__active:hover {
 	@apply text-appBlue !important;
 	@apply border-appBlue !important;
-	@apply bg-transparent;
+	@apply bg-transparent !important;
 }
 .btn-public__secondary {
-	@apply bg-appOrange;
-	@apply border-appOrange;
+	@apply bg-appOrange !important;
+	@apply border-appOrange !important;
 }
 .btn-public__secondary:hover {
 	@apply text-appOrange !important;
 	@apply border-appOrange !important;
-	@apply bg-transparent;
+	@apply bg-transparent !important;
 }
 .btn-public__danger {
-	@apply bg-appRed;
-	@apply border-appRed;
+	@apply bg-appRed !important;
+	@apply border-appRed !important;
 }
 .btn-public__danger:hover {
 	@apply text-appRed !important;
 	@apply border-appRed !important;
-	@apply bg-transparent;
+	@apply bg-transparent !important;
 }
 .btn-public__cancel {
-	@apply bg-appGrey;
-	@apply border-appGrey;
+	@apply bg-appGrey !important;
+	@apply border-appGrey !important;
 }
 .btn-public__cancel:hover {
 	@apply text-appGrey !important;
 	@apply border-appGrey !important;
-	@apply bg-transparent;
+	@apply bg-transparent !important;
 }

@@ -1,5 +1,3 @@
-"use client";
-
 import { Tabs } from "antd";
 
 interface ITab {
@@ -29,14 +27,14 @@ const TabMenu = ({
 	tabPosition = "top",
 	centered = false,
 	tabBarGutter = 0,
-	onChange = (_activeKey: string): void => {},
 	// tabs
 	tabClasses = "",
 	classes = "",
+	...props
 }: ITabs) => {
 	return (
 		<Tabs
-			{...{ defaultActiveKey, centered, type, size, tabBarGutter, tabPosition, onChange }}
+			{...{ defaultActiveKey, centered, type, size, tabBarGutter, tabPosition, ...props }}
 			className={classes}
 			items={items.map(({ key, content, label }) => ({
 				key,

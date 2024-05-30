@@ -10,6 +10,7 @@ const commonStyles = {
 
 const ProductFilters = ({
 	dict: {
+		Common,
 		Main: { Product },
 	},
 }: Pick<GlobalProps, "dict">) => {
@@ -30,6 +31,7 @@ const ProductFilters = ({
 					key={item}
 					title={Product[item]}
 					items={bases[item]?.children || []}
+					resetLabel={Common.reset}
 					onClick={(e) => handleOnClickFilter(e, item)}
 					{...commonStyles}
 				/>

@@ -1,6 +1,8 @@
 import React from "react";
 import { Dropdown, MenuProps, Tooltip } from "antd";
 
+const { Button: DropdownButton } = Dropdown;
+
 interface IDropDown {
 	title: string;
 	items: MenuProps["items"]; // key , label, icon, danger, disabled
@@ -33,7 +35,7 @@ const DropdownMenu = ({
 	};
 	// return
 	return (
-		<Dropdown.Button
+		<DropdownButton
 			menu={menuProps}
 			size={size}
 			type={type}
@@ -46,7 +48,7 @@ const DropdownMenu = ({
 			]}
 		>
 			<span className={titleClasses}>{title}</span>
-		</Dropdown.Button>
+		</DropdownButton>
 	);
 };
 

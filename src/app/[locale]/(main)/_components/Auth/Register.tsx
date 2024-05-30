@@ -1,14 +1,14 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { LockOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 
 import { GlobalProps } from "@/types";
 import { createNotification } from "@/utils/notification";
 import { useAppContext } from "@/app/lib/context";
 
+import { Forms } from "@/components";
+
 import { userRegistered } from "@/app/lib/services/main/client";
-import { Inputs, Buttons, Forms } from "@/components";
 
 interface IRegisterForm {
 	username: string;
@@ -17,10 +17,10 @@ interface IRegisterForm {
 	repeatPassword?: string;
 }
 
-const RegisterForm = ({ dict: { Auth } }: Pick<GlobalProps, "dict">) => {
+const RegisterForm = ({ children, dict: { Auth } }: Pick<GlobalProps, "children" | "dict">) => {
 	// hooks
 	const router = useRouter();
-	const { callApi, localeConfigs } = useAppContext();
+	const { callApi } = useAppContext();
 	// handles
 	const onFinish = async ({ username, email, password, repeatPassword }: IRegisterForm) => {
 		if (password !== repeatPassword) {
@@ -34,36 +34,8 @@ const RegisterForm = ({ dict: { Auth } }: Pick<GlobalProps, "dict">) => {
 	};
 	// return
 	return (
-		<Forms name="register-form" onFinish={onFinish}>
-			<Inputs
-				name="username"
-				type="text"
-				placeholder={Auth.username}
-				prefix={<UserOutlined className="site-form-item-icon" />}
-				inputClasses={localeConfigs?.dirRevert}
-			/>
-			<Inputs
-				name="email"
-				type="email"
-				placeholder={Auth.email}
-				prefix={<MailOutlined className="site-form-item-icon" />}
-				inputClasses={localeConfigs?.dirRevert}
-			/>
-			<Inputs
-				name="password"
-				type="password"
-				placeholder={Auth.password}
-				prefix={<LockOutlined className="site-form-item-icon" />}
-				inputClasses={localeConfigs?.dirRevert}
-			/>
-			<Inputs
-				name="repeatPassword"
-				type="password"
-				placeholder={Auth.repeatPassword}
-				prefix={<LockOutlined className="site-form-item-icon" />}
-				inputClasses={localeConfigs?.dirRevert}
-			/>
-			<Buttons name={Auth.registerAccount} color="success" htmlType="submit" classes="register-form-button mt-5" />
+		<Forms name="register-form" onFinish={onFinish} classes="!px-5 mx-auto w-96 md:w-[350px]">
+			{children}
 		</Forms>
 	);
 };

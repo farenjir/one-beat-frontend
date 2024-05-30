@@ -1,40 +1,45 @@
+import { LockOutlined, UserOutlined } from "@ant-design/icons";
+
 import { GlobalProps } from "@/types";
 import { getDictionary } from "@/assets/langs";
 
-import { TabMenu } from "@/components";
+import { Buttons, Checkboxes, Inputs } from "@/components";
 import LoginForm from "../_components/Auth/Login";
-import RegisterForm from "../_components/Auth/Register";
-import ForgetPassword from "../_components/Auth/Forget";
+import Link from "next/link";
 
 export default async function Auth({ params: { locale } }: Pick<GlobalProps, "params">) {
-	const dict = await getDictionary(locale);
-	// tabItems
-	const tabItems = [
-		{
-			key: "login",
-			label: <span className="font-bold text-appOrange">{dict.Auth.login}</span>,
-			content: <LoginForm dict={dict} mode="username" />,
-		},
-		{
-			key: "loginWithEmail",
-			label: <span className="font-bold text-appOrange">{dict.Auth.loginEmail}</span>,
-			content: <LoginForm dict={dict} mode="email" />,
-		},
-		{
-			key: "register",
-			label: <span className="font-bold text-appOrange">{dict.Auth.register}</span>,
-			content: <RegisterForm dict={dict} />,
-		},
-		{
-			key: "forget",
-			label: <span className="font-bold text-appOrange">{dict.Auth.forget}</span>,
-			content: <ForgetPassword dict={dict} />,
-		},
-	];
+	const { Auth } = await getDictionary(locale);
 	// return
 	return (
-		<>
-			<TabMenu items={tabItems} type="card" tabPosition="right" tabClasses="px-10" />
-		</>
+		<LoginForm mode="username">
+			<Inputs
+				name={"username"} // email
+				type="text"
+				label={Auth["username"]} // email
+				prefix={<UserOutlined className="site-form-item-icon" />}
+				required={true}
+			/>
+			<Inputs
+				name="password"
+				type="password"
+				label={Auth.password}
+				prefix={<LockOutlined className="site-form-item-icon" />}
+				required={true}
+			/>
+			<Checkboxes label={Auth.remember} name="remember" />
+			<div className="flex items-center justify-between">
+				<Buttons name={Auth.loginAccount} color="secondary" htmlType="submit" classes="login-form-button mt-5" />
+				<strong className="text-xs">
+					<Link href={"/auth/register"} prefetch={false}>
+						{Auth.registerAccount}
+					</Link>
+				</strong>
+				<span className="text-xs">
+					<Link href={"/auth/register"} prefetch={false}>
+						{Auth.forget}
+					</Link>
+				</span>
+			</div>
+		</LoginForm>
 	);
 }

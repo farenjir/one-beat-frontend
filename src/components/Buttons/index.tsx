@@ -1,4 +1,5 @@
-import { Button, Form } from "antd";
+import { Button } from "antd";
+import FormItems from "../Forms/FormItem";
 
 import styles from "./button.module.css";
 
@@ -21,7 +22,6 @@ const Buttons = ({
 	htmlType = "button",
 	color = "active",
 	typeColor = "default",
-	onClick = () => {},
 	shape = "default",
 	size = "middle",
 	classes = "",
@@ -31,9 +31,9 @@ const Buttons = ({
 	...props
 }: IButtons) => {
 	return (
-		<Form.Item>
+		<FormItems>
 			<Button
-				{...{ onClick, htmlType, size, shape, type: typeColor, disabled, loading, ...props }}
+				{...{ htmlType, size, shape, type: typeColor, disabled, loading, ...props }}
 				className={`${styles["btn-public"]}  ${styles[`btn-public__${color}`]} ${classes}`}
 			>
 				<div className="flex justify-center items-center">
@@ -41,7 +41,7 @@ const Buttons = ({
 					{prefix}
 				</div>
 			</Button>
-		</Form.Item>
+		</FormItems>
 	);
 };
 
