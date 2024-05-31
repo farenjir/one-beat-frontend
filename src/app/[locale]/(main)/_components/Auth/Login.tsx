@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 import { GlobalProps } from "@/types";
+import Regex from "@/utils/regex";
 
 import { useAppContext } from "@/app/lib/context";
 import { useAppDispatch } from "@/store/selector";
@@ -18,26 +18,24 @@ interface ILoginForm {
 	password: string;
 }
 
-const LoginForm = ({ children, mode }: Pick<GlobalProps, "children"> & { mode: "email" | "username" }) => {
+const LoginForm = ({ children }: Pick<GlobalProps, "children">) => {
 	// hooks
 	const router = useRouter();
 	const dispatch = useAppDispatch();
 	const { callApi } = useAppContext();
 	// handles
-	const onFinish = useCallback(
-		async (values: any) => {
-			const formBody = {
-				[mode]: values[mode],
-				password: values.password,
-			};
-			const loginUser = await userAuthentication<ILoginForm>(callApi, formBody);
-			if (loginUser?.id) {
-				dispatch(getCurrentUser({ callApi }));
-				router.replace("/");
-			}
-		},
-		[mode],
-	);
+	const onFinish = async ({ username = "", password = "" }: Pick<ILoginForm, "username" | "password">) => {
+		const mode = username.match(Regex.email) ? "email" : "username";
+		const formBody = {
+			[mode]: username,
+			password,
+		};
+		const loginUser = await userAuthentication<ILoginForm>(callApi, formBody);
+		if (loginUser?.id) {
+			dispatch(getCurrentUser({ callApi }));
+			router.replace("/");
+		}
+	};
 	// return
 	return (
 		<Forms

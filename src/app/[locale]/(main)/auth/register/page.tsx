@@ -13,28 +13,28 @@ export default async function Register({ params: { locale } }: Pick<GlobalProps,
 			<Inputs
 				name="username"
 				type="text"
-				prefix={<UserOutlined className="site-form-item-icon" />}
+				addonAfter={<UserOutlined className="site-form-item-icon" />}
 				placeholder={Auth.username}
 				required={true}
 			/>
 			<Inputs
 				name="email"
 				type="email"
-				prefix={<MailOutlined className="site-form-item-icon" />}
+				addonAfter={<MailOutlined className="site-form-item-icon" />}
 				placeholder={Auth.email}
 				required={true}
 			/>
 			<Inputs
 				name="password"
 				type="password"
-				prefix={<LockOutlined className="site-form-item-icon" />}
+				addonAfter={<LockOutlined className="site-form-item-icon" />}
 				placeholder={Auth.password}
 				required={true}
 			/>
 			<Inputs
 				name="repeatPassword"
 				type="password"
-				prefix={<LockOutlined className="site-form-item-icon" />}
+				addonAfter={<LockOutlined className="site-form-item-icon" />}
 				placeholder={Auth.repeatPassword}
 				required={true}
 			/>

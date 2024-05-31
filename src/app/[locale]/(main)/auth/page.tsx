@@ -11,20 +11,20 @@ export default async function Auth({ params: { locale } }: Pick<GlobalProps, "pa
 	const { Auth } = await getDictionary(locale);
 	// return
 	return (
-		<LoginForm mode="username">
+		<LoginForm>
 			<Inputs
-				name={"username"} // email
+				name={"username"}
 				type="text"
-				label={Auth["username"]} // email
-				prefix={<UserOutlined className="site-form-item-icon" />}
+				label={Auth["usernameMail"]}
 				required={true}
+				addonAfter={<UserOutlined className="site-form-item-icon" />}
 			/>
 			<Inputs
 				name="password"
 				type="password"
 				label={Auth.password}
-				prefix={<LockOutlined className="site-form-item-icon" />}
 				required={true}
+				addonAfter={<LockOutlined className="site-form-item-icon" />}
 			/>
 			<Checkboxes label={Auth.remember} name="remember" />
 			<div className="flex items-center justify-between">

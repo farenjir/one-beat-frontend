@@ -1,14 +1,13 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { InfoCircleOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
+import { InfoCircleOutlined, MailOutlined, UserOutlined } from "@ant-design/icons";
 
 import { useAppContext } from "@/app/lib/context";
 
-import { Inputs, Buttons, Forms, formType } from "@/components";
-
 import { userForgatPassword } from "@/app/lib/services/main/client";
+import { Inputs, Buttons, Forms, formType } from "@/components";
 
 type Mode = "username" | "email";
 interface IForgetForm {
@@ -56,17 +55,31 @@ export default function ForgetPassword() {
 				name="username"
 				type="text"
 				label={Auth.username}
-				prefix={<UserOutlined className="site-form-item-icon" />}
 				required={username}
 				onChange={() => handleOnChange("username", "email", username)}
+				addonAfter={
+					<div className="flex gap-2">
+						<Tooltip title={Auth.forgetInfo}>
+							<InfoCircleOutlined className="site-info-item-icon !text-appBlue" />
+						</Tooltip>
+						<UserOutlined className="site-form-item-icon" />
+					</div>
+				}
 			/>
 			<Inputs
 				name="email"
 				type="email"
 				label={Auth.email}
-				prefix={<MailOutlined className="site-form-item-icon" />}
 				required={email}
 				onChange={() => handleOnChange("email", "username", email)}
+				addonAfter={
+					<div className="flex gap-2">
+						<Tooltip title={Auth.forgetInfo}>
+							<InfoCircleOutlined className="site-info-item-icon !text-appBlue" />
+						</Tooltip>
+						<MailOutlined className="site-form-item-icon" />
+					</div>
+				}
 			/>
 			<Buttons
 				name={Auth.forgetBtn}
@@ -74,11 +87,6 @@ export default function ForgetPassword() {
 				htmlType="submit"
 				classes="login-form-button mt-5"
 				disabled={btn}
-				prefix={
-					<Tooltip title={Auth.forgetInfo}>
-						<InfoCircleOutlined className="site-info-item-icon mx-2" />
-					</Tooltip>
-				}
 			/>
 		</Forms>
 	);

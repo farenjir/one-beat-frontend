@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import type { Metadata, ResolvingMetadata, Viewport } from "next";
+import type { ResolvingMetadata, Viewport } from "next";
 
 import "@/assets/styles/global.css";
 
@@ -32,10 +32,7 @@ export const viewport: Viewport = {
 	themeColor: themeColorView,
 };
 
-export async function generateMetadata(
-	params: Pick<GlobalProps, "params" | "searchParams">,
-	parent: ResolvingMetadata,
-): Promise<Metadata> {
+export async function generateMetadata(params: Pick<GlobalProps, "params" | "searchParams">, parent: ResolvingMetadata) {
 	return await rootLayoutMetadata(params, parent);
 }
 

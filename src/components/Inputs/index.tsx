@@ -1,4 +1,6 @@
 import { Input, InputNumber } from "antd";
+import type { InputProps } from "antd";
+
 import FormItems from "../Forms/FormItem";
 
 const { TextArea } = Input;
@@ -49,7 +51,7 @@ const Inputs = ({
 	// textArea
 	autoSize = false,
 	...props
-}: IInputs) => {
+}: IInputs & Partial<InputProps>) => {
 	// return
 	return (
 		<FormItems
@@ -70,7 +72,6 @@ const Inputs = ({
 					max={max}
 					defaultValue={initializeValue}
 					placeholder={placeholder}
-					{...props}
 				/>
 			) : type === "textarea" ? (
 				<TextArea
@@ -83,7 +84,6 @@ const Inputs = ({
 				/>
 			) : (
 				<Input
-					prefix={prefix}
 					name={name}
 					type={type}
 					placeholder={placeholder}

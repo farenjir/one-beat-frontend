@@ -38,6 +38,7 @@
 		"login": "ورود",
 		"loginEmail": "ورود ( ایمیل )",
 		"username": "نام کاربری",
+		"usernameMail": "نام کاربری یا ایمیل",
 		"password": "کلمه عبور",
 		"repeatPassword": "تکرار کلمه عبور",
 		"remember": "یادآوری حساب",
