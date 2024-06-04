@@ -14,6 +14,18 @@ export interface IApi<TBody> {
 	nextCatch?: RequestCache;
 }
 
+// baseURL
+const baseURL = process.env.NEXT_APP_BACKEND_SERVER;
+// axiosInstance
+const axiosInstance = axios.create({
+	baseURL,
+	headers: {
+		"Accept-Language": "en",
+		"Api-Version": "1.0",
+		Accept: "application/json",
+	},
+});
+
 const callApi = <TRes, TBody = {}>({
 	url = "",
 	method = "GET",
@@ -31,17 +43,6 @@ const callApi = <TRes, TBody = {}>({
 		var { ISuccess, successCodeMessage } = require("./messages/successCode");
 		var { IError, errorCodeMessage } = require("./messages/errorCode");
 	}
-	// baseURL
-	const baseURL = process.env.NEXT_APP_BACKEND_SERVER;
-	// axiosInstance
-	const axiosInstance = axios.create({
-		baseURL,
-		headers: {
-			"Accept-Language": "en",
-			"Api-Version": "1.0",
-			Accept: "application/json",
-		},
-	});
 	// set token
 	let token = "";
 	if (isCSR) {

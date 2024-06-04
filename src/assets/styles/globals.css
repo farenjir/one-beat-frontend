@@ -3,21 +3,24 @@
 @tailwind utilities;
 
 @layer base {
-	* {
-		font-family: var(--font-yekan) !important;
-		font-weight: 600;
-	}
 	.ltr {
 		direction: ltr !important;
 	}
 	.rtl {
-		direction: rtl;
+		direction: rtl !important;
 	}
 }
 
 /* document style */
 html {
+	font-weight: 600;
 	overflow-x: hidden;
+}
+* :lang(fa) {
+	font-family: var(--font-yekan);
+}
+* :lang(en) {
+	font-family: var(--font-figtree);
 }
 body {
 	position: relative;
