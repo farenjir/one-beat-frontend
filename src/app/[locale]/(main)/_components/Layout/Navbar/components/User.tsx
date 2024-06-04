@@ -15,7 +15,7 @@ export default function User({ dict }: Pick<GlobalProps, "dict">) {
 	const dispatch = useAppDispatch();
 	const { callApi } = useAppContext();
 	// handles
-	const handleSignOut = async () => {
+	const handleSignOut = () => {
 		dispatch(clearCurrentUser({ callApi }));
 	};
 	return (

@@ -27,5 +27,5 @@
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-image: linear-gradient(to bottom, rgb(150 75 0 / 50%), rgb(20 20 20 / 100%)), url("../images/bg-home.jpg");
+	background-image: linear-gradient(to bottom, rgb(150 75 0 / 50%), rgb(20 20 20 / 100%)), url("/assets/images/bg-home.jpg");
 }

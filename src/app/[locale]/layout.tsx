@@ -2,7 +2,7 @@ import { Figtree } from "next/font/google";
 import localFont from "next/font/local";
 import type { ResolvingMetadata, Viewport } from "next";
 
-import "@/assets/styles/globals.css";
+import "@/app/globals.css";
 
 import { rootLayoutMetadata } from "@/app/lib/meta/RootLayout";
 

@@ -6,6 +6,7 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				yekan: ["var(--font-yekan)"],
+				figtree: ["var(--font-figtree)"],
 			},
 			colors: {
 				black: "#151515",

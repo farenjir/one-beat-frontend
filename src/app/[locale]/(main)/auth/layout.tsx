@@ -1,4 +1,4 @@
-import gStyle from "@/assets/styles/global.module.css";
+import gStyle from "../_components/Layout/layout.module.css";
 
 import { GlobalProps } from "@/types";
 

@@ -2,7 +2,7 @@ import { CustomerServiceOutlined, HeartOutlined, ShoppingOutlined, StarOutlined 
 
 import { GlobalProps } from "@/types";
 
-import gStyle from "@/assets/styles/global.module.css";
+import gStyle from "../Layout/layout.module.css";
 
 export default function MainHeader({
 	dict: {
